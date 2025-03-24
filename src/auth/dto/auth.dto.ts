@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, MinLength } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsOptional, IsPhoneNumber, MinLength } from 'class-validator';
 
 export class RegisterDto {
     @IsNotEmpty()
@@ -9,12 +9,22 @@ export class RegisterDto {
     @MinLength(3)
     lastName: string;
 
+    @IsOptional()
+    @IsPhoneNumber('NG') // or general format
+    phone?: string;
+
     @IsEmail()
     email: string;
 
     @IsNotEmpty()
     @MinLength(6)
     password: string;
+
+    @IsOptional()
+    role: string | undefined;
+
+    @IsOptional()
+  avatarUrl?: string;
 }
 
 export class LoginDto {
