@@ -7230,6 +7230,7 @@ string-length@^4.0.1:
     strip-ansi "^6.0.0"
 
 "string-width-cjs@npm:string-width@^4.2.0", "string-width@^1.0.2 || 2 || 3 || 4", string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
+  name string-width-cjs
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -7621,6 +7622,11 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
+
+typeorm-ts-node-commonjs@^0.3.20:
+  version "0.3.20"
+  resolved "https://registry.yarnpkg.com/typeorm-ts-node-commonjs/-/typeorm-ts-node-commonjs-0.3.20.tgz#a213b8da958d9306b13e7c3a2a13167e74c3b0af"
+  integrity sha512-lXjve7w7OcF3s5+dHnCsrBjUTukpVeiS0bDe5KDXWcDx8TyRW0GTTg9kjWgHzFgHgBIBBu4WGXM0iuGpEgaV9g==
 
 typeorm@^0.3.21:
   version "0.3.21"
