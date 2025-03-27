@@ -5,7 +5,6 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { URL } from 'url';
 
 @Entity('users')
 export class User {
@@ -20,7 +19,7 @@ export class User {
 
   @Column({ length: 100, nullable: true })
   username: string;
-  
+
   @Column({ unique: true })
   email: string;
 

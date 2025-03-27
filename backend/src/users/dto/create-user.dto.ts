@@ -9,7 +9,6 @@ export class CreateUserDto {
   @Length(2, 100)
   lastname: string;
 
-  
   @IsEmail()
   @IsNotEmpty()
   email: string;
