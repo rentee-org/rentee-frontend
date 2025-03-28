@@ -14,8 +14,23 @@ export class UsersService {
   ) {}
 
   async getProfile(userId: string) {
-    return this.usersRepository
-    .findOne({ where: { id: userId.toString() }, select: ['id', 'firstname', 'lastname', 'username', 'email', 'phone', 'avatarUrl', 'role', 'city', 'state', 'country', 'createdAt'] });
+    return this.usersRepository.findOne({
+      where: { id: userId.toString() },
+      select: [
+        'id',
+        'firstname',
+        'lastname',
+        'username',
+        'email',
+        'phone',
+        'avatarUrl',
+        'role',
+        'city',
+        'state',
+        'country',
+        'createdAt',
+      ],
+    });
   }
 
   async updateProfile(userId: string, dto: UpdateProfileDto) {

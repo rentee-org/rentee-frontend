@@ -1,17 +1,8 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
-import { URL } from 'url';
+import { BaseEntity } from 'src/config/base.entity';
+import { Column, Entity } from 'typeorm';
 
 @Entity('users')
-export class User {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
-
+export class User extends BaseEntity {
   @Column({ length: 100 })
   firstname: string;
 
@@ -20,7 +11,7 @@ export class User {
 
   @Column({ length: 100, nullable: true })
   username: string;
-  
+
   @Column({ unique: true })
   email: string;
 
@@ -62,10 +53,4 @@ export class User {
 
   @Column({ nullable: true })
   lastLogin?: Date;
-
-  @CreateDateColumn()
-  createdAt: Date;
-
-  @UpdateDateColumn()
-  updatedAt: Date;
 }
