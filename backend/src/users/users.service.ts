@@ -46,6 +46,22 @@ export class UsersService {
     return this.usersRepository.findOne({ where: { id } });
   }
 
+  findById(id: string): Promise<User | null> {
+    return this.usersRepository.findOne({ where: { id } });
+  }
+
+  async findByEmail(email: string): Promise<User | null> {
+    return this.usersRepository.findOne({ where: { email } });
+  }
+
+  async findByUsername(username: string): Promise<User | null> {
+    return this.usersRepository.findOne({ where: { username } });
+  }
+
+  async findByPhone(phone: string): Promise<User | null> {
+    return this.usersRepository.findOne({ where: { phone } });
+  }
+
   create(createUserDto: CreateUserDto): Promise<User> {
     const user = this.usersRepository.create(createUserDto);
     return this.usersRepository.save(user);
@@ -53,6 +69,11 @@ export class UsersService {
 
   update(id: string, updateUserDto: UpdateUserDto) {
     return this.usersRepository.update(id, updateUserDto);
+  }
+
+  async updateUserLastLogin(user: User): Promise<void> {
+    user.lastLogin = new Date();
+    await this.usersRepository.save(user);
   }
 
   async remove(id: string): Promise<void> {

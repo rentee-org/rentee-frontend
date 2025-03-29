@@ -1,12 +1,22 @@
 import {
+  BeforeInsert,
   Column,
   CreateDateColumn,
   DeleteDateColumn,
+  PrimaryColumn,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
 export class BaseEntity {
+  // @PrimaryColumn()
+  // id!: string;
+
+  // @BeforeInsert()
+  // // Generate a shorter ID (default nanoid is 21 chars)
+  // async generateId() {
+  //   this.id = nanoid(10); // You can specify your desired length
+  // }
   @PrimaryGeneratedColumn('uuid')
   id!: string;
 
