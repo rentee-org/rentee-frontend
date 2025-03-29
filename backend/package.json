@@ -18,12 +18,11 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
-
     "migration:generate": "ts-node ./node_modules/typeorm/cli.js migration:generate src/migrations/AutoMigration -d data-source.ts",
     "migration:create": "ts-node ./node_modules/typeorm/cli.js migration:create src/migrations/NewMigration",
     "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run -d data-source.ts",
     "migration:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert -d data-source.ts",
-    "start:dev:db": "./src/scripts/start-db.sh"    
+    "start:dev:db": "./src/scripts/start-db.sh"
   },
   "dependencies": {
     "@compodoc/compodoc": "^1.1.26",
