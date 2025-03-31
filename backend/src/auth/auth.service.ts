@@ -6,11 +6,12 @@ import {
 import * as bcrypt from 'bcrypt';
 import { ConfigService } from '@nestjs/config';
 import { User } from 'src/users/entities/user.entity';
-import { LoginDto, RegisterDto } from './dto/auth.dto';
+import { LoginDto, LoginResponseDto, RegisterDto } from './dto/auth.dto';
 import { UsersService } from 'src/users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { UserDto } from 'src/users/dto/user.dto';
+import { ApiResponse } from 'src/common/dto/response.dto';
 
 @Injectable()
 export class AuthService {
@@ -20,7 +21,8 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async register(model: RegisterDto): Promise<{ message: string }> {
+  async register(model: RegisterDto): Promise<ApiResponse<string>> {
+    
     const exists = await this.userService.findByEmail(model.email);
       
     if (exists) throw new BadRequestException('Email already registered');
@@ -33,7 +35,13 @@ export class AuthService {
       password: hashedPassword,
     });
 
-    return { message: 'User registered successfully' };
+    let response = new ApiResponse<string>();
+    response.message = 'User registered successfully!';
+    response.success = true;
+    response.data = 'User registered successfully!';
+    return response;
+    
+    // return { message: 'User registered successfully' };
   }
 
   async validateUser(email: string, password: string): Promise<User> {
@@ -47,7 +55,7 @@ export class AuthService {
     return user;
   }
 
-  async login(model: LoginDto): Promise<{ access_token: string; user: UserDto }> {
+  async login(model: LoginDto): Promise<ApiResponse<LoginResponseDto>>{
     const user = await this.validateUser(model.email, model.password);
 
     const payload = { sub: user.id, email: user.email, role: user.role };
@@ -58,8 +66,12 @@ export class AuthService {
     // update the last login time
     await this.userService.updateUserLastLogin(user);
 
-    // return { access_token: token, user: safeUser };
-    return { access_token: token, user: safeUser as UserDto };
+    // Return the token and user information
+    let response = new ApiResponse<LoginResponseDto>();
+    response.message = 'User logged in successfully!';
+    response.success = true;
+    response.data = { access_token: token, user: safeUser as UserDto };
+    return response;
   }
 
   async hashPassword(password: string): Promise<string> {
