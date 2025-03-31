@@ -37,8 +37,15 @@ export class UsersService {
   }
 
   async updateProfile(userId: string, dto: UpdateProfileDto) {
-    await this.usersRepository.update(userId, dto);
-    return { message: 'Profile updated successfully' };
+    try {
+      const user = await this.usersRepository.findOne({ where: { id: userId } });
+      if (!user) throw new Error('User not found');
+      await this.usersRepository.update(userId, dto);
+      return { message: 'Profile updated successfully' };
+    }
+    catch (error) {
+      throw new Error('User not found');
+    }
   }
 
   findAll(): Promise<User[]> {
@@ -66,8 +73,19 @@ export class UsersService {
   }
 
   create(createUserDto: CreateUserDto): Promise<User> {
-    const user = this.usersRepository.create(createUserDto);
-    return this.usersRepository.save(user);
+    try {
+      // Check if the user already exists
+      const existingUser = this.usersRepository.findOne({ where: { email: createUserDto.email } });
+      if (existingUser) throw new Error('User already exists');
+      // Check if the user data is valid
+
+      if (!createUserDto) throw new Error('Invalid user data');
+      const user = this.usersRepository.create(createUserDto);
+      return this.usersRepository.save(user);
+    }
+    catch (error) {
+      throw new Error('User already exists');
+    }
   }
 
   update(id: string, updateUserDto: UpdateUserDto): Promise<ApiResponse<UpdateUserDto>> {
@@ -90,8 +108,14 @@ export class UsersService {
   }
 
   async updateUserLastLogin(user: User): Promise<void> {
-    user.lastLogin = new Date();
-    await this.usersRepository.save(user);
+    try {
+      if (!user) throw new Error('User not found');
+      user.lastLogin = new Date();
+      await this.usersRepository.save(user);
+    }
+    catch (error) {
+      throw new Error('User not found');
+    }
   }
 
   async remove(id: string): Promise<void> {
