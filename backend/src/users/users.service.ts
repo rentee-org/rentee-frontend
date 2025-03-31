@@ -6,6 +6,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { UserDto } from './dto/user.dto';
+import { ApiResponse } from 'src/common/dto/response.dto';
 
 @Injectable()
 export class UsersService {
@@ -69,8 +70,23 @@ export class UsersService {
     return this.usersRepository.save(user);
   }
 
-  update(id: string, updateUserDto: UpdateUserDto) {
-    return this.usersRepository.update(id, updateUserDto);
+  update(id: string, updateUserDto: UpdateUserDto): Promise<ApiResponse<UpdateUserDto>> {
+    try {
+      const user = this.usersRepository.findOne({ where: { id } });
+      if (!user) throw new Error('User not found');
+      const user_obj = this.usersRepository.update(id, updateUserDto);
+
+      // const { password, ...safeUser } = user;
+    // Return the token and user information
+    let response = new ApiResponse<UpdateUserDto>();
+    response.success = true;
+    response.message = 'User updated successfully!';
+    response.data = updateUserDto as UpdateUserDto;
+    return Promise.resolve(response);
+    }
+    catch (error) {
+      throw new Error('User not found');
+    }
   }
 
   async updateUserLastLogin(user: User): Promise<void> {
