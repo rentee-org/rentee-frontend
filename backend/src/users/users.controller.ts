@@ -24,7 +24,7 @@ export class UsersController {
 
   @Get('me')
   getProfile(@Request() req) {
-    return this.userService.getProfile(req.user.sub);
+    return this.userService.getProfile(req.user.userId);
   }
 
   // This endpoint requires authentication but no specific role
@@ -36,7 +36,7 @@ export class UsersController {
 
   @Put('me')
   updateProfile(@Request() req, @Body() dto: UpdateProfileDto) {
-    return this.userService.updateProfile(req.user.sub, dto);
+    return this.userService.updateProfile(req.user.userId, dto);
   }
 
   @Roles(Role.ADMIN)

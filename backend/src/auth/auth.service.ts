@@ -33,8 +33,6 @@ export class AuthService {
       password: hashedPassword,
     });
 
-    console.log(JSON.stringify(user));
-
     return { message: 'User registered successfully' };
   }
 
@@ -78,6 +76,7 @@ export class AuthService {
       throw new Error('JWT_SECRET is not defined');
     }
     const token = await this.jwtService.signAsync(payload, { secret: jwtSecret });
+  
     return token;
   }
 }

@@ -5,6 +5,7 @@ import { User } from './entities/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
+import { UserDto } from './dto/user.dto';
 
 @Injectable()
 export class UsersService {
@@ -13,7 +14,8 @@ export class UsersService {
     private usersRepository: Repository<User>,
   ) {}
 
-  async getProfile(userId: string) {
+  async getProfile(userId: string): Promise<UserDto | null> {
+    
     return this.usersRepository.findOne({
       where: { id: userId.toString() },
       select: [
