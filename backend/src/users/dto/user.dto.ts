@@ -5,10 +5,12 @@ export class UserDto {
   id: string;
   firstname: string;
   lastname: string;
+  username?: string;
   email: string;
   phone?: string;
   role: Role;
   avatarUrl?: string;
+  addressLine1?: string;
   status?: string;
   city?: string;
   state?: string;

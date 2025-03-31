@@ -22,6 +22,9 @@ export class User extends BaseEntity {
   @Column({ length: 100, default: 'renter' }) // renter, owner or admin
   role: Role;
 
+  @Column({ length: 150, nullable: true })
+  addressLine1: string;
+
   @Column({ length: 100, nullable: true })
   status: string;
 
@@ -36,9 +39,6 @@ export class User extends BaseEntity {
 
   @Column({ length: 20, nullable: true })
   phone: string;
-
-  @Column({ length: 150, nullable: true })
-  address: string;
 
   @Column({ nullable: true })
   avatarUrl: string;
