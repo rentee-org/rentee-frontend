@@ -7,16 +7,19 @@ import { DatabaseModule } from './database/database.module';
 import { UsersModule } from './users/users.module';
 import { AuthService } from './auth/auth.service';
 import { AuthModule } from './auth/auth.module';
-import databaseConfig from './config/database.config';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { RolesGuard } from './auth/guards/roles.guard';
+import { ListingModule } from './listing/listing.module';
+
+import databaseConfig from './config/database.config';
+import cloudinaryConfig from './config/cloudinary.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [databaseConfig],
+      load: [databaseConfig, cloudinaryConfig],  // Register both database and cloudinary configs
       envFilePath: `.env.${process.env.NODE_ENV || 'development'}`,
     }),
     TypeOrmModule.forRootAsync({
@@ -29,6 +32,7 @@ import { RolesGuard } from './auth/guards/roles.guard';
     DatabaseModule,
     UsersModule,
     AuthModule,
+    ListingModule,
   ],
   controllers: [AppController],
   providers: [
