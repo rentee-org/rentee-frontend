@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import { BiPlus } from "react-icons/bi";
 
 function Faq() {

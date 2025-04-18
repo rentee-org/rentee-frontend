@@ -48,5 +48,9 @@ const Navbar = () => {
 };
 
 export default Navbar;
-// This code defines a Navbar component that serves as the navigation bar for the application. It includes links to the home page, login, and registration pages. The navbar is responsive, displaying a hamburger menu icon on smaller screens that toggles the visibility of the mobile menu. The Navbar uses Tailwind CSS classes for styling and Lucide icons for the menu icons. The `useState` hook is used to manage the open/closed state of the mobile menu.
+// This code defines a Navbar component that serves as the navigation bar for the application. 
+// It includes links to the home page, login, and registration pages. 
+// The navbar is responsive, displaying a hamburger menu icon on smaller screens that toggles the visibility of the mobile menu. 
+// The Navbar uses Tailwind CSS classes for styling and Lucide icons for the menu icons. 
+// The `useState` hook is used to manage the open/closed state of the mobile menu.
 // The Navbar component is exported for use in other parts of the application.
