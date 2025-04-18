@@ -52,3 +52,11 @@ export default tseslint.config({
   },
 })
 ```
+To build and run the Docker image:
+``` bash
+# Build the image
+docker build -t rentee-frontend .
+
+# Run the container
+docker run -p 8080:80 rentee-frontend
+```

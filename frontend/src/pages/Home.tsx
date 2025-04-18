@@ -1,31 +1,34 @@
 import Layout from "../components/layout/Layout";
+import Hero from "../assets/Hero.png";
 
 const Home = () => {
   return (
     <Layout>
-      <section className="flex flex-col-reverse items-center justify-between gap-12 px-6 md:px-16 py-20 w-full bg-gray-50 min-h-screen">
+      <section className="flex flex-col items-center justify-center  gap-3 px-6 md:px-16 py-20  bg-gray-50 ">
         {/* Text Block */}
-        <div className="w-full md:w-1/2">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-            Rent anything, anytime.
-          </h1>
-          <p className="text-gray-600 mb-6">
-            Discover and rent tools, electronics, and more from people near you.
+        <div className="w-full md:w-1/2 text-center mb-6">
+       <div>
+       <h1 className="text-4xl font-bold">Why buy when you can </h1>
+       </div>
+         
+        <div className="font-bold ">
+        <h1 className="text-4xl">  Rent for a Day.</h1>
+          <h1 className="text-4xl">   Rent for a Week.</h1>
+          <h1 className="text-4xl">    Rent on your Terms.</h1>
+        </div>
+        
+          <p className="text-gray-600 mt-6">
+          Affordable. Convenient. Right where you need it.
           </p>
-          <a
-            href="/register"
-            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
-          >
-            Get Started
-          </a>
+       
         </div>
 
         {/* Image Block */}
-        <div className="w-full md:w-1/2 flex justify-center items-center">
+        <div className="w-full flex justify-center items-center">
           <img
-            src="/rentee-hero.svg" // Replace with actual image if needed
+            src={Hero}
             alt="Rentee"
-            className="max-w-full h-auto object-contain"
+            className=" h-auto object-contain"
           />
         </div>
       </section>
