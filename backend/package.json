@@ -22,7 +22,8 @@
     "migration:create": "ts-node ./node_modules/typeorm/cli.js migration:create src/migrations/NewMigration",
     "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run -d data-source.ts",
     "migration:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert -d data-source.ts",
-    "start:dev:db": "./src/scripts/start-db.sh"
+    "migration:show": "ts-node ./node_modules/typeorm/cli.js migration:show -d data-source.ts",
+    "migration:revert:all": "ts-node ./node_modules/typeorm/cli.js migration:revert -d data-source.ts --all"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
