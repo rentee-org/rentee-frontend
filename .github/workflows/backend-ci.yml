@@ -81,6 +81,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       
+      - name: Install Railway CLI
+        run: |
+          curl -fsSL https://railway.app/install.sh | sh
+
+      - name: Check Railway Token
+        run: |
+          echo "RAILWAY_TOKEN length: ${#RAILWAY_TOKEN}"
+          if [ -z "$RAILWAY_TOKEN" ]; then
+            echo "::error::Railway token is empty"
+            exit 1
+          fi
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+
       - name: Deploy to Railway
         run: railway up
         working-directory: ./backend
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
