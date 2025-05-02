@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import './index.css';
+import './assets/Fonts/avenir_ff/Fonts.css';
 
 function App() {
  return (

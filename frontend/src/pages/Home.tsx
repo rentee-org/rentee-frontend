@@ -7,29 +7,24 @@ const Home = () => {
       <section className="flex flex-col items-center justify-center  gap-3 px-6 md:px-16 py-20  bg-gray-50 ">
         {/* Text Block */}
         <div className="w-full md:w-1/2 text-center mb-6">
-       <div>
-       <h1 className="text-4xl font-bold">Why buy when you can </h1>
-       </div>
-         
-        <div className="font-bold ">
-        <h1 className="text-4xl">  Rent for a Day.</h1>
-          <h1 className="text-4xl">   Rent for a Week.</h1>
-          <h1 className="text-4xl">    Rent on your Terms.</h1>
-        </div>
-        
+          <div>
+            <h1 className="text-4xl font-bold font-avenir" >Why buy when you can </h1>
+          </div>
+
+          <div className="font-bold  font-avenir">
+            <h1 className="text-4xl"> Rent for a Day.</h1>
+            <h1 className="text-4xl"> Rent for a Week.</h1>
+            <h1 className="text-4xl"> Rent on your Terms.</h1>
+          </div>
+
           <p className="text-gray-600 mt-6">
-          Affordable. Convenient. Right where you need it.
+            Affordable. Convenient. Right where you need it.
           </p>
-       
         </div>
 
         {/* Image Block */}
         <div className="w-full flex justify-center items-center">
-          <img
-            src={Hero}
-            alt="Rentee"
-            className=" h-auto object-contain"
-          />
+          <img src={Hero} alt="Rentee" className=" h-auto object-contain" />
         </div>
       </section>
     </Layout>
