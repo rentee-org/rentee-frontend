@@ -1,16 +1,14 @@
-
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const rotatingTexts = [
   "Rent for a Day.",
   "Rent for a Week.",
-  "Rent on your Terms."
+  "Rent on your Terms.",
 ];
 
 export default function AnimatedTextCycler() {
   const [index, setIndex] = useState(0);
-
   // Cycle text every 2.5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
@@ -36,6 +34,3 @@ export default function AnimatedTextCycler() {
     </div>
   );
 }
-
-
-
