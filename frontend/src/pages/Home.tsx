@@ -12,14 +12,14 @@ const Home = () => {
         {/* Text Block */}
         <div className="w-full md:w-1/2 text-center mb-6">
           <div>
-            <h1 className="text-4xl font-bold font-avenir" >Why buy when you can </h1>
+            <h1 className="text-5xl font-semibold font-avenir tracking-wide" >Why buy when you can </h1>
           </div>
 
           <div className="font-bold  font-avenir">
             <AnimatedTextCycler />
           </div>
 
-          <p className="text-gray-600 mt-6">
+          <p className="text-gray-600 mt-2 text-xl font-avenir">
             Affordable. Convenient. Right where you need it.
           </p>
         </div>
