@@ -1,5 +1,9 @@
+ import AnimatedTextCycler from "../components/layout/AnimateTextCycler";
 import Layout from "../components/layout/Layout";
 import Hero from "../assets/Hero.png";
+
+
+
 
 const Home = () => {
   return (
@@ -12,9 +16,7 @@ const Home = () => {
           </div>
 
           <div className="font-bold  font-avenir">
-            <h1 className="text-4xl"> Rent for a Day.</h1>
-            <h1 className="text-4xl"> Rent for a Week.</h1>
-            <h1 className="text-4xl"> Rent on your Terms.</h1>
+            <AnimatedTextCycler />
           </div>
 
           <p className="text-gray-600 mt-6">
