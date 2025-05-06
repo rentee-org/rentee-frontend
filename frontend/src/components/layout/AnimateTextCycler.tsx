@@ -19,10 +19,15 @@ export default function AnimatedTextCycler() {
   }, []);
 
   return (
-    <div className="text-4xl font-bold font-avenir text-center min-h-[60px]">
+    
+    <div className="text-5xl font-semibold font-avenir text-center mt-6 min-h-[60px]">
       <AnimatePresence mode="wait">
         <motion.h1
           key={rotatingTexts[index]}
+           className={`${
+              index === rotatingTexts.length - 1 ? "tracking-wide  font-medium" : "text-gray-800"
+           }`}
+          
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
