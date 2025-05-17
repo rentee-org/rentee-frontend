@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+@font-face {
+    font-family: 'Avenir LT Std';
+    src: url('../src/assets/fonts/AvenirLTStd-Book.woff2') format('woff2'),
+        url('../src/assets/fonts/AvenirLTStd-Book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.text {
+    font-family: 'Avenir LT Std', sans-serif;
+    /* font-size: 48px; */
+    line-height: 1.5;
+    color: #333;
+}
+
 
 
 /* tailwindcss utils comes here */
