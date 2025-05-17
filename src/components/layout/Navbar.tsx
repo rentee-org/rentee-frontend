@@ -23,7 +23,7 @@ const Navbar = () => {
           <input type="text " placeholder="contact us" className="px-2 py-2 " />
           </div>
           <Link to="/login" className="text-gray-600 hover:text-blue-600 flex items-center">Login</Link>
-          <Link to="/register" className="bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-600">Start Listing</Link>
+          <Link to="/sign-up" className="bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-600">Start Listing</Link>
         </div>
 
         {/* Mobile Toggle Button */}
