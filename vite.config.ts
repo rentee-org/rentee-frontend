@@ -8,4 +8,11 @@ export default defineConfig({
     tailwindcss(),
     react()
   ],
+  server: {
+    allowedHosts: [
+      // ngrok host
+      'bright-shoes-shine.loca.lt',
+      '8b34-102-89-32-202.ngrok-free.app'
+    ]
+  }
 })

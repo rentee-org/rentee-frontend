@@ -2,28 +2,27 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { BiSearch } from "react-icons/bi";
-import Logo from "../../assets/Logo.png"
+import Logo from "../../assets/Rentee Final Logo 1.png"
 // install Lucide for icons
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-white shadow px-6 py-4">
+    <nav className="bg-white  px-6 py-4">
       <div className="flex justify-between items-center max-w-7xl mx-auto">
-        <Link to="/" className="text-2xl font-bold text-black-500 flex items-center gap-2">
-        <img src={Logo} alt="" />
-          Rentee
+        <Link to="/" className="text-lg md:text-2xl  flex items-center gap-2">
+        <img src={Logo} alt=""   />
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-4">
-          <div className="flex items-center gap-3 ">
-          <BiSearch className="flex items-center" />
-          <input type="text " placeholder="contact us" className="px-2 py-2 " />
+        <div className="hidden md:flex space-x-4 relative">
+          <div className="flex items-center  ">
+          <div className="absolute pl-2"> <BiSearch className="flex items-center text-gray-500" /></div>
+          <input type="text " placeholder="contact us" className="px-7 py-2   w-35" />
           </div>
-          <Link to="/login" className="text-gray-600 hover:text-blue-600 flex items-center">Login</Link>
-          <Link to="/register" className="bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-600">Start Listing</Link>
+          <Link to="/login2" className="  flex items-center rounded border-2 text-[#5400e6]  px-6 py-1.5">Register</Link>
+          <Link to="/sign-up" className="bg-[#5400e6] text-white px-4 py-2 rounded ">Start Listing</Link>
         </div>
 
         {/* Mobile Toggle Button */}
