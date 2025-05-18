@@ -20,7 +20,7 @@ export default function AnimatedTextCycler() {
 
   return (
     
-    <div className="text-5xl font-semibold font-avenir text-center mt-6 min-h-[60px]">
+    <div className="text-2xl md:text-5xl font-semibold font-avenir text-center mt-1 md:mt-5 min-h-[60px]">
       <AnimatePresence mode="wait">
         <motion.h1
           key={rotatingTexts[index]}

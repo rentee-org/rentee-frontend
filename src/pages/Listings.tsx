@@ -11,7 +11,7 @@ import { BiRightArrowAlt } from "react-icons/bi";
 
 const Listings = () => {
   return (
-    <div className='flex  items-center justify-between gap-12 px-6 md:px-16 py-20 max-w-5xl bg-gray-50  m-auto'>
+    <div className='hidden md:flex  items-center justify-between gap-12 px-6 md:px-16 py-20 max-w-5xl bg-gray-50  m-auto'>
        <div className='flex flex-col items-start justify-center gap-3'>
         <h3 className='text-2xl font-500 '>Electronics </h3>
         <div className='flex flex-col items-start justify-between gap-3'>

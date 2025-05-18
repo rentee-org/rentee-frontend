@@ -4,6 +4,9 @@ import Footer from "./Footer";
 import BrowserListing from "../../pages/BrowserListing";
 // import category from "../../pages/category";
 import Faq from "../../pages/Faq";
+import BrowserCategory from "../../pages/BrowserCategory";
+import Bento from "../../pages/Bento"
+import Listings from "../../pages/Listings";
 
 
 interface LayoutProps {
@@ -18,7 +21,10 @@ const Layout = ({ children }: LayoutProps) => {
         {children}
       
     </main>
+      <BrowserCategory />
+      <Listings />
       <BrowserListing />
+      <Bento />
       <Faq />
       <Footer />
     </div>
