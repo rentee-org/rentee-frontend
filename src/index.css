@@ -4,19 +4,20 @@
 /* @custom-variant dark (&:is(.dark *)); */
 
 @font-face {
-    font-family: 'Avenir LT Std';
-    src: url('../src/assets/fonts/AvenirLTStd-Book.woff2') format('woff2'),
-        url('../src/assets/fonts/AvenirLTStd-Book.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
+   font-family: 'Avenir';
+   src: url('./assets/fonts/Avenir-Regular.woff2') format('woff2'),
+        url('./assets/fonts/Avenir-Regular.woff') format('woff');
+   font-weight: normal;
+   font-style: normal;
+ }
+ 
+ body {
+   font-family: 'Avenir', sans-serif;
+ }
 
-.text {
-    font-family: 'Avenir LT Std', sans-serif;
-    line-height: 1.5;
-    color: #333;
-}
+
+
+
 
 /* tailwindcss utils comes here */
 /* general styling and media queries also comes here */
