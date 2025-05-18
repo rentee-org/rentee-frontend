@@ -1,11 +1,29 @@
-// import Frame1 from "../../assets/All-Product/Frame1.png";
-// import Frame2 from "../../assets/All-Product/Frame2.png";   
-// import Frame3 from "../../assets/All-Product/Frame3.png";
+import user from "../../assets/images/Rentee-user.png"
 
 
+ const UserProfile = [
+    {
+        id: 1,
+        name: "onyekachi",
+        img: user,
+    },
+    // {
+    //     id: 2,
+    //     name: "jennifer",
+    //     img: user,
+    // }
+    // {
+    //     id: 1,
+    //     name: "John",
+    //     img: user,
+    // },
+    // {
+    //     id: 1,
+    //     name: "onyekachi",
+    //     img: user,
+    // },
 
-// export {
-//     Frame1,
-//     Frame2,
-//     Frame3,
-// }
+];
+
+export default UserProfile;
+

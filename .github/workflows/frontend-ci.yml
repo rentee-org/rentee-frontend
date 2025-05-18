@@ -1,0 +1,42 @@
+name: Frontend CI/CD
+
+on:
+  push:
+    paths:
+      - 'frontend/**'
+    branches: [main, dev]
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Build Docker image
+        run: |
+          docker build -t ghcr.io/${{ github.repository_owner }}/rentee-frontend:latest ./frontend
+
+      - name: Login to GHCR
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login ghcr.io -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+
+      - name: Push Docker image
+        run: docker push ghcr.io/${{ github.repository_owner }}/rentee-frontend:latest
+
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            docker pull ghcr.io/${{ github.repository_owner }}/rentee-frontend:latest
+            docker stop rentee-frontend || true
+            docker rm rentee-frontend || true
+            docker run -d --name rentee-frontend -p 5173:5173 ghcr.io/${{ github.repository_owner }}/rentee-frontend:latest
+          
