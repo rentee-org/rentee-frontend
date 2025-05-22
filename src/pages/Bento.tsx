@@ -1,5 +1,5 @@
 import controller from "../assets/All-Product/controller.png";
-import Headphones from "../assets/All-Product/Headphones.png";
+import Headphones from "../assets/All-Product/headphones.png";
 import Speaker from "../assets/All-Product/speaker.png";
 
 const Bento = () => {
