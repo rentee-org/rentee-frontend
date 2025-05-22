@@ -1,4 +1,3 @@
-import React from "react";
 import controller from "../assets/All-Product/controller.png";
 import Headphones from "../assets/All-Product/Headphones.png";
 import Speaker from "../assets/All-Product/Speaker.png";

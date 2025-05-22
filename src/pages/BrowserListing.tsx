@@ -1,5 +1,4 @@
 
-import React from "react";
 // import user from "../assets/images/Rentee-user.png";
 import Data from "../components/constants/Data";
 import User from "../components/constants/Index";

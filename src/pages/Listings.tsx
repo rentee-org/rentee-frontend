@@ -1,4 +1,3 @@
-import React from 'react'
 import Baloon from "../assets/Listing-products/Baloon.png"
 import Camera from "../assets/Listing-products/Caemra.png"
 import Chair from "../assets/Listing-products/Chair.png"
