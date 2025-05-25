@@ -4,16 +4,16 @@
 /* @custom-variant dark (&:is(.dark *)); */
 
 @font-face {
-   font-family: 'Avenir';
-   src: url('./assets/fonts/Avenir-Regular.woff2') format('woff2'),
-        url('./assets/fonts/Avenir-Regular.woff') format('woff');
-   font-weight: normal;
-   font-style: normal;
- }
- 
- body {
-   font-family: 'Avenir', sans-serif;
- }
+    font-family: 'Avenir';
+    src: url('./assets/fonts/avenir_ff/AvenirLTStd-Book.woff') format('woff'),
+          url('./assets/fonts/avenir_ff/AvenirLTStd-Book.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  body {
+    font-family: 'Avenir', sans-serif;
+  }
 
 
 
