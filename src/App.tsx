@@ -4,6 +4,7 @@ import './index.css';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import LoginPage2 from './pages/LoginPage2'; // Import the new LoginPage2 component
+import Dashboard from './pages/Dashboard';
 
 
 function App() {
