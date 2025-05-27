@@ -4,6 +4,7 @@
 /* @custom-variant dark (&:is(.dark *)); */
 
 @font-face {
+
     font-family: 'Avenir';
     src: url('./assets/fonts/avenir_ff/AvenirLTStd-Book.woff') format('woff'),
           url('./assets/fonts/avenir_ff/AvenirLTStd-Book.woff2') format('woff2');
@@ -14,9 +15,6 @@
   body {
     font-family: 'Avenir', sans-serif;
   }
-
-
-
 
 
 /* tailwindcss utils comes here */
