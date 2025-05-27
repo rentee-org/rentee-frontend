@@ -1,8 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-/* @custom-variant dark (&:is(.dark *)); */
-
 @font-face {
     font-family: 'Avenir';
     src: url('./assets/fonts/avenir_ff/AvenirLTStd-Book.woff') format('woff'),
@@ -15,12 +13,6 @@
     font-family: 'Avenir', sans-serif;
   }
 
-
-
-
-
-/* tailwindcss utils comes here */
-/* general styling and media queries also comes here */
 
 :root {
     --sidebar: hsl(0 0% 98%);
