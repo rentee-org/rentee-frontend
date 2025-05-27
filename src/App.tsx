@@ -1,26 +1,27 @@
-// App.tsx
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Landing from './marketing/pages/Landing';
-import About from './marketing/pages/About';
-import Contact from './marketing/pages/ContactUs';
-import { Dashboard } from './app/pages/Dashboard';
-import { LoginForm } from './app/pages/Login';
+import Home from './pages/Home';
+import './index.css';
+import LoginPage from './pages/LoginPage';
+import SignUpPage from './pages/SignUpPage';
+import LoginPage2 from './pages/LoginPage2'; // Import the new LoginPage2 component
+import Dashboard from './pages/Dashboard'; // Import Dashboard if needed
+
 
 function App() {
   return (
     <Router>
       <Routes>
-        {/* Marketing Pages */}
-        <Route path="/" element={<Landing />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-
-        {/* App Pages */}
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/app/dashboard" element={<Dashboard />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/sign-up" element={<SignUpPage />} />
+        <Route path="/login2" element={<LoginPage2 />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        {/* <Route path="/sign-up" element={<SignUpPage />} /> */}
+        {/* Add other routes here */}
+        {/* Add / login, /register and /dashboard routes later */}
       </Routes>
     </Router>
-  );
+  ); 
 }
 
-export default App;
+export default App
