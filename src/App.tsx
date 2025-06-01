@@ -4,7 +4,7 @@ import './index.css';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import LoginPage2 from './pages/LoginPage2'; // Import the new LoginPage2 component
-import Categories from './components/Categories/Categories'; // Import Categories component
+import Dashboard from './pages/Dashboard';
 
 
 function App() {
@@ -15,7 +15,8 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />
         <Route path="/login2" element={<LoginPage2 />} />
-        <Route path="/Categories" element={<Categories />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        {/* <Route path="/Categories" element={<Categories />} /> */}
         {/* <Route path="/sign-up" element={<SignUpPage />} /> */}
         {/* Add other routes here */}
         {/* Add / login, /register and /dashboard routes later */}
