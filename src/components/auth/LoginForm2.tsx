@@ -1,6 +1,7 @@
 import { useState } from "react"
 // import Link from "next/link"
 import { EyeIcon, EyeOffIcon } from "lucide-react"
+import { Link } from "react-router-dom"
 
 export default function LoginPage() {
     const [showPassword, setShowPassword] = useState(false)
@@ -53,9 +54,9 @@ export default function LoginPage() {
 
                 <div className="text-center text-gray-400 mt-4">
                     Don't have an account?{" "}
-                    <a href="/sign-up" className="text-[#6200EE] hover:underline">
+                    <Link to="/sign-up" className="text-[#6200EE] hover:underline">
                     Sign up
-                    </a>
+                    </Link>
                 </div>
                 </div>
             </div>

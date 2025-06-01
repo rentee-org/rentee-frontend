@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { Eye, EyeOff, Check } from "lucide-react"
+import { Link } from "react-router-dom";
+
 
     export default function SignUpForm() {
     const [showPassword, setShowPassword] = useState(false)
@@ -19,9 +21,9 @@ import { Eye, EyeOff, Check } from "lucide-react"
                     <h1 className="text-xl font-medium">Sign Up</h1>
                     <p className="text-sm text-gray-500">
                     Already have an account?{" "}
-                    <a href="/login2" className="text-indigo-600 font-medium">
+                    <Link to="/login2" className="text-indigo-600 font-medium">
                         Login
-                    </a>
+                    </Link>
                     </p>
                 </div>
                 <div className="border-t border-gray-200 pt-6 mb-4">

@@ -1,6 +1,4 @@
 
-import React from "react";
-// import user from "../assets/images/Rentee-user.png";
 import { Link } from "react-router-dom";
 import Data from "../components/constants/Data";
 import User from "../components/constants/Index";
@@ -43,7 +41,6 @@ function BrowserListing() {
           >
             See All Category
           </Link>
-         
         </div>
       </div>
 
