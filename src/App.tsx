@@ -1,11 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import Home from './pages/Home';
 import './index.css';
-import LoginPage from './app/pages/LoginPage';
 import SignUpPage from './app/pages/SignUpPage';
-import LoginPage2 from './app/pages/LoginPage2'; // Import the new LoginPage2 component
-// import Dashboard from './pages/Dashboard'; // Import Dashboard if needed
-
+import LoginPage from '../src/app/pages/LoginPage'; 
+import Dashboard from '../src/app/pages/Dashboard';
 
 function App() {
   return (
@@ -14,10 +12,7 @@ function App() {
         {/* <Route path="/" element={<Home />} /> */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />
-        <Route path="/" element={<LoginPage2 />} />
-        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
-        {/* Add other routes here */}
-        {/* Add / login, /register and /dashboard routes later */}
+        <Route path='/dashboard' element={<Dashboard />} />
       </Routes>
     </Router>
   ); 

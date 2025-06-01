@@ -1,13 +1,13 @@
 import React from 'react';
-import { LoginForm } from '../../components/auth/LoginForm';
+import  LoginForm  from '../../components/auth/LoginForm'
 
 
-const LoginPage: React.FC = () => {
+const LoginPage2: React.FC = () => {
     return (
-        <div className='m-10'>
+        <div className='flex justify-center items-center bg-[#f0f0f0] w-full h-screen'>
         <LoginForm />
         </div>
     );
 };
 
-export default LoginPage;
+export default LoginPage2;

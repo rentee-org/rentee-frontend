@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import BrowserListing from "../../pages/BrowserListing";
+import BrowserListing from "../../marketing/pages/BrowserListing";
 // import category from "../../pages/category";
 import Faq from "../../pages/Faq";
 import BrowserCategory from "../../pages/BrowserCategory";

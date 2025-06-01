@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom";
-import Data from "../components/constants/Data";
-import User from "../components/constants/Index";
+import Data from "../../components/constants/Data";
+import User from "../../components/constants/Index";
 import { BiChevronRight } from "react-icons/bi";
 
 export interface ProductItems {
