@@ -18,7 +18,7 @@ export default function Header() {
     // State to control dropdown open/close
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
-    function setSidebarOpen(arg0: boolean): void {
+    function setSidebarOpen(_arg0: boolean): void {
         throw new Error('Function not implemented.');
     }
 

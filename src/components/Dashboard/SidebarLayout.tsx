@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Home, NotebookPen, Calendar, Bell, Settings, HelpCircle, PanelRight } from 'lucide-react';
 import Logo from '../../assets/Rentee Final Logo 1.png';
 
 const SidebarLayout: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
+    const location = useLocation();
 
     // Icon size: larger when collapsed, normal when expanded
     const iconSize = collapsed ? 18 : 18;
@@ -45,12 +47,15 @@ const SidebarLayout: React.FC = () => {
                             <SidebarItem
                                 icon={<Home size={iconSize} className="text-purple-700" />}
                                 label="Dashboard"
-                                active
-                                collapsed={collapsed}
-                                />
-                            <SidebarItem icon={<NotebookPen size={iconSize} />} label="Listings" collapsed={collapsed} />
-                            <SidebarItem icon={<Calendar size={iconSize} />} label="Bookings" collapsed={collapsed} />
-                            <SidebarItem icon={<Bell size={iconSize} />} label="Notification" collapsed={collapsed} />
+                                active={location.pathname === '/dashboard'}
+                                collapsed={collapsed} to={'/dashboard'}                                />
+                            <SidebarItem 
+                                icon={<NotebookPen size={iconSize} />}
+                                label="Listings"
+                                active={location.pathname === '/listings'}
+                                collapsed={collapsed} to={'/listings'} />
+                            <SidebarItem icon={<Calendar size={iconSize} />} label="Bookings" collapsed={collapsed} to={'/bookings'} />
+                            <SidebarItem icon={<Bell size={iconSize} />} label="Notification" collapsed={collapsed} to={'/notification'} />
                         </div>
                     </div>
                 </div>
@@ -59,8 +64,8 @@ const SidebarLayout: React.FC = () => {
                 <div className="mb-6 px-4">
                     {!collapsed && <p className="text-xs text-gray-500 uppercase mb-4">Others</p>}
                     <div className="space-y-2">
-                        <SidebarItem icon={<Settings size={iconSize} />} label="Settings" collapsed={collapsed} />
-                        <SidebarItem icon={<HelpCircle size={iconSize} />} label="Help Center" collapsed={collapsed} />
+                        <SidebarItem icon={<Settings size={iconSize} />} label="Settings" collapsed={collapsed} to={''} />
+                        <SidebarItem icon={<HelpCircle size={iconSize} />} label="Help Center" collapsed={collapsed} to={''} />
                     </div>
                 </div>
             </div>
@@ -72,13 +77,15 @@ const SidebarLayout: React.FC = () => {
 interface SidebarItemProps {
     icon: React.ReactNode;
     label: string;
+    to: string; 
     active?: boolean;
     collapsed: boolean;
 }
 
-const SidebarItem: React.FC<SidebarItemProps> = ({ icon, label, active, collapsed }) => {
+const SidebarItem: React.FC<SidebarItemProps> = ({ icon, label, active, collapsed, to }) => {
     return (
-        <div
+        <Link
+           to={to}
             className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium cursor-pointer transition-colors
                 ${active ? 'bg-purple-100 text-purple-700 border border-purple-300' : 'text-gray-400 hover:text-black'}
                 ${collapsed ? 'justify-center' : ''}`}
@@ -86,7 +93,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ icon, label, active, collapse
              {/* Icon will grow, but background stays the same */}
             <span className="flex items-center">{icon}</span>
             {!collapsed && <span>{label}</span>}  {/* When collapsed, only the icon is shown; when expanded, both icon and label are shown */}
-        </div>
+        </Link>
     );
 };
 

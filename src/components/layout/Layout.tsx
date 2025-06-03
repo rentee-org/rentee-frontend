@@ -3,10 +3,10 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import BrowserListing from "../../marketing/pages/BrowserListing";
 // import category from "../../pages/category";
-import Faq from "../../pages/Faq";
-import BrowserCategory from "../../pages/BrowserCategory";
-import Bento from "../../pages/Bento"
-import Listings from "../../pages/Listings";
+import Faq from "../../marketing/pages/Faq";
+import BrowserCategory from "../../marketing/pages/BrowserCategory";
+import Bento from "../../marketing/pages/Bento"
+import Listings from "../../marketing/pages/Listings";
 
 
 interface LayoutProps {

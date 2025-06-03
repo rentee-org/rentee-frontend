@@ -21,7 +21,7 @@ import { Link } from "react-router-dom";
                     <h1 className="text-xl font-medium">Sign Up</h1>
                     <p className="text-sm text-gray-500">
                     Already have an account?{" "}
-                    <Link to="/login2" className="text-indigo-600 font-medium">
+                    <Link to="/login" className="text-indigo-600 font-medium">
                         Login
                     </Link>
                     </p>

@@ -1,9 +1,10 @@
-// src/components/Dashboard/dashboardLayout.tsx
-// import { PencilLine } from "lucide-react";
 import React from "react";
 import pencilLine from "../../assets/Vector-1.png"
+import { useNavigate } from "react-router-dom";
 
 export const DashboardLayout: React.FC = () => {
+    const navigate = useNavigate();
+
     return (
         <div className="h-calc-100vh-25vh overflow-hidden bg-[#fcfcfc] px-4 sm:px-6 py-8 flex flex-col">
             {/* Header */}
@@ -31,7 +32,8 @@ export const DashboardLayout: React.FC = () => {
                     </div>
 
                     {/* CTA Button */}
-                    <button className="mt-4 bg-[#5400E6] text-white px-6 py-3 rounded-md text-sm font-medium cursor-pointer">
+                    <button className="mt-4 bg-[#5400E6] text-white px-6 py-3 rounded-md text-sm font-medium cursor-pointer"
+                            onClick={() => navigate("/listings")}>
                         Create Listing
                     </button>
                 </div>

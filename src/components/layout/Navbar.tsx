@@ -21,7 +21,7 @@ const Navbar = () => {
           <div className="absolute pl-2"> <BiSearch className="flex items-center text-gray-500" /></div>
           <input type="text " placeholder="contact us" className="px-7 py-2   w-35" />
           </div>
-          <Link to="/login2" className="  flex items-center rounded border-2 text-[#5400e6]  px-6 py-1.5">Register</Link>
+          <Link to="/login" className="  flex items-center rounded border-2 text-[#5400e6]  px-6 py-1.5">Login</Link>
           <Link to="/sign-up" className="bg-[#5400e6] text-white px-4 py-2 rounded ">Start Listing</Link>
         </div>
 
