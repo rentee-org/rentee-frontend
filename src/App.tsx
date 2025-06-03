@@ -5,6 +5,7 @@ import SignUpPage from './app/pages/SignUpPage';
 import LoginPage from '../src/app/pages/LoginPage'; 
 import Dashboard from '../src/app/pages/Dashboard';
 import Listings from '../src/app/pages/Listings'
+import Categories from './components/Categories/Categories';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/sign-up" element={<SignUpPage />} />
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/listings' element={<Listings />} />
+        <Route path='/categories' element={<Categories />} />
       </Routes>
     </Router>
   ); 
