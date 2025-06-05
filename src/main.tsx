@@ -1,11 +1,14 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-//  import { jsxDEV } from "react/jsx-dev-runtime"; 
 import './index.css'
-import App from './App.tsx'
+import App from './App';
+// import Blog from './marketing/pages/Blog';
+// import Blogdetails from './components/layout/Blogdetails';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <App />  
+    {/* <Blog /> */}
+    {/* <Blogdetails /> */}
   </StrictMode>,
 )
