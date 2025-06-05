@@ -5,7 +5,7 @@ import SignUpPage from './app/pages/SignUpPage';
 import LoginPage from '../src/app/pages/LoginPage'; 
 import Dashboard from '../src/app/pages/Dashboard';
 import Listings from '../src/app/pages/Listings'
-import Categories from './components/Categories/Categories';
+import Categories from './marketing/components/Categories/Categories';
 
 function App() {
   return (

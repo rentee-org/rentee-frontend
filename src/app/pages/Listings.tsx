@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Header from "../../components/Dashboard/header";
+import Header from "../components/Dashboard/header";
 import SidebarPage from "../../app/pages/Sidebar";
-import  ListingsLayout  from "../../components/Dashboard/ListingsLayout";
+import  ListingsLayout  from "../components/Dashboard/ListingsLayout";
 
 const Listings: React.FC = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);

@@ -1,11 +1,11 @@
-import Baloon from "../../assets/Listing-products/Baloon.png"
-import Camera from "../../assets/Listing-products/Caemra.png"
-import Chair from "../../assets/Listing-products/Chair.png"
-import Computer from "../../assets/Listing-products/Computer.png"
-import Lenses from "../../assets/Listing-products/Lenses.png"
-import SoundBar from "../../assets/Listing-products/SoundBar.png"
-import Tv from "../../assets/Listing-products/Tv.png"
-import Tents from "../../assets/Listing-products/Tents.png"
+import Baloon from "@assets/Listing-products/Baloon.png"
+import Camera from "@assets/Listing-products/Caemra.png"
+import Chair from "@assets/Listing-products/Chair.png"
+import Computer from "@assets/Listing-products/Computer.png"
+import Lenses from "@assets/Listing-products/Lenses.png"
+import SoundBar from "@assets/Listing-products/SoundBar.png"
+import Tv from "@assets/Listing-products/Tv.png"
+import Tents from "@assets/Listing-products/Tents.png"
 import { BiRightArrowAlt } from "react-icons/bi";
 
 const Listings = () => {
