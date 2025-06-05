@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import blog1 from "../../assets/blog1.png";
 import blog2 from "../../assets/blog2.png";
 import blog3 from "../../assets/blog3.png";
-import Navbar from "../../components/layout/Navbar";
-import Footer from "../../components/layout/Footer";
+import Navbar from "@/marketing/components/layout/Navbar";
+import Footer from "@/marketing/components/layout/Footer";
 
 
 const Blog = () => {
