@@ -1,7 +1,7 @@
-import AnimatedTextCycler from "../../components/layout/AnimateTextCycler";
-import Layout from "../../components/layout/Layout";
-import Hero from "../../assets/Hero.png";
-import MobileHero from "../../assets/Hero-mobile.png";
+import AnimatedTextCycler from "../components/layout/AnimateTextCycler";
+import Layout from "../components/layout/Layout";
+import Hero from "@assets/Hero.png";
+import MobileHero from "@assets/Hero-mobile.png";
 
 
 

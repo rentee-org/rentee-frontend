@@ -1,7 +1,7 @@
 
 import  { useState, useRef, useEffect } from "react";
 import { BiPlus, BiMinus } from "react-icons/bi";
-import AccordionData from "../../components/constants/AccordionData";
+import AccordionData from "../components/constants/AccordionData";
 
 
 interface AccordionData {
