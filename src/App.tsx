@@ -6,6 +6,8 @@ import LoginPage from '../src/app/pages/LoginPage';
 import Dashboard from '../src/app/pages/Dashboard';
 import Listings from '../src/app/pages/Listings'
 import Categories from './components/Categories/Categories';
+import Blog from './marketing/pages/Blog';
+import BlogDetails from './components/layout/Blogdetails';
 
 function App() {
   return (
@@ -17,6 +19,9 @@ function App() {
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/listings' element={<Listings />} />
         <Route path='/categories' element={<Categories />} />
+        <Route path='/blog' element={<Blog />} />
+        <Route path='/blogdetails' element={<BlogDetails />} />
+        {/* Add more routes as needed */}
       </Routes>
     </Router>
   ); 
