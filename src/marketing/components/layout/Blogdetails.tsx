@@ -1,7 +1,7 @@
 import React from 'react'
 import { BiArrowBack } from "react-icons/bi";
-import update1 from "../../assets/update1.png";
-import productImg from "../../assets/productImg.png";
+import updateOne from "../../../assets/images/update1.png";
+import productImg from "../../../assets/images/productImg.png";
 import Navbar from '../../components/layout/Navbar';
 import Footer from '../../components/layout/Footer';
 
@@ -22,7 +22,7 @@ const Blogdetails = () => {
                   </div>
                   <span className='mx-auto text-[#c7c7c7] mb-5'>by Tosin james</span>
                  <div className='mt-2'>
-                    <img src={update1} alt=""  />
+                    <img src={updateOne} alt=""  />
                  </div>
             </div>
 
