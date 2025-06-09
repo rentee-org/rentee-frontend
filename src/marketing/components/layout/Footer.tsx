@@ -1,4 +1,5 @@
 // import { HeartOff } from "lucide-react";
+import { Link } from "react-router-dom";
 import Logo from "@/assets/Rentee Final Logo 1.png";
 
 const Footer = () => (
@@ -25,10 +26,10 @@ const Footer = () => (
            <div className="flex flex-col md:flex-row  justify-between  gap-17  mt-15 md:mt-25  md:mr-30 ">
               <div className="flex flex-col gap-4">
                  <h3 className="text-lg font-semibold">Company</h3>
-                 <ul className="text-gray-500 text-sm/8">
-                    <li>About Us</li>
-                    <li>Contact Us</li>
-                    <li>Faqs</li>
+                 <ul className="flex flex-col text-gray-500 text-sm/8">
+                    <Link to="/Blog">About Us</Link>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Faqs</a>
                    
                  </ul>
               </div>
