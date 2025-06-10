@@ -6,8 +6,10 @@ import LoginPage from '../src/app/pages/LoginPage';
 import Dashboard from '../src/app/pages/Dashboard';
 import CreateListings from './app/pages/Create-Listings'
 // import Listings from './app/pages/Listings';
-import Categories from './marketing/components/Categories/Categories';
 import Bookings from './app/pages/Bookings';
+import Categories from '@marketing/components/Categories/Categories';
+import Blog from '@/marketing/pages/Blog';
+import BlogDetails from '@/marketing/components/layout/Blogdetails';
 
 function App() {
   return (
@@ -21,6 +23,9 @@ function App() {
         {/* <Route path='/listings' element={<Listings />} /> */}
         <Route path='/categories' element={<Categories />} />
         <Route path='/bookings' element={<Bookings />} />
+        <Route path='/blog' element={<Blog />} />
+        <Route path='/blogdetails' element={<BlogDetails />} />
+        {/* Add more routes as needed */}
       </Routes>
     </Router>
   ); 
