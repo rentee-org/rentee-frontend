@@ -11,7 +11,7 @@
       "@/*": ["src/*"],
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/app/components/*"],
-      "@lib/*": ["src/common/lib/utils/*"],
+      "@lib/*": ["src/common/lib/*"],
       "@ui/*": ["src/app/components/ui/*"],
       "@common/*": ["src/common/*"],
       "@hooks/*": ["src/hooks/*"],

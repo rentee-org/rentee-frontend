@@ -13,6 +13,9 @@ export default defineConfig({
     tailwindcss(),
     react()
   ],
+  define: {
+    'process.env': {},
+  },
   server: {
     allowedHosts: [
       // ngrok host

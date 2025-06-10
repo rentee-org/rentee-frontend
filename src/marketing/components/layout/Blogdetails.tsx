@@ -1,7 +1,7 @@
 import React from 'react'
 import { BiArrowBack } from "react-icons/bi";
-import update1 from "../../assets/update1.png";
-import productImg from "../../assets/productImg.png";
+import update1 from "../../../assets/images/update1.png";
+import productImg from "../../../assets/images/productImg.png";
 import Navbar from '../../components/layout/Navbar';
 import Footer from '../../components/layout/Footer';
 
