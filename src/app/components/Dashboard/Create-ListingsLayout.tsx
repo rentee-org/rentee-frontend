@@ -13,6 +13,20 @@ export default function CreateListing() {
     const [condition, setCondition] = useState("new")
     const [activeStep, setActiveStep] = useState("details")
     const [securityDeposit, setSecurityDeposit] = useState(true)
+
+    const [itemName, setItemName] = useState("");
+    const [category, setCategory] = useState("");
+    const [location, setLocation] = useState("");
+    const [description, setDescription] = useState("");
+
+    const detailsComplete = Boolean(
+        itemName.trim() &&
+        category.trim() &&
+        location.trim() &&
+        condition.trim() &&
+        description.trim()
+    );
+
     // const [date, setDate] = useState<Date | undefined> (new Date(2024, 10, 10))
     // const [dateRange, setDateRange] = useState({
     //     from: new Date(2024, 10, 10),
@@ -47,7 +61,11 @@ export default function CreateListing() {
                     <div className="w-[220px] bg-gray-50 rounded-lg border border-gray-200 p-4 mr-4 hidden md:block">
                         <RadioGroup value={activeStep} onValueChange={setActiveStep} className="space-y-4">
                         <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="details" id="details" />
+                            <RadioGroupItem 
+                            value="details"
+                            id="details" 
+                            className={detailsComplete ? "border-green-500 bg-green-100 data-[state=checked]:bg-green-500 data-[state=checked]:text-white" : ""}
+                            />
                             <Label htmlFor="details" className="text-sm font-normal text-gray-700">
                             Details of Item
                             </Label>
@@ -87,13 +105,18 @@ export default function CreateListing() {
                                 <Label htmlFor="itemName" className="text-sm font-medium text-gray-700">
                                 Item Name
                                 </Label>
-                                <Input id="itemName" placeholder="Enter name" className="w-full" />
+                                <Input id="itemName"
+                                placeholder="Enter name" 
+                                className="w-full" 
+                                value={itemName}
+                                onChange={(e) => setItemName(e.target.value)}
+                                />
                             </div>
 
                             {/* Select Category */}
                             <div className="space-y-2">
                                 <Label className="text-sm font-medium text-gray-700">Select Category</Label>
-                                <Select>
+                                <Select value={category} onValueChange={setCategory}>
                                 <SelectTrigger className="w-full">
                                     <SelectValue placeholder="Select Category" />
                                 </SelectTrigger>
@@ -114,7 +137,7 @@ export default function CreateListing() {
                             {/* Location */}
                             <div className="space-y-2">
                                 <Label className="text-sm font-medium text-gray-700">Location</Label>
-                                <Select>
+                                <Select value={location} onValueChange={setLocation}>
                                 <SelectTrigger className="w-full">
                                     <SelectValue placeholder="Select location" />
                                 </SelectTrigger>
@@ -176,6 +199,8 @@ export default function CreateListing() {
                                 id="description"
                                 placeholder="Enter description"
                                 className="w-full min-h-[100px] resize-none"
+                                value={description}
+                                onChange={e => setDescription(e.target.value)}
                                 />
                             </div>
 
@@ -320,7 +345,7 @@ export default function CreateListing() {
                                     id="pickup"
                                     checked={deliveryOptions.pickup}
                                     onCheckedChange={(checked) =>
-                                        setDeliveryOptions((prev) => ({ ...prev, pickup: checked === true }))
+                                        setDeliveryOptions((prev) => ({ ...prev, pickup: Boolean(checked) }))
                                     }
                                     />
                                     <Label htmlFor="pickup" className="text-sm font-normal text-gray-700">
@@ -332,7 +357,7 @@ export default function CreateListing() {
                                     id="delivery"
                                     checked={deliveryOptions.delivery}
                                     onCheckedChange={(checked) =>
-                                        setDeliveryOptions((prev) => ({ ...prev, delivery: checked === true }))
+                                        setDeliveryOptions((prev) => ({ ...prev, delivery: Boolean(checked) }))
                                     }
                                     />
                                     <Label htmlFor="delivery" className="text-sm font-normal text-gray-700">

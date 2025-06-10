@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Header from "../components/Dashboard/header";
 import SidebarPage from "../../app/pages/Sidebar";
-import  ListingsLayout  from "../components/Dashboard/ListingsLayout";
+import BookingsLayout  from "@components/Dashboard/BookingsLayout";
 
-const Listings: React.FC = () => {
+const Bookings: React.FC = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
     return (
@@ -26,7 +26,7 @@ const Listings: React.FC = () => {
                     </div>
                     {/* Dashboard Content */}
                     <div className="flex-1 overflow-y-auto">
-                        <ListingsLayout /> 
+                        <BookingsLayout /> 
                     </div>
                 </div>
             </div>
@@ -56,11 +56,11 @@ const Listings: React.FC = () => {
             {/* Main content area for mobile */}
             <div className="lg:hidden flex flex-col min-h-screen]">
                 <div className="flex-1 overflow-y-auto p-4 md:p-6 bg-gray-50">
-                    <ListingsLayout /> 
+                    <BookingsLayout /> 
                 </div>
             </div>
         </div>
     );
 };
 
-export default Listings;
+export default Bookings;
