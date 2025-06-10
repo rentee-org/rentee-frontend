@@ -1,7 +1,7 @@
 // stores/auth-store.ts
+import type { User, AuthTokens } from "@/types/api-request";
 import { create } from "zustand";
 import { persist } from 'zustand/middleware';
-import { AuthTokens, User } from "../types/api-request";
 
 interface AuthState {
     isAuthenticated: boolean;
@@ -22,10 +22,6 @@ interface AuthState {
     setError: (error: string | null) => void;
     getToken: () => string | null;
 }
-
-// export const useAuthStore = create<AuthState>((set) => ({
-
-// }));
 
 export const useAuthStore = create<AuthState>()(
     persist(

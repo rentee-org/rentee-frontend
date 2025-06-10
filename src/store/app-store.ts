@@ -1,5 +1,5 @@
+import type { User } from '@/types/api-request';
 import { create } from 'zustand';
-import { User } from '../types/api-request';
 
 interface Post {
   id: string;
