@@ -45,12 +45,12 @@ export default function LoginPage() {
                     </div>
                 </div>
 
-                <button
-                    type="button"
-                    className="w-full h-12 bg-[#6200EE] hover:bg-[#5000c9] text-white rounded-md font-medium transition-colors"
+                <Link
+                    to="/dashboard"
+                    className="w-full inline-flex justify-center items-center h-12 bg-[#6200EE] hover:bg-[#5000c9] text-white rounded-md font-medium transition-colors text-center"
                 >
                     Login
-                </button>
+                </Link>
 
                 <div className="text-center text-gray-400 mt-4">
                     Don't have an account?{" "}
