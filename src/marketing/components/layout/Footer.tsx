@@ -11,7 +11,6 @@ const Footer = () => (
            <div className="md:mr-auto flex flex-col items-center md:items-start">
               <div className="flex flex-row items-center  gap-3">
                  <img src={Logo} alt="" />
-                 <h2 className="text-xl font-bold">Rentee</h2>
               </div>
 
               <div>
