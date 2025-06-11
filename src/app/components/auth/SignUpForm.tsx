@@ -1,18 +1,89 @@
 import { useState } from "react"
 import { Eye, EyeOff, Check } from "lucide-react"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+export interface AuthRequest {
+    username?: string;
+    email: string;
+    phoneNumber?: string;
+    password: string;
+    currentPassword?: string;
+    newPassword?: string;
+}
+
+export interface AuthResponse {
+    success: boolean;
+    message?: string;
+    token?: string;
+    userId?: string;
+}
 
 
     export default function SignUpForm() {
+    const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false)
     const [showPassword, setShowPassword] = useState(false)
     const [showConfirmPassword, setShowConfirmPassword] = useState(false)
     const [password, setPassword] = useState("")
+    // const [AuthRequest, setAuthRequest] = useState<AuthRequest[]>([])
+    const [confirmPassword, setConfirmPassword] = useState("")
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
+    const [email, setEmail] = useState("")
+    const [phone, setPhone] = useState("")
+    const [error, setError] = useState<string | null>(null)
+    const [success, setSuccess] = useState<string | null>(null)
+
+
+
+    // Define the Post type
+    const BASE_URL = "https://graceful-luck-production.up.railway.app/docs/";
 
     // Password validation states
     const hasMinChars = password.length >= 12
     const hasNumber = /\d/.test(password)
     const hasUpperCase = /[A-Z]/.test(password)
     const hasSpecialChar = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(password)
+
+const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setError(null);
+        setSuccess(null);
+
+        if (password !== confirmPassword) {
+            setError("Passwords do not match.");
+            return;
+        }
+
+        setIsLoading(true);
+
+        const payload: AuthRequest = {
+            username: `${firstName} ${lastName}`.trim(),
+            email,
+            phoneNumber: phone,
+            password,
+        };
+
+        try {
+            const response = await fetch(`${BASE_URL}/auth/register`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+            });
+            const data: AuthResponse = await response.json();
+            if (response.ok && data.success) {
+                setSuccess("Registration successful! You can now log in.");
+                setTimeout(() => navigate("/login"), 1500) //Redirect after 1.5seconds
+            } else {
+                setError(data.message || "Registration failed.");
+            }
+        } catch (err) {
+            setError("An error occurred. Please try again.");
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
 
     return (
         <div className="bg-white w-full max-w-[746px] h-auto mx-auto p-4 sm:p-6 lg:p-8 rounded-2xl  overflow-hidden">
@@ -27,7 +98,7 @@ import { Link } from "react-router-dom";
                     </p>
                 </div>
                 <div className="border-t border-gray-200 pt-6 mb-4">
-                    <form className="space-y-4 ">
+                    <form className="space-y-4" onSubmit={handleSubmit}>
                         <div>
                             <label htmlFor="firstName" className="block text-sm font-medium mb-1">
                                 First Name
@@ -37,6 +108,9 @@ import { Link } from "react-router-dom";
                                 type="text"
                                 placeholder="Enter Firstname"
                                 className="w-full p-2 border border-gray-300 bg-gray-100 rounded-md"
+                                value={firstName}
+                                onChange={e => setFirstName(e.target.value)}
+                                required
                             />
                         </div>
 
@@ -49,6 +123,9 @@ import { Link } from "react-router-dom";
                                 type="text"
                                 placeholder="Enter your Lastname"
                                 className="w-full p-2 border border-gray-300 bg-gray-100 rounded-md"
+                                value={lastName}
+                                onChange={e => setLastName(e.target.value)}
+                                required
                             />
                         </div>
 
@@ -61,6 +138,9 @@ import { Link } from "react-router-dom";
                                 type="email"
                                 placeholder="Enter your email"
                                 className="w-full p-2 border border-gray-300 bg-gray-100 rounded-md"
+                                value={email}
+                                onChange={e => setEmail(e.target.value)}
+                                required
                             />
                         </div>
 
@@ -73,6 +153,8 @@ import { Link } from "react-router-dom";
                             type="tel"
                             placeholder="Enter your Phone Number"
                             className="w-full p-2 border border-gray-300 bg-gray-100 rounded-md"
+                            value={phone}
+                            onChange={e => setPhone(e.target.value)}
                         />
                         </div>
 
@@ -88,6 +170,7 @@ import { Link } from "react-router-dom";
                                 className="w-full p-2 border border-gray-300 bg-gray-100 rounded-md pr-10"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
+                                required
                                 />
                                 <button
                                 type="button"
@@ -136,6 +219,8 @@ import { Link } from "react-router-dom";
                                 type={showConfirmPassword ? "text" : "password"}
                                 placeholder=" "
                                 className="w-full p-2 border border-gray-300 bg-gray-100 rounded-md pr-10"
+                                onChange={e => setConfirmPassword(e.target.value)}
+                                required
                                 />
                                 <button
                                 type="button"
@@ -146,9 +231,14 @@ import { Link } from "react-router-dom";
                                 </button>
                             </div>
                         </div>
+                        {error && <div className="text-red-500 text-sm">{error}</div>}
+                        {success && <div className="text-green-600 text-sm">{success}</div>}
 
-                        <button type="submit" className="w-full bg-indigo-600 text-white py-3 rounded-md font-medium mt-4">
-                        Sign up
+                        <button type="submit"
+                        className="w-full bg-indigo-600 text-white py-3 rounded-md font-medium mt-4"
+                        disabled={isLoading}
+                        >
+                            {isLoading ? "Signing up..." : "Sign up"}
                         </button>
                     </form> 
                 </div>      
