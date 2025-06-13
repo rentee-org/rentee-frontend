@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { Button } from "@/app/components/ui/button"
 import { Input } from "@/app/components/ui/input"
 import { Label } from "@/app/components/ui/label"
@@ -10,32 +10,40 @@ import { Switch } from "@/app/components/ui/switch"
 import { ChevronLeft, ChevronRight, Upload } from "lucide-react"
 
 export default function CreateListing() {
-    const [condition, setCondition] = useState("new")
+    // const [showPreview, setShowPreview] = useState(false);
+    const [conditionOptions, setConditionOptions] = useState({
+    new: false,
+    used: false,
+    });
+    // const [condition, setCondition] = useState("new")
     const [activeStep, setActiveStep] = useState("details")
     const [securityDeposit, setSecurityDeposit] = useState(true)
-
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+    const fileInputRef = useRef<HTMLInputElement>(null);
     const [itemName, setItemName] = useState("");
     const [category, setCategory] = useState("");
     const [location, setLocation] = useState("");
     const [description, setDescription] = useState("");
-
+    const [price, setPrice] = useState("");
+    const [deliveryOptions, setDeliveryOptions] = useState({
+        pickup: false,
+        delivery: false,
+    });
+    const deliveryComplete = (deliveryOptions.pickup || deliveryOptions.delivery) && Boolean(selectedFile);
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files && e.target.files[0]) {
+            setSelectedFile(e.target.files[0]);
+        }
+    };
+    
     const detailsComplete = Boolean(
         itemName.trim() &&
         category.trim() &&
         location.trim() &&
-        condition.trim() &&
+        (conditionOptions.new || conditionOptions.used) &&
         description.trim()
     );
-
-    // const [date, setDate] = useState<Date | undefined> (new Date(2024, 10, 10))
-    // const [dateRange, setDateRange] = useState({
-    //     from: new Date(2024, 10, 10),
-    //     to: new Date(2024, 10, 18),
-    // })
-    const [deliveryOptions, setDeliveryOptions] = useState({
-    pickup: false,
-    delivery: false,
-    })
+    const priceComplete = Boolean(price.trim());
     const availabilityOptions = 
     [
         { label: "Today", value: "today" },
@@ -60,40 +68,52 @@ export default function CreateListing() {
                     {/* Left sidebar */}
                     <div className="w-[220px] bg-gray-50 rounded-lg border border-gray-200 p-4 mr-4 hidden md:block">
                         <RadioGroup value={activeStep} onValueChange={setActiveStep} className="space-y-4">
-                        <div className="flex items-center space-x-2">
-                            <RadioGroupItem 
-                            value="details"
-                            id="details" 
-                            className={detailsComplete ? "border-green-500 bg-green-100 data-[state=checked]:bg-green-500 data-[state=checked]:text-white" : ""}
-                            />
-                            <Label htmlFor="details" className="text-sm font-normal text-gray-700">
-                            Details of Item
-                            </Label>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="price" id="price" />
-                            <Label htmlFor="price" className="text-sm font-normal text-gray-700">
-                            Price
-                            </Label>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="availability" id="availability" />
-                            <Label htmlFor="availability" className="text-sm font-normal text-gray-700">
-                            Availability
-                            </Label>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="deposit" id="deposit" />
-                            <Label htmlFor="deposit" className="text-sm font-normal text-gray-700">
-                            Security Deposit
-                            </Label>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="delivery" id="delivery" />
-                            <Label htmlFor="delivery" className="text-sm font-normal text-gray-700">
-                            Delivery
-                            </Label>
-                        </div>
+                            <div className="flex items-center space-x-2">
+                                <RadioGroupItem 
+                                value="details"
+                                id="details" 
+                                className={detailsComplete ? "border-purple-500 bg-purple-100 data-[state=checked]:bg-purple-500 data-[state=checked]:text-white" : ""}
+                                />
+                                <Label htmlFor="details" className="text-sm font-normal text-gray-700">
+                                Details of Item
+                                </Label>
+                            </div>
+                            
+                            <div className="flex items-center space-x-2">
+                                <RadioGroupItem 
+                                value="price" 
+                                id="price" 
+                                className={priceComplete ? "border-purple-500 bg-purple-500  data-[state=checked]:bg-green-500 data-[state=checked]:text-white" : ""}
+                                />
+                                <Label htmlFor="price" className="text-sm font-normal text-gray-700">
+                                Price
+                                </Label>
+                            </div>
+
+                            <div className="flex items-center space-x-2">
+                                <RadioGroupItem value="availability" id="availability" />
+                                <Label htmlFor="availability" className="text-sm font-normal text-gray-700">
+                                Availability
+                                </Label>
+                            </div>
+
+                            <div className="flex items-center space-x-2">
+                                <RadioGroupItem value="deposit" id="deposit" />
+                                <Label htmlFor="deposit" className="text-sm font-normal text-gray-700">
+                                Security Deposit
+                                </Label>
+                            </div>
+
+                            <div className="flex items-center space-x-2">
+                                <RadioGroupItem 
+                                value="delivery" 
+                                id="delivery" 
+                                className={deliveryComplete ? "border-purple-500 bg-purple-500 data-[state=checked]:bg-purple-500 data-[state=checked]:text-white" : ""}
+                                />
+                                <Label htmlFor="delivery" className="text-sm font-normal text-gray-700">
+                                Delivery
+                                </Label>
+                            </div>
                         </RadioGroup>
                     </div>
 
@@ -159,35 +179,31 @@ export default function CreateListing() {
                             <div className="space-y-2">
                                 <Label className="text-sm font-medium text-gray-700">Condition</Label>
                                 <div className="flex space-x-6">
-                                <div className="flex items-center space-x-2">
-                                    <input
-                                    type="radio"
-                                    id="new"
-                                    name="condition"
-                                    value="new"
-                                    checked={condition === "new"}
-                                    onChange={() => setCondition("new")}
-                                    className="h-4 w-4 text-gray-400 border-gray-300"
+                                    <div className="flex items-center space-x-2">
+                                    <Checkbox
+                                        id="new"
+                                        checked={conditionOptions.new}
+                                        onCheckedChange={(checked) =>
+                                        setConditionOptions((prev) => ({ ...prev, new: Boolean(checked) }))
+                                        }
                                     />
                                     <Label htmlFor="new" className="text-sm font-normal text-gray-700">
-                                    New
+                                        New
                                     </Label>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <input
-                                    type="radio"
-                                    id="used"
-                                    name="condition"
-                                    value="used"
-                                    checked={condition === "used"}
-                                    onChange={() => setCondition("used")}
-                                    className="h-4 w-4 text-gray-400 border-gray-300"
-                                    />
-                                    <Label htmlFor="used" className="text-sm font-normal text-gray-700">
-                                    Used
-                                    </Label>
-                                </div>
-                                </div>
+                                    </div>
+                                    <div className="flex items-center space-x-2">
+                                        <Checkbox
+                                            id="used"
+                                            checked={conditionOptions.used}
+                                            onCheckedChange={(checked) =>
+                                            setConditionOptions((prev) => ({ ...prev, used: Boolean(checked) }))
+                                            }
+                                        />
+                                        <Label htmlFor="used" className="text-sm font-normal text-gray-700">
+                                            Used
+                                        </Label>
+                                        </div>
+                                    </div>
                             </div>
 
                             {/* Description */}
@@ -208,7 +224,11 @@ export default function CreateListing() {
                             <div className="space-y-2">
                                 <Label className="text-sm font-medium text-gray-700">Set Price</Label>
                                 <div className="relative">
-                                <Input placeholder="eg $10/day value to hire" className="w-full pr-12" />
+                                <Input 
+                                placeholder="eg ₦10,000/day value to hire" 
+                                className="w-full pr-12" 
+                                value={price}
+                                onChange={e => setPrice(e.target.value)}/>
                                 <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sm text-gray-500">
                                     /day
                                 </span>
@@ -370,20 +390,39 @@ export default function CreateListing() {
                             {/* Upload Image */}
                             <div className="space-y-3 pt-4 border-t border-gray-200">
                                 <Label className="text-sm font-medium text-gray-700">Upload image</Label>
-                                <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
-                                <div className="flex flex-col items-center">
-                                    <div className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center mb-2">
-                                        <Upload className="h-5 w-5 text-gray-500" />
+                                <div
+                                    className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer"
+                                    onClick={() => fileInputRef.current?.click()}>
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        ref={fileInputRef}
+                                        className="hidden"
+                                        onChange={handleFileChange}
+                                        required
+                                    />
+                                    <div className="flex flex-col items-center">
+                                        <div className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center mb-2">
+                                            <Upload className="h-5 w-5 text-gray-500" />
+                                        </div>
+                                        <p className="text-sm text-gray-600">
+                                            {selectedFile ? selectedFile.name : "Choose file or browse files"}
+                                        </p>
+                                        <p className="text-xs text-gray-400 mt-1">JPG, PNG up to 5MB</p>
+                                        {selectedFile && (
+                                            <img
+                                                src={URL.createObjectURL(selectedFile)}
+                                                alt="Preview"
+                                                className="mt-2 mx-auto h-24 rounded"
+                                            />
+                                        )}
                                     </div>
-                                    <p className="text-sm text-gray-600">Choose file or browse files</p>
-                                    <p className="text-xs text-gray-400 mt-1">JPG, PNG up to 5MB</p>
-                                </div>
                                 </div>
                             </div>
 
                             {/* Form Buttons */}
                             <div className="flex justify-end space-x-3 pt-6 border-t border-gray-200">
-                                <Button variant="outline" className="px-6">
+                                <Button className="px-6">
                                 Preview
                                 </Button>
                                 <Button className="bg-purple-600 hover:bg-purple-700 text-white px-6">Submit Listing</Button>

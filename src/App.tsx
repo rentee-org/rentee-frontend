@@ -10,6 +10,7 @@ import Bookings from './app/pages/Bookings';
 import Categories from '@marketing/components/Categories/Categories';
 import Blog from '@/marketing/pages/Blog';
 import BlogDetails from '@/marketing/components/layout/Blogdetails';
+import NotificationPage from './app/pages/NotificationPage';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path='/bookings' element={<Bookings />} />
         <Route path='/blog' element={<Blog />} />
         <Route path='/blogdetails' element={<BlogDetails />} />
+        <Route path='/notification' element={<NotificationPage />} />
         {/* Add more routes as needed */}
       </Routes>
     </Router>
