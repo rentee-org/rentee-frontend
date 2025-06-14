@@ -37,7 +37,7 @@ export interface AuthResponse {
 
 
     // Define the Post type
-    const BASE_URL = "https://graceful-luck-production.up.railway.app/docs/";
+    const BASE_URL = "https://graceful-luck-production.up.railway.app/docs#/api";
 
     // Password validation states
     const hasMinChars = password.length >= 12
