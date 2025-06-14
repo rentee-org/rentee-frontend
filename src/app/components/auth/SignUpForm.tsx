@@ -3,12 +3,15 @@ import { Eye, EyeOff, Check } from "lucide-react"
 import { Link, useNavigate } from "react-router-dom";
 
 export interface AuthRequest {
-    username?: string;
     email: string;
     phoneNumber?: string;
     password: string;
     currentPassword?: string;
     newPassword?: string;
+    firstname?: string;
+    lastname?: string;
+    role?: string;
+    avatarUrl?: string;
 }
 
 export interface AuthResponse {
@@ -37,7 +40,7 @@ export interface AuthResponse {
 
 
     // Define the Post type
-    const BASE_URL = "https://graceful-luck-production.up.railway.app/docs/";
+    const BASE_URL = "https://graceful-luck-production.up.railway.app";
 
     // Password validation states
     const hasMinChars = password.length >= 12
@@ -57,15 +60,18 @@ const handleSubmit = async (e: React.FormEvent) => {
 
         setIsLoading(true);
 
-        const payload: AuthRequest = {
-            username: `${firstName} ${lastName}`.trim(),
-            email,
-            phoneNumber: phone,
-            password,
-        };
+      const payload: AuthRequest = {
+        firstname: firstName,
+        lastname: lastName,
+        phoneNumber: phone,
+        email,
+        password,
+        role: "renter", // or whatever role your system expects
+        avatarUrl: "https://example.com/avatar.jpg",
+      };
 
         try {
-            const response = await fetch(`${BASE_URL}/auth/register`, {
+            const response = await fetch(`${BASE_URL}/api/auth/register`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),
