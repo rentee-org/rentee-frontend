@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
@@ -11,19 +10,25 @@ export default function LoginPage() {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
-    // Replace this with your real API call
     async function loginUser(email: string, password: string) {
-        // Example: Replace with fetch/axios call
-        return new Promise<{ success: boolean; message?: string }>((resolve, reject) => {
-            setTimeout(() => {
-                if (email === "test@example.com" && password === "password") {
-                    resolve({ success: true });
-                } else {
-                    reject(new Error("Invalid email or password"));
-                }
-            }, 1000);
-        });
+    const BASE_URL = "https://graceful-luck-production.up.railway.app/api";
+
+    const response = await fetch(`${BASE_URL}/auth/login`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Invalid email or password");
     }
+
+    return await response.json(); // Should return token, user info, etc.
+}
+
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -42,7 +47,9 @@ export default function LoginPage() {
         setLoading(true);
         try {
             const res = await loginUser(email, password);
-            if (res.success) {
+            console.log("Login response:", res);
+            if (res.success && res.data?.access_token) {
+                localStorage.setItem("token", res.data.access_token);//Saves the token in local storage
                 navigate("/dashboard");
             }
         } catch (err) {
@@ -68,7 +75,7 @@ export default function LoginPage() {
                             </label>
                             <input
                                 id="email"
-                                type="email"
+                                type="email"    
                                 placeholder="Enter your email"
                                 className="w-full h-12 px-3 py-2 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#6200EE] focus:border-transparent"
                                 value={email}

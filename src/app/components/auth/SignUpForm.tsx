@@ -3,13 +3,13 @@ import { Eye, EyeOff, Check } from "lucide-react"
 import { Link, useNavigate } from "react-router-dom";
 
 export interface AuthRequest {
-    email: string;
+    firstname?: string;
+    lastname?: string;
     phoneNumber?: string;
+    email: string;
     password: string;
     currentPassword?: string;
     newPassword?: string;
-    firstname?: string;
-    lastname?: string;
     role?: string;
     avatarUrl?: string;
 }
@@ -28,7 +28,6 @@ export interface AuthResponse {
     const [showPassword, setShowPassword] = useState(false)
     const [showConfirmPassword, setShowConfirmPassword] = useState(false)
     const [password, setPassword] = useState("")
-    // const [AuthRequest, setAuthRequest] = useState<AuthRequest[]>([])
     const [confirmPassword, setConfirmPassword] = useState("")
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
@@ -60,7 +59,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 
         setIsLoading(true);
 
-      const payload: AuthRequest = {
+    const payload: AuthRequest = {
         firstname: firstName,
         lastname: lastName,
         phoneNumber: phone,
@@ -68,7 +67,7 @@ const handleSubmit = async (e: React.FormEvent) => {
         password,
         role: "renter", // or whatever role your system expects
         avatarUrl: "https://example.com/avatar.jpg",
-      };
+    };
 
         try {
             const response = await fetch(`${BASE_URL}/api/auth/register`, {
