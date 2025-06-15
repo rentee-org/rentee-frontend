@@ -12,6 +12,7 @@ import Blog from '@/marketing/pages/Blog';
 import BlogDetails from '@/marketing/components/layout/Blogdetails';
 import NotificationPage from './app/pages/NotificationPage';
 
+
 function App() {
   return (
     <Router>
