@@ -22,7 +22,15 @@ export default defineConfig({
       // ngrok host
       'bright-shoes-shine.loca.lt',
       '8b34-102-89-32-202.ngrok-free.app'
-    ]
+    ],
+    proxy: {
+      '/auth/register': {
+        target: 'https://graceful-luck-production.up.railway.app/docs',
+        changeOrigin: true,
+        secure: false,
+        rewrite: path => path.replace(/^\/auth/, '/auth/register'),
+      },
+    },
   },
   resolve: {
     alias: {
