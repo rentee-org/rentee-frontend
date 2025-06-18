@@ -2,7 +2,9 @@
 import { Link } from "react-router-dom";
 import Data from "../components/constants/Data";
 import User from "../components/constants/Index";
+
 import ProductGrid from "../components/Categories/ProductGrid";
+
 
 
 function BrowserListing() {
@@ -23,6 +25,7 @@ function BrowserListing() {
           </Link>
         </div>
       </div>
+
       {/* Render the grid Thrice */}
       <ProductGrid products={Data} users={User} />
       <ProductGrid products={Data} users={User} />
