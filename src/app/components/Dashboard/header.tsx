@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useEffect, useState } from "react";
 import Logo from '@/assets/Rentee Final Logo 1.png';
 import menuIcon from '@/assets/menuIcon.png';
 import { Search } from 'lucide-react';
@@ -13,10 +13,36 @@ import {
     DropdownMenuSeparator,
 } from "@/app/components/ui/dropdown-menu";
 
-
 export default function Header() {
-    // State to control dropdown open/close
+    const [user, setUser] = useState<{ name: string; avatarUrl?: string } | null>(null);
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        console.log("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWNjZGM1Ni02YWUwLTQ4NTItOTBmZC0xMzJkMzAzNzRiM2QiLCJlbWFpbCI6Imlkb3d1Z3VkbmVzc0BnbWFpbC5jb20iLCJyb2xlIjoicmVudGVyIiwiZmlyc3ROYW1lIjoiSWRvd3UiLCJsYXN0TmFtZSI6Ikdvb2RuZXNzIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc0OTkyOTk4MSwiZXhwIjoxNzUwMDE2MzgxfQ.IiwTxo0FiJl4QpGXQyHtj7IS_IWpuvpC72q7DLNGSDE:", token);
+    fetch("https://graceful-luck-production.up.railway.app/api/users/me", {
+        credentials: "include",
+        headers: {
+            "Authorization": token ? `Bearer ${token}` : "",
+            "Content-Type": "application/json",
+        },
+    })
+        .then(res => res.json())
+        .then(data => {
+        console.log("User data:", data); // for debugging
+        const userData = data.data || data; // fallback if not nested
+        setUser({
+            name: `${userData.firstName} ${userData.lastName}`,
+            avatarUrl: userData.avatarUrl,
+        });
+        });
+}, []);
+    function getInitials(name: string) {
+        if (!name) return "";
+        const parts = name.trim().split(" ");
+        if (parts.length === 1) return parts[0][0]?.toUpperCase() || "";
+        return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+    }
 
     function setSidebarOpen(_arg0: boolean): void {
         throw new Error('Function not implemented.');
@@ -55,16 +81,14 @@ export default function Header() {
                         onOpenChange={setDropdownOpen}
                     >
                         <DropdownMenuTrigger asChild>
+                            {user ? (
                             <div className="flex items-center gap-2 cursor-pointer">
-                                <Avatar className="w-8 h-8 bg-[#f5f5f5] rounded-full">
-                                    <AvatarImage
-                                        src="{}"
-                                        alt="John Onyekachi"
-                                    />
-                                    <AvatarFallback>JO</AvatarFallback>
+                                <Avatar>
+                                    <AvatarImage src={user?.avatarUrl || ""} alt={user?.name || ""} />
+                                    <AvatarFallback>{user ? getInitials(user.name) : ""}</AvatarFallback>
                                 </Avatar>
                                 <span className="text-sm font-medium text-black">
-                                    John Onyekachi
+                                    {user?.name || ""}
                                 </span>
                                 {dropdownOpen ? (
                                     <ChevronUp className="w-4 h-4 text-gray-500" />
@@ -72,6 +96,9 @@ export default function Header() {
                                     <ChevronDown className="w-4 h-4 text-gray-500" />
                                 )}
                             </div>
+                                ) : (
+                                    <span className="text-sm text-gray-400">Not logged in</span>
+                                )}
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end" className="w-48">
                             <DropdownMenuLabel>My Account</DropdownMenuLabel>

@@ -48,12 +48,14 @@ const SidebarLayout: React.FC = () => {
                                 icon={<Home size={iconSize} className="text-purple-700" />}
                                 label="Dashboard"
                                 active={location.pathname === '/dashboard'}
-                                collapsed={collapsed} to={'/dashboard'}                                />
+                                collapsed={collapsed} 
+                                to={'/dashboard'}                                />
                             <SidebarItem 
                                 icon={<NotebookPen size={iconSize} />}
                                 label="Listings"
                                 active={location.pathname === '/listings'}
-                                collapsed={collapsed} to={'/listings'} />
+                                collapsed={collapsed} 
+                                to={'/listings'} />
                             <SidebarItem icon={<Calendar size={iconSize} />} label="Bookings" collapsed={collapsed} to={'/bookings'} />
                             <SidebarItem icon={<Bell size={iconSize} />} label="Notification" collapsed={collapsed} to={'/notification'} />
                         </div>
@@ -85,7 +87,7 @@ interface SidebarItemProps {
 const SidebarItem: React.FC<SidebarItemProps> = ({ icon, label, active, collapsed, to }) => {
     return (
         <Link
-           to={to}
+            to={to}
             className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium cursor-pointer transition-colors
                 ${active ? 'bg-purple-100 text-purple-700 border border-purple-300' : 'text-gray-400 hover:text-black'}
                 ${collapsed ? 'justify-center' : ''}`}
