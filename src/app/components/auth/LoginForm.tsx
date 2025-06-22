@@ -117,6 +117,7 @@ export default function LoginPage() {
                             <div className="text-red-500 text-sm">{error}</div>
                         )}
 
+
                         <button
                             type="submit"
                             className="w-full h-12 bg-[#6200EE] hover:bg-[#5000c9] text-white rounded-md font-medium transition-colors"
