@@ -16,7 +16,7 @@ function BrowserListing() {
         </div>
         <div>
           <Link
-            to="/categories"
+            to="/all-listings"
             className="px-4 md:px-6 text-xs md:text-lg py-2 rounded-sm bg-white-600 text-[#5400e6] border-2 font-avenir"
           >
             See All Category

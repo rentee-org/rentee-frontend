@@ -11,6 +11,7 @@ import Categories from '@marketing/components/Categories/Categories';
 import Blog from '@/marketing/pages/Blog';
 import BlogDetails from '@/marketing/components/layout/Blogdetails';
 import NotificationPage from './app/pages/NotificationPage';
+import AllListings from './marketing/pages/AllListing';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path='/blog' element={<Blog />} />
         <Route path='/blogdetails' element={<BlogDetails />} />
         <Route path='/notification' element={<NotificationPage />} />
+        <Route path='/all-listings' element={<AllListings />} />
         {/* Add more routes as needed */}
       </Routes>
     </Router>

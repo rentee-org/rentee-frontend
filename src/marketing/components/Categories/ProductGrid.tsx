@@ -1,5 +1,6 @@
 import React from 'react'
 import { BiChevronRight } from "react-icons/bi";
+import { Link } from 'react-router-dom';
 
 export interface ProductItems {
   img: string;
@@ -18,7 +19,7 @@ export interface UserProfile {
 
 function ProductGrid({products, users}: {products: ProductItems[]; users: UserProfile[]}) {
   return (
-     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-4 md:px-10 py-8 mx-auto max-w-7xl gap-5">
+     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-4 md:px-6 py-8 mx-auto max-w-7xl gap-5">
           {products.map((Product) => (
             <div
               key={Product.id}
@@ -30,7 +31,7 @@ function ProductGrid({products, users}: {products: ProductItems[]; users: UserPr
                 <h3 className="text-black-300 text-sm py-4 font-medium w-50">{Product.name}</h3>
                 <p className="text-gray-400 text-xs">{Product.description}</p>
                 <div className="flex items-center justify-start gap-2 mt-4">
-                  <a href="#" className="text-xs text-[#fb8500] border-b-1">See full details</a>
+                  <Link to="/categories" className="text-xs text-[#fb8500] border-b-1">See full details</Link>
                   <BiChevronRight className="text-[#fb8500]" />
                 </div>
               </div>
@@ -48,7 +49,7 @@ function ProductGrid({products, users}: {products: ProductItems[]; users: UserPr
                 ))}
               </div>
             </div>
-          ))};
+          ))}
           </div>
   )
 }
