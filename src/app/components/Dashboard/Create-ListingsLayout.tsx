@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Textarea } from "@/app/components/ui/textarea";
 import { Checkbox } from "@/app/components/ui/checkbox";
 import { Switch } from "@/app/components/ui/switch"
-import { ChevronLeft, ChevronRight, Upload } from "lucide-react"
+import { Upload } from "lucide-react"
 import CalendarUI from "@ui/calendar-ui"
 
 

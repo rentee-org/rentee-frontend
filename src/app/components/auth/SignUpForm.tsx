@@ -49,6 +49,7 @@ export interface AuthResponse {
 
 const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setIsLoading(true)
         setError(null);
         setSuccess(null);
 
@@ -56,8 +57,6 @@ const handleSubmit = async (e: React.FormEvent) => {
             setError("Passwords do not match.");
             return;
         }
-
-        setIsLoading(true);
 
     const payload: AuthRequest = {
         firstname: firstName,
@@ -239,11 +238,16 @@ const handleSubmit = async (e: React.FormEvent) => {
                         {error && <div className="text-red-500 text-sm">{error}</div>}
                         {success && <div className="text-green-600 text-sm">{success}</div>}
 
-                        <button type="submit"
-                        className="w-full bg-indigo-600 text-white py-3 rounded-md font-medium mt-4"
+                        <button
+                        type="submit"
+                        className={`w-full py-3 rounded-md font-medium mt-4
+                            bg-indigo-600 text-white
+                            hover:bg-indigo-700
+                            ${isLoading ? "bg-indigo-400 cursor-not-allowed hover:bg-indigo-400" : ""}
+                        `}
                         disabled={isLoading}
                         >
-                            {isLoading ? "Signing up..." : "Sign up"}
+                        {isLoading ? "Signing up..." : "Sign up"}
                         </button>
                     </form> 
                 </div>      
