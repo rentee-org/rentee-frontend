@@ -31,7 +31,12 @@ import { cn } from "@lib/utils"
     { label: "Custom range", value: "custom" },
     ]
 
-    export default function CalendarUI() {
+
+    type CalendarUIProps = {
+    value: Date | null;
+    onChange: (date: Date) => void;
+    };
+    export default function CalendarUI({ value, onChange }: CalendarUIProps) {
     const [currentDate, setCurrentDate] = useState(new Date())
     const [selectedStartDate, setSelectedStartDate] = useState<Date | null>(null)
     const [selectedEndDate, setSelectedEndDate] = useState<Date | null>(null)
@@ -87,13 +92,16 @@ import { cn } from "@lib/utils"
         setSelectedStartDate(clickedDate)
         setSelectedEndDate(null)
         setIsSelectingRange(true)
+        onChange(clickedDate);
         } else if (selectedStartDate && !selectedEndDate) {
         // Complete the range
         if (clickedDate >= selectedStartDate) {
             setSelectedEndDate(clickedDate)
+            onChange(clickedDate);
         } else {
             setSelectedEndDate(selectedStartDate)
             setSelectedStartDate(clickedDate)
+            onChange(clickedDate);
         }
         setIsSelectingRange(false)
         }

@@ -48,7 +48,7 @@ export default function Component() {
                         </p>
                     </div>
                     <div className="flex flex-col md:flex-row items-stretch md:items-center gap-4 w-full md:w-auto">
-                        <Link to="/dashboard/create-listings">
+                        <Link to="dashboard/create-listings">
                             <Button className="bg-purple-600 hover:bg-purple-700 text-white px-6">
                             Add Product
                             </Button>

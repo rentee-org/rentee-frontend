@@ -11,7 +11,7 @@ import Categories from '@marketing/components/Categories/Categories';
 import Blog from '@/marketing/pages/Blog';
 import BlogDetails from '@/marketing/components/layout/Blogdetails';
 import NotificationPage from './app/pages/NotificationPage';
-
+import Order from './app/pages/OrderPage';
 function App() {
   return (
     <Router>
@@ -25,6 +25,7 @@ function App() {
         <Route path='/categories' element={<Categories />} />
         <Route path='/bookings' element={<Bookings />} />
         <Route path='/blog' element={<Blog />} />
+        <Route path='/orders' element={<Order />} />
         <Route path='/blogdetails' element={<BlogDetails />} />
         <Route path='/notification' element={<NotificationPage />} />
         {/* Add more routes as needed */}

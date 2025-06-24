@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Home, NotebookPen, Calendar, Bell, Settings, HelpCircle, PanelRight } from 'lucide-react';
 import Logo from '@/assets/Rentee Final Logo 1.png';
+import { ClockArrowUp } from 'lucide-react'; 
 
 const SidebarLayout: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
@@ -56,6 +57,12 @@ const SidebarLayout: React.FC = () => {
                                 active={location.pathname === '/listings'}
                                 collapsed={collapsed} 
                                 to={'/listings'} />
+                                <SidebarItem 
+                                icon={<ClockArrowUp size={iconSize} />}
+                                label="Orders"
+                                active={location.pathname === '/orders'}  
+                                collapsed={collapsed} 
+                                to={'/orders'} />
                             <SidebarItem icon={<Calendar size={iconSize} />} label="Bookings" collapsed={collapsed} to={'/bookings'} />
                             <SidebarItem icon={<Bell size={iconSize} />} label="Notification" collapsed={collapsed} to={'/notification'} />
                         </div>
