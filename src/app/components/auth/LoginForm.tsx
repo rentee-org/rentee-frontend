@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
+import Logo from "@assets/Rentee Final Logo 1.png";
+
 
 export default function LoginPage() {
     const [showPassword, setShowPassword] = useState(false);
@@ -9,6 +11,7 @@ export default function LoginPage() {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const isFormFilled = email.trim() !== "" && password.trim() !== "";
 
     async function loginUser(email: string, password: string) {
     const BASE_URL = "https://graceful-luck-production.up.railway.app/api";
@@ -65,6 +68,9 @@ export default function LoginPage() {
 
     return (
         <div className="max-w-md p-6 bg-white w-full h-auto mx-auto sm:p-6 lg:p-8 rounded-2xl ">
+            <div className="flex justify-center mb-4">
+                <img src={Logo} alt="Rentee Logo" className="h-12" />
+            </div>
             <h1 className="text-2xl font-medium mb-6">Login to your account</h1>
             <div className="border-t border-gray-200 pt-6">
                 <form onSubmit={handleSubmit} autoComplete="on">
@@ -120,9 +126,13 @@ export default function LoginPage() {
 
                         <button
                             type="submit"
-                            className="w-full h-12 bg-[#6200EE] hover:bg-[#5000c9] text-white rounded-md font-medium transition-colors"
-                            disabled={loading}
-                        >
+                            className={`w-full h-12 rounded-md font-medium transition-colors
+                                    ${isFormFilled && !loading
+                                        ? "bg-[#6200EE] hover:bg-[#5000c9] text-white"
+                                        : "bg-indigo-200 text-white cursor-not-allowed"
+                                    }`}
+                                disabled={!isFormFilled || loading}
+                            >
                             {loading ? "Logging in..." : "Login"}
                         </button>
 

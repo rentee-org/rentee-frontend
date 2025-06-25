@@ -60,7 +60,7 @@ const Navbar = ({ setShowSignUp }: NavbarProps) => {
       )}
     </nav>
   );
-};
+}; 
 
 export default Navbar;
 // This code defines a Navbar component that serves as the navigation bar for the application. 

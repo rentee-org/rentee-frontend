@@ -16,7 +16,7 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  const [showSignUp, setShowSignUp] = useState(false);
+const [showSignUp, setShowSignUp] = useState(false);
 
   return (
     <div className="">
