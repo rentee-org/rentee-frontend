@@ -58,43 +58,8 @@ export default function CreateListing() {
     const [depositAmount, setDepositAmount] = useState("");
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
 
-        // Check all required fields
-        if (
-            !itemName.trim() ||
-            !category.trim() ||
-            !location.trim() ||
-            !(conditionOptions.new || conditionOptions.used) ||
-            !description.trim() ||
-            !priceDay.trim() ||
-            !priceWeek.trim() ||
-            !priceMonth.trim() ||
-            !selectedDate ||
-            !selectedFile
-        ) {
-            alert("Please fill in all required fields before submitting.");
-            //replace with notification system finer than this alert later
-            return;
-        }
 
-        // If all fields are filled, proceed with submission logic
-        // ...submit your form here...
-    };
-
-    // const availabilityOptions = 
-    // [
-    //     { label: "Today", value: "today" },
-    //     { label: "Yesterday", value: "yesterday" },
-    //     { label: "Last week", value: "last-week" },
-    //     { label: "Last 7 days", value: "last-7-days" },
-    //     { label: "This month", value: "this-month" },
-    //     { label: "Last 30 days", value: "last-30-days" },
-    //     { label: "Custom range", value: "custom-range" },
-    // ]
-    // const [selectedAvailability, setSelectedAvailability] = useState("custom-range")
-    const [depositAmount, setDepositAmount] = useState("");
     return (
         <div className="min-h-screen bg-gray-50 p-6">
             <div className="mb-4 text-left px-4">
@@ -344,80 +309,12 @@ export default function CreateListing() {
                                     <Button className="bg-purple-600 hover:bg-purple-700 text-white">Recommended Price</Button>
                                 </div>
                             </div>
-                            {/* <div className="space-y-2">
-                                <Label className="text-sm font-medium text-gray-700">Set Price</Label>
-                                <div className="flex items-center w-full">
-                                    <div className="relative w-1/2 md:w-1/4">
-                                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm pointer-events-none">₦</span>
-                                        <Input
-                                        type="number"
-                                        inputMode="numeric"
-
-                                        placeholder="20,000"
-                                        className="pl-7 rounded-md w-full"
-                                        value={priceDay}
-                                        onChange={e => setPriceDay(e.target.value)}
-                                        />
-                                    </div>
-                                    <span className="inline-block bg-white px-2 py-2 text-sm text-gray-500">
-                                        /day
-                                    </span>
-                                </div>
-
-                                <div className="flex items-center w-full">
-                                    <div className="relative w-1/2 md:w-1/4">
-                                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm pointer-events-none">₦</span>
-                                        <Input
-                                        type="number"
-                                        inputMode="numeric"
-                                        placeholder="140,000"
-                                        className="pl-7 rounded-md w-full bg-gray-400"
-                                        value={priceWeek}
-                                        onChange={e => setPriceWeek(e.target.value)}
-                                        />
-                                    </div>
-                                    <span className="inline-block bg-white px-2 py-2 text-sm text-gray-500">
-                                        /week
-                                    </span>
-                                </div>
-
-                                <div className="flex items-center w-full">
-                                    <div className="relative w-1/2 md:w-1/4">
-                                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm pointer-events-none">₦</span>
-                                        <Input
-                                        type="number"
-                                        inputMode="numeric"
-                                        placeholder="140,000"
-                                        className="pl-7 rounded-md w-full bg-gray-400"
-                                        value={priceMonth}
-                                        onChange={e => setPriceMonth(e.target.value)}
-                                        />
-                                    </div>
-                                    <span className="inline-block bg-white px-2 py-2 text-sm text-gray-500">
-                                        /month
-                                    </span>
-                                </div>
-
-                                <p className="text-sm text-gray-600 mt-1">Here’s your recommended weekly and monthly price!
-                                    <br /> you can choose to edit it.</p>
-                                <div className="mt-4">
-                                <Button className="bg-purple-600 hover:bg-purple-700 text-white">Recommended Price</Button>
-                                </div>
-                            </div> */}
 
                             {/* Availability */}
                             <h3 className="text-sm font-medium text-black-700">Availability</h3>
-                                <CalendarUI 
-                                value={selectedDate}
-                                onChange={(date: Date) => {
-                                    setSelectedDate(date);
-                                    setActiveStep("availability");
-                                }}
-                                />
-
-                            {/* Availability */}
-                            <h3 className="text-sm font-medium text-black-700">Availability</h3>
-                                <CalendarUI />
+                                <CalendarUI value={null} onChange={function (date: Date): void {
+                                throw new Error("Function not implemented.")
+                            } } />
 
                             {/* Security Deposit */}
                             <div className="space-y-2 pt-4 border-t border-gray-200">
