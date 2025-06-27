@@ -9,6 +9,7 @@ import { Checkbox } from "@/app/components/ui/checkbox";
 import { Switch } from "@/app/components/ui/switch"
 import { ChevronLeft, ChevronRight, Upload } from "lucide-react"
 import CalendarUI from "@ui/calendar-ui"
+import PreviewModal from "@components/Dashboard/PreviewModal"
 
 
 export default function CreateListing() {
@@ -53,17 +54,7 @@ export default function CreateListing() {
         priceMonth.trim()
     );
 
-    // const availabilityOptions = 
-    // [
-    //     { label: "Today", value: "today" },
-    //     { label: "Yesterday", value: "yesterday" },
-    //     { label: "Last week", value: "last-week" },
-    //     { label: "Last 7 days", value: "last-7-days" },
-    //     { label: "This month", value: "this-month" },
-    //     { label: "Last 30 days", value: "last-30-days" },
-    //     { label: "Custom range", value: "custom-range" },
-    // ]
-    // const [selectedAvailability, setSelectedAvailability] = useState("custom-range")
+    const [showPreview, setShowPreview] = useState(false);
     const [depositAmount, setDepositAmount] = useState("");
     return (
         <div className="min-h-screen bg-gray-50 p-6">
@@ -389,7 +380,7 @@ export default function CreateListing() {
 
                             {/* Form Buttons */}
                             <div className="flex justify-end space-x-3 pt-6 border-t border-gray-200">
-                                <Button className="px-6">
+                                <Button className="px-6" onClick={() => setShowPreview(true)}>
                                 Preview
                                 </Button>
                                 <Button className="bg-purple-600 hover:bg-purple-700 text-white px-6">Submit Listing</Button>
@@ -399,6 +390,11 @@ export default function CreateListing() {
                     </div>
                 </div>
             </div>
+        <PreviewModal 
+        isOpen={showPreview} 
+        onClose={
+            () => setShowPreview(false)
+        } />
         </div>
 )
 }
