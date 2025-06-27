@@ -13,7 +13,6 @@ import BlogDetails from '@/marketing/components/layout/Blogdetails';
 import NotificationPage from './app/pages/NotificationPage';
 import AllListings from './marketing/pages/AllListing';
 import Order from './app/pages/OrderPage';
-
 function App() {
   return (
     <Router>
@@ -31,7 +30,6 @@ function App() {
         <Route path='/blogdetails' element={<BlogDetails />} />
         <Route path='/notification' element={<NotificationPage />} />
         <Route path='/all-listings' element={<AllListings />} />
-
         {/* Add more routes as needed */}
       </Routes>
     </Router>
