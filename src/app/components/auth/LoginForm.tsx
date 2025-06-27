@@ -13,6 +13,7 @@ export default function LoginPage() {
     const navigate = useNavigate();
     const isFormFilled = email.trim() !== "" && password.trim() !== "";
 
+
     async function loginUser(email: string, password: string) {
     const BASE_URL = "https://graceful-luck-production.up.railway.app/api";
 

@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Textarea } from "@/app/components/ui/textarea";
 import { Checkbox } from "@/app/components/ui/checkbox";
 import { Switch } from "@/app/components/ui/switch"
+
 import { Upload } from "lucide-react"
 import CalendarUI from "@ui/calendar-ui"
 import PreviewModal from "@components/Dashboard/PreviewModal"
@@ -82,7 +83,18 @@ export default function CreateListing() {
         // ...submit your form here...
     };
 
-
+    // const availabilityOptions = 
+    // [
+    //     { label: "Today", value: "today" },
+    //     { label: "Yesterday", value: "yesterday" },
+    //     { label: "Last week", value: "last-week" },
+    //     { label: "Last 7 days", value: "last-7-days" },
+    //     { label: "This month", value: "this-month" },
+    //     { label: "Last 30 days", value: "last-30-days" },
+    //     { label: "Custom range", value: "custom-range" },
+    // ]
+    // const [selectedAvailability, setSelectedAvailability] = useState("custom-range")
+    const [depositAmount, setDepositAmount] = useState("");
     return (
         <div className="min-h-screen bg-gray-50 p-6">
             <div className="mb-4 text-left px-4">
@@ -257,6 +269,7 @@ export default function CreateListing() {
                             {/* Set Price */}
                             <div className="space-y-2">
                                 <Label className="text-sm font-medium text-gray-700">Set Price</Label>
+
                                 {/* Day Price */}
                                 <div className="flex items-center w-full">
                                     <div className="relative w-1/2 md:w-1/4">
@@ -339,6 +352,7 @@ export default function CreateListing() {
                                         <Input
                                         type="number"
                                         inputMode="numeric"
+
                                         placeholder="20,000"
                                         className="pl-7 rounded-md w-full"
                                         value={priceDay}
@@ -400,6 +414,10 @@ export default function CreateListing() {
                                     setActiveStep("availability");
                                 }}
                                 />
+
+                            {/* Availability */}
+                            <h3 className="text-sm font-medium text-black-700">Availability</h3>
+                                <CalendarUI />
 
                             {/* Security Deposit */}
                             <div className="space-y-2 pt-4 border-t border-gray-200">
@@ -494,6 +512,7 @@ export default function CreateListing() {
                             {/* Form Buttons */}
                             <div className="flex justify-end space-x-3 pt-6 border-t border-gray-200">
                                 <Button className="px-6" onClick={() => setShowPreview(true)}>
+
                                 Preview
                                 </Button>
                                 <Button type="submit"className="bg-purple-600 hover:bg-purple-700 text-white px-6">
