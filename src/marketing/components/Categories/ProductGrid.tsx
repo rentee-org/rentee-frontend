@@ -22,9 +22,7 @@ export interface UserProfile {
 
 function ProductGrid({products, users}: {products: ProductItems[]; users: UserProfile[]}) {
   return (
-     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-4 md:px-6 py-8 mx-auto max-w-7xl gap-5">
-     
-
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-4 md:px-6 py-8 mx-auto max-w-7xl gap-5">
           {products.map((Product) => (
             <div
               key={Product.id}
@@ -55,8 +53,7 @@ function ProductGrid({products, users}: {products: ProductItems[]; users: UserPr
               </div>
             </div>
           ))}
-
-          </div>
+    </div>
   )
 }
 

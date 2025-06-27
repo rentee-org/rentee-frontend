@@ -3,9 +3,15 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { BiSearch } from "react-icons/bi";
 import Logo from "@assets/Rentee Final Logo 1.png"
+import type { Dispatch, SetStateAction } from "react";
 // install Lucide for icons
 
-const Navbar = () => {
+
+interface NavbarProps {
+  setShowSignUp: Dispatch<SetStateAction<boolean>>;
+}
+
+const Navbar = ({ setShowSignUp }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -22,7 +28,12 @@ const Navbar = () => {
           <input type="text " placeholder="contact us" className="px-7 py-2   w-35" />
           </div>
           <Link to="/login" className="  flex items-center rounded border-2 text-[#5400e6]  px-6 py-1.5">Login</Link>
-          <Link to="/sign-up" className="bg-[#5400e6] text-white px-4 py-2 rounded ">Start Listing</Link>
+          <button
+              className="bg-[#5400e6] text-white px-4 py-2 rounded"
+              onClick={() => setShowSignUp(true)}>
+              Start Listing
+          </button>
+          {/* <Link to="/sign-up" className="bg-[#5400e6] text-white px-4 py-2 rounded ">Start Listing</Link> */}
         </div>
 
         {/* Mobile Toggle Button */}
@@ -39,12 +50,17 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden mt-4 space-y-2 text-center">
           <Link to="/login" className="block text-gray-600 hover:text-blue-600">Login</Link>
-          <Link to="/register" className="block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 mx-4">Register</Link>
+          <button
+            className="block bg-[#5400e6] text-white px-4 py-2 rounded hover:bg-[#5000c9] mx-4 w-full"
+            onClick={() => setShowSignUp(true)}
+          >
+            Start Listing
+          </button>
         </div>
       )}
     </nav>
   );
-};
+}; 
 
 export default Navbar;
 // This code defines a Navbar component that serves as the navigation bar for the application. 

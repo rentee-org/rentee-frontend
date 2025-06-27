@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import BrowserListing from "../../pages/BrowserListing";
@@ -7,6 +7,8 @@ import Faq from "../../pages/Faq";
 import BrowserCategory from "../../pages/BrowserCategory";
 import Bento from "../../pages/Bento"
 import Listings from "../../pages/Listings";
+import Modal from "@components/ui/modal/signupModal/Modal";
+import SignUpForm from "@components/auth/SignUpForm";
 
 
 interface LayoutProps {
@@ -14,9 +16,14 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
+const [showSignUp, setShowSignUp] = useState(false);
+
   return (
     <div className="">
-      <Navbar />
+      <Navbar  setShowSignUp={setShowSignUp}/>
+      <Modal open={showSignUp} onClose={() => setShowSignUp(false)}>
+        <SignUpForm />
+      </Modal>
       <main className="flex-grow w-full">
         {children}
       
