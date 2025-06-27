@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Eye, EyeOff, Check } from "lucide-react"
 import { Link, useNavigate } from "react-router-dom";
+import Logo from "@assets/Rentee Final Logo 1.png";
 
 export interface AuthRequest {
     firstname?: string;
@@ -33,6 +34,12 @@ export interface AuthResponse {
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
     const [phone, setPhone] = useState("")
+    const isFormFilled =
+        firstName.trim() !== "" &&
+        lastName.trim() !== "" &&
+        email.trim() !== "" &&
+        password.trim() !== "" &&
+        confirmPassword.trim() !== "";
     const [error, setError] = useState<string | null>(null)
     const [success, setSuccess] = useState<string | null>(null)
 
@@ -49,6 +56,7 @@ export interface AuthResponse {
 
 const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setIsLoading(true)
         setError(null);
         setSuccess(null);
 
@@ -56,8 +64,6 @@ const handleSubmit = async (e: React.FormEvent) => {
             setError("Passwords do not match.");
             return;
         }
-
-        setIsLoading(true);
 
     const payload: AuthRequest = {
         firstname: firstName,
@@ -91,8 +97,11 @@ const handleSubmit = async (e: React.FormEvent) => {
 
 
     return (
-        <div className="bg-white w-full max-w-[746px] h-auto mx-auto p-4 sm:p-6 lg:p-8 rounded-2xl  overflow-hidden">
-            <div className="h-full ">    
+        <div className="bg-white w-full max-w-[746px] mx-auto sm:mx-auto p-4 sm:p-6 lg:p-4 rounded-2xl  overflow-hidden">
+            <div className="h-full ">   
+                <div className="flex justify-center mb-4">
+                    <img src={Logo} alt="Rentee Logo" className="h-12" />
+                </div> 
                 <div className="mb-6">
                     <h1 className="text-xl font-medium">Sign Up</h1>
                     <p className="text-sm text-gray-500">
@@ -112,7 +121,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                                 id="firstName"
                                 type="text"
                                 placeholder="Enter Firstname"
-                                className="w-full p-2 border border-gray-300 bg-gray-100 rounded-md"
+                                className="w-full p-2 border border-gray-300 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                                 value={firstName}
                                 onChange={e => setFirstName(e.target.value)}
                                 required
@@ -127,7 +136,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                                 id="lastName"
                                 type="text"
                                 placeholder="Enter your Lastname"
-                                className="w-full p-2 border border-gray-300 bg-gray-100 rounded-md"
+                                className="w-full p-2 border border-gray-300 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                                 value={lastName}
                                 onChange={e => setLastName(e.target.value)}
                                 required
@@ -142,7 +151,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                                 id="email"
                                 type="email"
                                 placeholder="Enter your email"
-                                className="w-full p-2 border border-gray-300 bg-gray-100 rounded-md"
+                                className="w-full p-2 border border-gray-300 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                                 value={email}
                                 onChange={e => setEmail(e.target.value)}
                                 required
@@ -157,7 +166,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                             id="phone"
                             type="tel"
                             placeholder="Enter your Phone Number"
-                            className="w-full p-2 border border-gray-300 bg-gray-100 rounded-md"
+                            className="w-full p-2 border border-gray-300 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                             value={phone}
                             onChange={e => setPhone(e.target.value)}
                         />
@@ -172,7 +181,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                                 id="password"
                                 type={showPassword ? "text" : "password"}
                                 placeholder=" "
-                                className="w-full p-2 border border-gray-300 bg-gray-100 rounded-md pr-10"
+                                className="w-full p-2 border border-gray-300 bg-gray-100 rounded-md pr-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
@@ -223,7 +232,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                                 id="confirmPassword"
                                 type={showConfirmPassword ? "text" : "password"}
                                 placeholder=" "
-                                className="w-full p-2 border border-gray-300 bg-gray-100 rounded-md pr-10"
+                                className="w-full p-2 border border-gray-300 bg-gray-100 rounded-md pr-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                                 onChange={e => setConfirmPassword(e.target.value)}
                                 required
                                 />
@@ -239,10 +248,15 @@ const handleSubmit = async (e: React.FormEvent) => {
                         {error && <div className="text-red-500 text-sm">{error}</div>}
                         {success && <div className="text-green-600 text-sm">{success}</div>}
 
-                        <button type="submit"
-                        className="w-full bg-indigo-600 text-white py-3 rounded-md font-medium mt-4"
-                        disabled={isLoading}
-                        >
+                        <button
+                            type="submit"
+                            className={`w-full py-3 rounded-md font-medium mt-4
+                                ${isFormFilled && !isLoading
+                                    ? "bg-[#6200EE] hover:bg-[#5000c9] text-white"
+                                    : "bg-indigo-200 text-white cursor-not-allowed"
+                                }
+                            `}
+                            disabled={!isFormFilled || isLoading}>
                             {isLoading ? "Signing up..." : "Sign up"}
                         </button>
                     </form> 
