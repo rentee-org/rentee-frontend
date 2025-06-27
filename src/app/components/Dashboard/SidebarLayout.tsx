@@ -43,38 +43,65 @@ const SidebarLayout: React.FC = () => {
                     </div>
 
                     <div className="mt-6 px-4">
-                        {!collapsed && <p className="text-xs text-gray-500 uppercase mb-4">Main Menu</p>}
-                        <div className="space-y-2">
+                        {!collapsed && <p className="text-xs text-gray-500 uppercase mb-4 font-bold">Main Menu</p>}
+                        <div className="space-y-2 font-bold">
                             <SidebarItem
-                                icon={<Home size={iconSize} className="text-purple-700" />}
+                                icon={<Home size={iconSize} />}
                                 label="Dashboard"
                                 active={location.pathname === '/dashboard'}
                                 collapsed={collapsed} 
-                                to={'/dashboard'}                                />
+                                to={'/dashboard'}
+                            />
                             <SidebarItem 
                                 icon={<NotebookPen size={iconSize} />}
                                 label="Listings"
                                 active={location.pathname === '/listings'}
                                 collapsed={collapsed} 
-                                to={'/listings'} />
-                                <SidebarItem 
+                                to={'/listings'}
+                            />
+                            <SidebarItem 
                                 icon={<ClockArrowUp size={iconSize} />}
                                 label="Orders"
                                 active={location.pathname === '/orders'}  
                                 collapsed={collapsed} 
-                                to={'/orders'} />
-                            <SidebarItem icon={<Calendar size={iconSize} />} label="Bookings" collapsed={collapsed} to={'/bookings'} />
-                            <SidebarItem icon={<Bell size={iconSize} />} label="Notification" collapsed={collapsed} to={'/notification'} />
+                                to={'/orders'}
+                            />
+                            <SidebarItem 
+                                icon={<Calendar size={iconSize} />} 
+                                label="Bookings" 
+                                collapsed={collapsed} 
+                                to={'/bookings'}
+                                active={location.pathname === '/bookings'}
+                            />
+                            <SidebarItem 
+                                icon={<Bell size={iconSize} />} 
+                                label="Notification" 
+                                collapsed={collapsed} 
+                                to={'/notification'}
+                                active={location.pathname === '/notification'}
+                            />
                         </div>
                     </div>
                 </div>
 
                 {/* Bottom Section of Sidebar */}
                 <div className="mb-6 px-4">
-                    {!collapsed && <p className="text-xs text-gray-500 uppercase mb-4">Others</p>}
-                    <div className="space-y-2">
-                        <SidebarItem icon={<Settings size={iconSize} />} label="Settings" collapsed={collapsed} to={''} />
-                        <SidebarItem icon={<HelpCircle size={iconSize} />} label="Help Center" collapsed={collapsed} to={''} />
+                    {!collapsed && <p className="text-xs text-gray-500 uppercase mb-4 font-bold">Others</p>}
+                    <div className="space-y-2 font-bold">
+                        <SidebarItem 
+                            icon={<Settings size={iconSize} />} 
+                            label="Settings" 
+                            collapsed={collapsed} 
+                            to={'/settings'}
+                            active={location.pathname === '/settings'}
+                        />
+                        <SidebarItem 
+                            icon={<HelpCircle size={iconSize} />} 
+                            label="Help Center" 
+                            collapsed={collapsed} 
+                            to={'/help-center'}
+                            active={location.pathname === '/help-center'}
+                        />
                     </div>
                 </div>
             </div>
@@ -96,7 +123,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ icon, label, active, collapse
         <Link
             to={to}
             className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium cursor-pointer transition-colors
-                ${active ? 'bg-purple-100 text-purple-700 border border-purple-300' : 'text-gray-400 hover:text-black'}
+                ${active ? 'bg-purple-100 text-purple-700 border border-purple-300' : 'text-gray-400 hover:text-purple-700'}
                 ${collapsed ? 'justify-center' : ''}`}
         >
              {/* Icon will grow, but background stays the same */}
