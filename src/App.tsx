@@ -13,11 +13,22 @@ import BlogDetails from '@/marketing/components/layout/Blogdetails';
 import NotificationPage from './app/pages/NotificationPage';
 import AllListings from './marketing/pages/AllListing';
 import Order from './app/pages/OrderPage';
+import Settings from './app/pages/SettingsLayout'
+
+
 function App() {
   return (
     <Router>
       <Routes>
+        
+        {/* Landing-Page Related Routes */}
         <Route path="/" element={<Home />} />
+        <Route path='/blog' element={<Blog />} />
+        <Route path='/blogdetails' element={<BlogDetails />} />
+        <Route path='/all-listings' element={<AllListings />} />
+
+
+        {/* Dashboard Related Routes */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />
         <Route path='/dashboard' element={<Dashboard />} />
@@ -25,11 +36,10 @@ function App() {
         <Route path='/listings' element={<Listings />} />
         <Route path='/categories' element={<Categories />} />
         <Route path='/bookings' element={<Bookings />} />
-        <Route path='/blog' element={<Blog />} />
         <Route path='/orders' element={<Order />} />
-        <Route path='/blogdetails' element={<BlogDetails />} />
         <Route path='/notification' element={<NotificationPage />} />
         <Route path='/all-listings' element={<AllListings />} />
+        <Route path='/settings' element={<Settings />} />
         {/* Add more routes as needed */}
       </Routes>
     </Router>
