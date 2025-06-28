@@ -13,11 +13,7 @@ import PreviewModal from "@components/Dashboard/PreviewModal"
 
 
 
-type CreateListingProps = {
-    onAddProduct: (product: any) => void;
-};
-
-export default function CreateListing({ onAddProduct }: CreateListingProps) {
+export default function CreateListing({ onAddProduct }) {
     const [showPreview, setShowPreview] = useState(false);
     const [conditionOptions, setConditionOptions] = useState({
     new: false,
@@ -85,7 +81,6 @@ export default function CreateListing({ onAddProduct }: CreateListingProps) {
 
         // Build new product object
             const newProduct = {
-            id: Date.now(),
             image: selectedFiles[0] ? URL.createObjectURL(selectedFiles[0]) : "/placeholder.svg",
             price: `NGN ${priceDay}`,
             period: "/day",
@@ -357,135 +352,135 @@ export default function CreateListing({ onAddProduct }: CreateListingProps) {
                                         </span>
                                     </div>
 
-                                    <p className="text-sm text-gray-600 mt-1">
-                                        Here’s your recommended weekly and monthly price!
-                                        <br /> you can choose to edit it.
-                                    </p>
-                                    <div className="mt-4">
-                                        <Button className="bg-purple-600 hover:bg-purple-700 text-white">Recommended Price</Button>
-                                    </div>
-                                </div>
-                                {/* <div className="space-y-2">
-                                    <Label className="text-sm font-medium text-gray-700">Set Price</Label>
-                                    <div className="flex items-center w-full">
-                                        <div className="relative w-1/2 md:w-1/4">
-                                            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm pointer-events-none">₦</span>
-                                            <Input
-                                            type="number"
-                                            inputMode="numeric"
-                                            placeholder="20,000"
-                                            className="pl-7 rounded-md w-full"
-                                            value={priceDay}
-                                            onChange={e => setPriceDay(e.target.value)}
-                                            />
-                                        </div>
-                                        <span className="inline-block bg-white px-2 py-2 text-sm text-gray-500">
-                                        /day
-                                        </span>
-                                    </div>
-
-                                    <div className="flex items-center w-full">
-                                        <div className="relative w-1/2 md:w-1/4">
-                                            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm pointer-events-none">₦</span>
-                                            <Input
-                                            type="number"
-                                            inputMode="numeric"
-                                            placeholder="140,000"
-                                            className="pl-7 rounded-md w-full bg-gray-400"
-                                            value={priceWeek}
-                                            onChange={e => setPriceWeek(e.target.value)}
-                                            />
-                                        </div>
-                                        <span className="inline-block bg-white px-2 py-2 text-sm text-gray-500">
-                                        /week
-                                        </span>
-                                    </div>
-
-                                    <div className="flex items-center w-full">
-                                        <div className="relative w-1/2 md:w-1/4">
-                                            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm pointer-events-none">₦</span>
-                                            <Input
-                                            type="number"
-                                            inputMode="numeric"
-                                            placeholder="140,000"
-                                            className="pl-7 rounded-md w-full bg-gray-400"
-                                            value={priceMonth}
-                                            onChange={e => setPriceMonth(e.target.value)}
-                                            />
-                                        </div>
-                                        <span className="inline-block bg-white px-2 py-2 text-sm text-gray-500">
-                                        /month
-                                        </span>
-                                    </div>
-
-                                    <p className="text-sm text-gray-600 mt-1">Here’s your recommended weekly and monthly price!
-                                        <br /> you can choose to edit it.</p>
-                                    <div className="mt-4">
+                                <p className="text-sm text-gray-600 mt-1">
+                                    Here’s your recommended weekly and monthly price!
+                                    <br /> you can choose to edit it.
+                                </p>
+                                <div className="mt-4">
                                     <Button className="bg-purple-600 hover:bg-purple-700 text-white">Recommended Price</Button>
-                                    </div>
-                                </div> */}
-
-                                {/* Availability */}
-                                <h3 className="text-sm font-medium text-black-700">Availability</h3>
-                                    {showCalendar ? (
-                                    <CalendarUI
-                                        value={selectedDate}
-                                        onChange={(date: Date) => {
-                                        setSelectedDate(date);
-                                        setActiveStep("availability");
-                                        }}
-                                        onDone={(start, end) => {
-                                        setShowCalendar(false);
-                                        setSelectedRange({ start, end });
-                                        }}
-                                    />
-                                    ) : (
-                                    <div className="flex items-center gap-2">
-                                    <div
-                                    className="p-3 border border-purple-200 rounded bg-white text-sm text-gray-700 cursor-pointer inline-block transition-shadow duration-200 hover:shadow-[0_0_0_4px_rgba(139,92,246,0.3)]"
-                                    onClick={() => setShowCalendar(true)}
-                                    >
-                                    {selectedRange.start && selectedRange.end
-                                        ? `${selectedRange.start.getDate()}${getOrdinal(selectedRange.start.getDate())} ${selectedRange.start.toLocaleString('default', { month: 'long' })} - ${selectedRange.end.getDate()}${getOrdinal(selectedRange.end.getDate())} ${selectedRange.end.toLocaleString('default', { month: 'long' })}, ${selectedRange.end.getFullYear()}`
-                                        : selectedRange.start
-                                        ? `${selectedRange.start.getDate()}${getOrdinal(selectedRange.start.getDate())} ${selectedRange.start.toLocaleString('default', { month: 'long' })}, ${selectedRange.start.getFullYear()}`
-                                        : "Select availability"}
-                                    </div>
-                                    <button
-                                    type="button"
-                                    className="ml-2 px-3 py-1 text-xs rounded bg-purple-100 text-purple-700 hover:bg-purple-200 font-medium transition"
-                                    onClick={() => setShowCalendar(true)}
-                                    >
-                                    Edit
-                                    </button>
                                 </div>
-                                )}    
-
-                                {/* Security Deposit */}
-                                <div className="space-y-2 pt-4 border-t border-gray-200">
-                                    <div className="flex items-center">
-                                        <Switch checked={securityDeposit} onCheckedChange={setSecurityDeposit} required />
-                                        <Label className="text-sm font-medium text-gray-700 ml-2">
-                                        Security Deposit
-                                        </Label>
+                            </div>
+                            {/* <div className="space-y-2">
+                                <Label className="text-sm font-medium text-gray-700">Set Price</Label>
+                                <div className="flex items-center w-full">
+                                    <div className="relative w-1/2 md:w-1/4">
+                                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm pointer-events-none">₦</span>
+                                        <Input
+                                        type="number"
+                                        inputMode="numeric"
+                                        placeholder="20,000"
+                                        className="pl-7 rounded-md w-full"
+                                        value={priceDay}
+                                        onChange={e => setPriceDay(e.target.value)}
+                                        />
                                     </div>
-                                    <p className="text-xs text-gray-500 text-left">
-                                        Protect your item! Collect a refundable deposit from renters to cover potential damages.
-                                    </p>
-                                    {securityDeposit && (
-                                        <div className="relative mt-2 w-full md:w-1/2">
-                                            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm pointer-events-none">₦</span>
-                                            <Input
-                                            type="number"
-                                            inputMode="numeric"
-                                            placeholder="Enter security deposit amount"
-                                            className="pl-7 w-full"
-                                            value={depositAmount}
-                                            onChange={e => setDepositAmount(e.target.value)}
-                                            />
-                                        </div>
-                                        )}
+                                    <span className="inline-block bg-white px-2 py-2 text-sm text-gray-500">
+                                        /day
+                                    </span>
                                 </div>
+
+                                <div className="flex items-center w-full">
+                                    <div className="relative w-1/2 md:w-1/4">
+                                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm pointer-events-none">₦</span>
+                                        <Input
+                                        type="number"
+                                        inputMode="numeric"
+                                        placeholder="140,000"
+                                        className="pl-7 rounded-md w-full bg-gray-400"
+                                        value={priceWeek}
+                                        onChange={e => setPriceWeek(e.target.value)}
+                                        />
+                                    </div>
+                                    <span className="inline-block bg-white px-2 py-2 text-sm text-gray-500">
+                                        /week
+                                    </span>
+                                </div>
+
+                                <div className="flex items-center w-full">
+                                    <div className="relative w-1/2 md:w-1/4">
+                                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm pointer-events-none">₦</span>
+                                        <Input
+                                        type="number"
+                                        inputMode="numeric"
+                                        placeholder="140,000"
+                                        className="pl-7 rounded-md w-full bg-gray-400"
+                                        value={priceMonth}
+                                        onChange={e => setPriceMonth(e.target.value)}
+                                        />
+                                    </div>
+                                    <span className="inline-block bg-white px-2 py-2 text-sm text-gray-500">
+                                        /month
+                                    </span>
+                                </div>
+
+                                <p className="text-sm text-gray-600 mt-1">Here’s your recommended weekly and monthly price!
+                                    <br /> you can choose to edit it.</p>
+                                <div className="mt-4">
+                                <Button className="bg-purple-600 hover:bg-purple-700 text-white">Recommended Price</Button>
+                                </div>
+                            </div> */}
+
+                            {/* Availability */}
+                            <h3 className="text-sm font-medium text-black-700">Availability</h3>
+                                {showCalendar ? (
+                                <CalendarUI
+                                    value={selectedDate}
+                                    onChange={(date: Date) => {
+                                    setSelectedDate(date);
+                                    setActiveStep("availability");
+                                    }}
+                                    onDone={(start, end) => {
+                                    setShowCalendar(false);
+                                    setSelectedRange({ start, end });
+                                    }}
+                                />
+                                ) : (
+                                <div className="flex items-center gap-2">
+                                <div
+                                className="p-3 border border-purple-200 rounded bg-white text-sm text-gray-700 cursor-pointer inline-block transition-shadow duration-200 hover:shadow-[0_0_0_4px_rgba(139,92,246,0.3)]"
+                                onClick={() => setShowCalendar(true)}
+                                >
+                                {selectedRange.start && selectedRange.end
+                                    ? `${selectedRange.start.getDate()}${getOrdinal(selectedRange.start.getDate())} ${selectedRange.start.toLocaleString('default', { month: 'long' })} - ${selectedRange.end.getDate()}${getOrdinal(selectedRange.end.getDate())} ${selectedRange.end.toLocaleString('default', { month: 'long' })}, ${selectedRange.end.getFullYear()}`
+                                    : selectedRange.start
+                                    ? `${selectedRange.start.getDate()}${getOrdinal(selectedRange.start.getDate())} ${selectedRange.start.toLocaleString('default', { month: 'long' })}, ${selectedRange.start.getFullYear()}`
+                                    : "Select availability"}
+                                </div>
+                                <button
+                                type="button"
+                                className="ml-2 px-3 py-1 text-xs rounded bg-purple-100 text-purple-700 hover:bg-purple-200 font-medium transition"
+                                onClick={() => setShowCalendar(true)}
+                                >
+                                Edit
+                                </button>
+                            </div>
+                            )}    
+
+                            {/* Security Deposit */}
+                            <div className="space-y-2 pt-4 border-t border-gray-200">
+                                <div className="flex items-center">
+                                    <Switch checked={securityDeposit} onCheckedChange={setSecurityDeposit} required />
+                                    <Label className="text-sm font-medium text-gray-700 ml-2">
+                                    Security Deposit
+                                    </Label>
+                                </div>
+                                <p className="text-xs text-gray-500 text-left">
+                                    Protect your item! Collect a refundable deposit from renters to cover potential damages.
+                                </p>
+                                {securityDeposit && (
+                                    <div className="relative mt-2 w-full md:w-1/2">
+                                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm pointer-events-none">₦</span>
+                                        <Input
+                                        type="number"
+                                        inputMode="numeric"
+                                        placeholder="Enter security deposit amount"
+                                        className="pl-7 w-full"
+                                        value={depositAmount}
+                                        onChange={e => setDepositAmount(e.target.value)}
+                                        />
+                                    </div>
+                                    )}
+                            </div>
 
                                 {/* Set Delivery Options */}
                                 <div className="space-y-3 pt-4 border-t border-gray-200">
@@ -518,115 +513,110 @@ export default function CreateListing({ onAddProduct }: CreateListingProps) {
                                     </div>
                                 </div>
 
-                                {/* Upload Image */}
-                                {/* <div className="space-y-3 pt-4 border-t border-gray-200">
-                                    <Label className="text-sm font-medium text-gray-700">Upload image</Label>
-                                    <div
-                                        className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer"
-                                        onClick={() => fileInputRef.current?.click()}>
-                                        <input
-                                            type="file"
-                                            accept="image/*"
-                                            ref={fileInputRef}
-                                            className="hidden"
-                                            onChange={handleFileChange}
-                                            required
-                                        />
-                                        <div className="flex flex-col items-center">
-                                            <div className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center mb-2">
-                                                <Upload className="h-5 w-5 text-gray-500" />
-                                            </div>
-                                            <p className="text-sm text-gray-600">
-                                                {selectedFile ? selectedFile.name : "Choose file or browse files"}
-                                            </p>
-                                            <p className="text-xs text-gray-400 mt-1">JPG, PNG up to 5MB</p>
-                                            {selectedFile && (
-                                                <img
-                                                    src={URL.createObjectURL(selectedFile)}
-                                                    alt="Preview"
-                                                    className="mt-2 mx-auto h-24 rounded"
-                                                />
-                                            )}
+                            {/* Upload Image */}
+                            {/* <div className="space-y-3 pt-4 border-t border-gray-200">
+                                <Label className="text-sm font-medium text-gray-700">Upload image</Label>
+                                <div
+                                    className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer"
+                                    onClick={() => fileInputRef.current?.click()}>
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        ref={fileInputRef}
+                                        className="hidden"
+                                        onChange={handleFileChange}
+                                        required
+                                    />
+                                    <div className="flex flex-col items-center">
+                                        <div className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center mb-2">
+                                            <Upload className="h-5 w-5 text-gray-500" />
                                         </div>
+                                        <p className="text-sm text-gray-600">
+                                            {selectedFile ? selectedFile.name : "Choose file or browse files"}
+                                        </p>
+                                        <p className="text-xs text-gray-400 mt-1">JPG, PNG up to 5MB</p>
+                                        {selectedFile && (
+                                            <img
+                                                src={URL.createObjectURL(selectedFile)}
+                                                alt="Preview"
+                                                className="mt-2 mx-auto h-24 rounded"
+                                            />
+                                        )}
                                     </div>
-                                </div> */}
-                                {/* Upload Image */}
-                                <div className="space-y-3 pt-4 border-t border-gray-200">
-                                    <Label className="text-sm font-medium text-gray-700">Upload images</Label>
-                                    <div
-                                        className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer"
-                                        onClick={() => fileInputRef.current?.click()}>
-                                        <input
-                                            type="file"
-                                            accept="image/*"
-                                            ref={fileInputRef}
-                                            className="hidden"
-                                            onChange={handleFileChange}
-                                            multiple // <-- Allow multiple files
-                                            required
-                                        />
-                                        <div className="flex flex-col items-center">
-                                            <div className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center mb-2">
-                                                <Upload className="h-5 w-5 text-gray-500" />
-                                            </div>
-                                            <p className="text-sm text-gray-600">
-                                                {selectedFiles.length > 0
-                                                    ? selectedFiles.map(file => file.name).join(", ")
-                                                    : "Choose file(s) or browse files"}
-                                            </p>
-                                            <p className="text-xs text-gray-400 mt-1">JPG, PNG up to 5MB each</p>
-                                            {/* Show previews for all selected images */}
-                                            <div className="flex flex-wrap gap-2 mt-2">
-                                                {selectedFiles.map((file, idx) => (
-                                                    <img
-                                                        key={idx}
-                                                        src={URL.createObjectURL(file)}
-                                                        alt={`Preview ${idx + 1}`}
-                                                        className="h-24 rounded"
-                                                    />
-                                                ))}
-                                            </div>
+                                </div>
+                            </div> */}
+                            {/* Upload Image */}
+                            <div className="space-y-3 pt-4 border-t border-gray-200">
+                                <Label className="text-sm font-medium text-gray-700">Upload images</Label>
+                                <div
+                                    className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer"
+                                    onClick={() => fileInputRef.current?.click()}>
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        ref={fileInputRef}
+                                        className="hidden"
+                                        onChange={handleFileChange}
+                                        multiple // <-- Allow multiple files
+                                        required
+                                    />
+                                    <div className="flex flex-col items-center">
+                                        <div className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center mb-2">
+                                            <Upload className="h-5 w-5 text-gray-500" />
+                                        </div>
+                                        <p className="text-sm text-gray-600">
+                                            {selectedFiles.length > 0
+                                                ? selectedFiles.map(file => file.name).join(", ")
+                                                : "Choose file(s) or browse files"}
+                                        </p>
+                                        <p className="text-xs text-gray-400 mt-1">JPG, PNG up to 5MB each</p>
+                                        {/* Show previews for all selected images */}
+                                        <div className="flex flex-wrap gap-2 mt-2">
+                                            {selectedFiles.map((file, idx) => (
+                                                <img
+                                                    key={idx}
+                                                    src={URL.createObjectURL(file)}
+                                                    alt={`Preview ${idx + 1}`}
+                                                    className="h-24 rounded"
+                                                />
+                                            ))}
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                {/* Form Buttons */}
+                            {/* Form Buttons */}
                                 <div className="flex justify-end space-x-3 pt-6 border-t border-gray-200">
-                                    <Button
-                                        type="button"
-                                        className="px-6 bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 hover:border-purple-400 transition-colors shadow-sm"
-                                        onClick={() => setShowPreview(true)}
-                                    >
-                                        Preview
+                                    <Button className="px-6 bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 hover:border-purple-400 transition-colors shadow-sm"
+                                    onClick={() => setShowPreview(true)}>
+                                    Preview
                                     </Button>
-                                    <Button
-                                        type="submit"
-                                        className="bg-purple-600 hover:bg-purple-700 text-white px-6"
-                                    >
-                                        Submit Listing
-                                    </Button>
+                                    <form onSubmit={handleSubmit}>
+                                        <Button type="submit"className="bg-purple-600 hover:bg-purple-700 text-white px-6">
+                                            Submit Listing
+                                        </Button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </form>
-            <PreviewModal 
-                isOpen={showPreview}
-                onClose={() => setShowPreview(false)}
-                itemName={itemName}
-                category={category}
-                location={location}
-                description={description}
-                priceDay={priceDay}
-                priceWeek={priceWeek}
-                priceMonth={priceMonth}
-                images={selectedFiles}
-                condition={conditionOptions}
-                availability={selectedRange}
-                securityDeposit={securityDeposit}
-                depositAmount={depositAmount}
-            />
+        <PreviewModal 
+            isOpen={showPreview}
+            onClose={() => setShowPreview(false)}
+            itemName={itemName}
+            category={category}
+            location={location}
+            description={description}
+            priceDay={priceDay}
+            priceWeek={priceWeek}
+            priceMonth={priceMonth}
+            images={selectedFiles}
+            condition={conditionOptions}
+            availability={selectedRange}
+            securityDeposit={securityDeposit}
+            depositAmount={depositAmount}
+        />
         </div>
 )
 }
