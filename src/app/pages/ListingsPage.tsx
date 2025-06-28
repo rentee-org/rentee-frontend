@@ -1,10 +1,33 @@
 import React, { useState } from "react";
 import Header from "../components/Dashboard/header";
 import SidebarPage from "../../app/pages/Sidebar";
-import Listings  from "@components/Dashboard/Listings"
+import Listings  from "@components/Dashboard/Listings";
+import CreateListing from "../components/Dashboard/Create-ListingsLayout";
 
-const ListingsPage: React.FC = () => {
-    const [sidebarOpen, setSidebarOpen] = useState(false);
+
+
+    const initialProducts = [
+        {
+            id: 1,
+            image: "/placeholder.svg",
+            price: "NGN 30,000",
+            period: "/day",
+            title: "Sony 35mm f1.4 g master fe lens - 35 mm",
+            description: "Rent this f1.4 g Master FE lens with stunning sharpness, wide angle lens with stunning sharpness...",
+        },
+        // ...other initial products
+    ];
+    const ListingsPage: React.FC = () => {
+        const [sidebarOpen, setSidebarOpen] = useState(false);
+        const [products, setProducts] = useState(initialProducts);
+
+        // Handler to add a new product
+    const handleAddProduct = (product: { id: number; image: string; price: string; period: string; title: string; description: string; }) => {
+        setProducts((prev) => [
+        { ...product, id: Date.now() }, // Assign a unique id
+        ...prev,
+        ]);
+    };
 
     return (
         <div className="min-h-screen w-full bg-white">
@@ -26,7 +49,8 @@ const ListingsPage: React.FC = () => {
                     </div>
                     {/* Dashboard Content */}
                     <div className="flex-1 overflow-y-auto">
-                        <Listings/> 
+                        <CreateListing onAddProduct={handleAddProduct} />
+                        <Listings products={products} />
                     </div>
                 </div>
             </div>
@@ -56,7 +80,8 @@ const ListingsPage: React.FC = () => {
             {/* Main content area for mobile */}
             <div className="lg:hidden flex flex-col min-h-screen]">
                 <div className="flex-1 overflow-y-auto p-4 md:p-6 bg-gray-50">
-                    <Listings /> 
+                    <CreateListing onAddProduct={handleAddProduct} />
+                    <Listings products={products} />
                 </div>
             </div>
         </div>
