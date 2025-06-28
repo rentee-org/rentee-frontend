@@ -12,6 +12,7 @@ import CalendarUI from "@ui/calendar-ui"
 import PreviewModal from "@components/Dashboard/PreviewModal"
 
 
+
 export default function CreateListing() {
     const [showPreview, setShowPreview] = useState(false);
     const [conditionOptions, setConditionOptions] = useState({
@@ -19,7 +20,7 @@ export default function CreateListing() {
     used: false,
     });
     const [activeStep, setActiveStep] = useState("details")
-    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+     const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [itemName, setItemName] = useState("");
     const [category, setCategory] = useState("");
@@ -31,8 +32,8 @@ export default function CreateListing() {
     });
     const deliveryComplete = (deliveryOptions.pickup || deliveryOptions.delivery) && Boolean(selectedFile);
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files && e.target.files[0]) {
-            setSelectedFile(e.target.files[0]);
+        if (e.target.files) {
+            setSelectedFiles(Array.from(e.target.files));
         }
     };
     
@@ -56,6 +57,8 @@ export default function CreateListing() {
 
     const [depositAmount, setDepositAmount] = useState("");
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+    const [showCalendar, setShowCalendar] = useState(true);
+    const [selectedRange, setSelectedRange] = useState<{ start: Date | null; end: Date | null }>({ start: null, end: null });
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -71,17 +74,24 @@ export default function CreateListing() {
             !priceWeek.trim() ||
             !priceMonth.trim() ||
             !selectedDate ||
-            !selectedFile
+            !selectedFiles
         ) {
-            alert("Please fill in all required fields before submitting.");
-            //replace with notification system finer than this alert later
-            return;
+    // function getOrdinal removed; see below for correct placement
         }
 
         // If all fields are filled, proceed with submission logic
         // ...submit your form here...
     };
 
+    function getOrdinal(n: number) {
+        if (n > 3 && n < 21) return "th";
+        switch (n % 10) {
+            case 1: return "st";
+            case 2: return "nd";
+            case 3: return "rd";
+            default: return "th";
+        }
+    }
 
     return (
         <div className="min-h-screen bg-gray-50 p-6">
@@ -393,13 +403,39 @@ export default function CreateListing() {
 
                             {/* Availability */}
                             <h3 className="text-sm font-medium text-black-700">Availability</h3>
-                                <CalendarUI 
-                                value={selectedDate}
-                                onChange={(date: Date) => {
+                                {showCalendar ? (
+                                <CalendarUI
+                                    value={selectedDate}
+                                    onChange={(date: Date) => {
                                     setSelectedDate(date);
                                     setActiveStep("availability");
-                                }}
+                                    }}
+                                    onDone={(start, end) => {
+                                    setShowCalendar(false);
+                                    setSelectedRange({ start, end });
+                                    }}
                                 />
+                                ) : (
+                                <div className="flex items-center gap-2">
+                                <div
+                                className="p-3 border border-purple-200 rounded bg-white text-sm text-gray-700 cursor-pointer inline-block transition-shadow duration-200 hover:shadow-[0_0_0_4px_rgba(139,92,246,0.3)]"
+                                onClick={() => setShowCalendar(true)}
+                                >
+                                {selectedRange.start && selectedRange.end
+                                    ? `${selectedRange.start.getDate()}${getOrdinal(selectedRange.start.getDate())} ${selectedRange.start.toLocaleString('default', { month: 'long' })} - ${selectedRange.end.getDate()}${getOrdinal(selectedRange.end.getDate())} ${selectedRange.end.toLocaleString('default', { month: 'long' })}, ${selectedRange.end.getFullYear()}`
+                                    : selectedRange.start
+                                    ? `${selectedRange.start.getDate()}${getOrdinal(selectedRange.start.getDate())} ${selectedRange.start.toLocaleString('default', { month: 'long' })}, ${selectedRange.start.getFullYear()}`
+                                    : "Select availability"}
+                                </div>
+                                <button
+                                type="button"
+                                className="ml-2 px-3 py-1 text-xs rounded bg-purple-100 text-purple-700 hover:bg-purple-200 font-medium transition"
+                                onClick={() => setShowCalendar(true)}
+                                >
+                                Edit
+                                </button>
+                            </div>
+                            )}    
 
                             {/* Security Deposit */}
                             <div className="space-y-2 pt-4 border-t border-gray-200">
@@ -424,7 +460,7 @@ export default function CreateListing() {
                                         onChange={e => setDepositAmount(e.target.value)}
                                         />
                                     </div>
-)}
+                                )}
                             </div>
 
                             {/* Set Delivery Options */}
@@ -459,7 +495,7 @@ export default function CreateListing() {
                             </div>
 
                             {/* Upload Image */}
-                            <div className="space-y-3 pt-4 border-t border-gray-200">
+                            {/* <div className="space-y-3 pt-4 border-t border-gray-200">
                                 <Label className="text-sm font-medium text-gray-700">Upload image</Label>
                                 <div
                                     className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer"
@@ -487,6 +523,45 @@ export default function CreateListing() {
                                                 className="mt-2 mx-auto h-24 rounded"
                                             />
                                         )}
+                                    </div>
+                                </div>
+                            </div> */}
+                            {/* Upload Image */}
+                            <div className="space-y-3 pt-4 border-t border-gray-200">
+                                <Label className="text-sm font-medium text-gray-700">Upload images</Label>
+                                <div
+                                    className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer"
+                                    onClick={() => fileInputRef.current?.click()}>
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        ref={fileInputRef}
+                                        className="hidden"
+                                        onChange={handleFileChange}
+                                        multiple // <-- Allow multiple files
+                                        required
+                                    />
+                                    <div className="flex flex-col items-center">
+                                        <div className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center mb-2">
+                                            <Upload className="h-5 w-5 text-gray-500" />
+                                        </div>
+                                        <p className="text-sm text-gray-600">
+                                            {selectedFiles.length > 0
+                                                ? selectedFiles.map(file => file.name).join(", ")
+                                                : "Choose file(s) or browse files"}
+                                        </p>
+                                        <p className="text-xs text-gray-400 mt-1">JPG, PNG up to 5MB each</p>
+                                        {/* Show previews for all selected images */}
+                                        <div className="flex flex-wrap gap-2 mt-2">
+                                            {selectedFiles.map((file, idx) => (
+                                                <img
+                                                    key={idx}
+                                                    src={URL.createObjectURL(file)}
+                                                    alt={`Preview ${idx + 1}`}
+                                                    className="h-24 rounded"
+                                                />
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

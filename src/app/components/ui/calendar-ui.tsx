@@ -35,8 +35,9 @@ import { cn } from "@lib/utils"
     type CalendarUIProps = {
     value: Date | null;
     onChange: (date: Date) => void;
+    onDone?: (start: Date | null, end: Date | null) => void; 
     };
-    export default function CalendarUI({ value, onChange }: CalendarUIProps) {
+    export default function CalendarUI({ value, onChange, onDone }: CalendarUIProps) {
     const [currentDate, setCurrentDate] = useState(new Date())
     const [selectedStartDate, setSelectedStartDate] = useState<Date | null>(null)
     const [selectedEndDate, setSelectedEndDate] = useState<Date | null>(null)
@@ -294,7 +295,21 @@ import { cn } from "@lib/utils"
                     >
                         Cancel
                     </Button>
-                    <Button size="sm">Done</Button>
+
+                    <Button
+                        size="sm"
+                        disabled={!(selectedStartDate && selectedEndDate)}
+                        className={
+                            selectedStartDate && selectedEndDate
+                            ? "bg-purple-600 text-white hover:bg-purple-700 cursor-pointer"
+                            : "bg-gray-200 text-gray-400 cursor-not-allowed"
+                        }
+                        onClick={() => {
+                            if (onDone && selectedStartDate && selectedEndDate) onDone(selectedStartDate, selectedEndDate);
+                        }}
+                        >
+                        Done
+                    </Button>
                     </div>
                 </div>
                 )}
