@@ -13,7 +13,11 @@ import PreviewModal from "@components/Dashboard/PreviewModal"
 
 
 
-export default function CreateListing({ onAddProduct }) {
+interface CreateListingProps {
+    onAddProduct: (product: any) => void; // Replace 'any' with a more specific type if available
+}
+
+export default function CreateListing({ onAddProduct }: CreateListingProps) {
     const [showPreview, setShowPreview] = useState(false);
     const [conditionOptions, setConditionOptions] = useState({
     new: false,
@@ -587,20 +591,25 @@ export default function CreateListing({ onAddProduct }) {
 
                             {/* Form Buttons */}
                                 <div className="flex justify-end space-x-3 pt-6 border-t border-gray-200">
-                                    <Button className="px-6 bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 hover:border-purple-400 transition-colors shadow-sm"
-                                    onClick={() => setShowPreview(true)}>
-                                    Preview
+                                    <Button
+                                        className="px-6 bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 hover:border-purple-400 transition-colors shadow-sm"
+                                        type="button"
+                                        onClick={() => setShowPreview(true)}
+                                    >
+                                        Preview
                                     </Button>
-                                    <form onSubmit={handleSubmit}>
-                                        <Button type="submit"className="bg-purple-600 hover:bg-purple-700 text-white px-6">
-                                            Submit Listing
-                                        </Button>
-                                    </form>
+                                    <Button
+                                        type="submit"
+                                        className="bg-purple-600 hover:bg-purple-700 text-white px-6"
+                                    >
+                                        Submit Listing
+                                    </Button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </form>
         <PreviewModal 
             isOpen={showPreview}
             onClose={() => setShowPreview(false)}
