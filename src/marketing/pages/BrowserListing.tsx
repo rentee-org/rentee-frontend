@@ -5,6 +5,11 @@ import User from "../components/constants/Index";
 import ProductGrid from "../components/Categories/ProductGrid";
 
 
+
+
+
+
+
 function BrowserListing() {
   return (
        <div className="flex flex-col items-center justify-between px-4 md:px-16 py-2 w-full bg-gray-50 m-auto">
@@ -15,7 +20,14 @@ function BrowserListing() {
           </h4>
         </div>
         <div>
-          <Link to="/all-listings" className="px-4 md:px-6 text-xs md:text-lg py-2 rounded-sm bg-white-600 text-[#5400e6] border-2 font-avenir">
+          <Link
+
+            to="/all-listings"
+
+           
+
+            className="px-4 md:px-6 text-xs md:text-lg py-2 rounded-sm bg-white-600 text-[#5400e6] border-2 font-avenir"
+          >
             See All Category
           </Link>
         </div>

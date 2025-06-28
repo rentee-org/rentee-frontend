@@ -2,14 +2,14 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@components/ui/card"
 import { Search } from "lucide-react"
-import cameraImg from "@assets/All-Product/Frame1.png"
+import cameraImg from "@/assets/camera.png"
 import { Link } from "react-router-dom"
 
 export default function Component() {
     const products = [
         {
         id: 1,
-        image: cameraImg,
+        image: cameraImg ,
         price: "NGN 30,000",
         period: "/day",
         title: "Sony 35mm f1.4 g master fe lens - 35 mm",

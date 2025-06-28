@@ -15,6 +15,7 @@ import AllListings from './marketing/pages/AllListing';
 import Order from './app/pages/OrderPage';
 import Settings from './app/pages/SettingsLayout'
 
+
 function App() {
   return (
     <Router>
@@ -37,8 +38,9 @@ function App() {
         <Route path='/bookings' element={<Bookings />} />
         <Route path='/orders' element={<Order />} />
         <Route path='/notification' element={<NotificationPage />} />
+        <Route path='/all-listings' element={<AllListings />} />
         <Route path='/settings' element={<Settings />} />
-
+        {/* Add more routes as needed */}
       </Routes>
     </Router>
   ); 
