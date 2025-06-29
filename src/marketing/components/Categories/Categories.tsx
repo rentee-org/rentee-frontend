@@ -13,12 +13,15 @@ import { BiChevronRight } from "react-icons/bi";
 import Calender from "../layout/Calender";
 import Navbar from "../layout/Navbar";
 import Footer from "../layout/Footer";
+import type { SetStateAction } from "react";
 
 const Categories = () => {
   return (
     <div>
       <div className=" py-5 mx-auto flex flex-col  max-w-7xl justify-between">
-        <Navbar />
+        <Navbar setShowSignUp={function (value: SetStateAction<boolean>): void {
+          throw new Error("Function not implemented.");
+        } } />
         <div className="flex items-center justify-start gap-2 py-5 mt-10 pl-5 md:pl-12">
           <div className="flex items-center gap-2">
             <p className="text-sm md:text-base text-[#c7c7c7] ">All categories </p>

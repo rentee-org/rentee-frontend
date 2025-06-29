@@ -11,6 +11,8 @@ interface NavbarProps {
   setShowSignUp: Dispatch<SetStateAction<boolean>>;
 }
 
+
+
 const Navbar = ({ setShowSignUp }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
