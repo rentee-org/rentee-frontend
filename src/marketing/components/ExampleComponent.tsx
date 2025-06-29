@@ -1,6 +1,6 @@
-import { useAuth, usePosts } from "../hooks/use-api";
-import { useAppStore } from "../store/app-store";
-import { useAuthStore } from "../store/auth-store";
+import { useAuth, usePosts } from "@/hooks/use-api";
+import { useAppStore } from "../../store/app-store";
+import { useAuthStore } from "../../store/auth-store";
 
 // Example usage in a component
 export const ExampleComponent = () => {
