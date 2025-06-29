@@ -19,7 +19,7 @@ const Categories = () => {
   return (
     <div>
       <div className=" py-5 mx-auto flex flex-col  max-w-7xl justify-between">
-        <Navbar setShowSignUp={function (value: SetStateAction<boolean>): void {
+        <Navbar setShowSignUp={function (_value: SetStateAction<boolean>): void {
           throw new Error("Function not implemented.");
         } } />
         <div className="flex items-center justify-start gap-2 py-5 mt-10 pl-5 md:pl-12">

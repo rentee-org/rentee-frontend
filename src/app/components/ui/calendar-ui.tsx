@@ -36,12 +36,12 @@ import { cn } from "@lib/utils"
     value: Date | null;
     onChange: (date: Date) => void;
     };
-    export default function CalendarUI({ value, onChange }: CalendarUIProps) {
+    export default function CalendarUI({value: _value, onChange }: CalendarUIProps) {
     const [currentDate, setCurrentDate] = useState(new Date())
     const [selectedStartDate, setSelectedStartDate] = useState<Date | null>(null)
     const [selectedEndDate, setSelectedEndDate] = useState<Date | null>(null)
     const [selectedPreset, setSelectedPreset] = useState("custom")
-    const [isSelectingRange, setIsSelectingRange] = useState(false)
+    const [_isSelectingRange, setIsSelectingRange] = useState(false)
 
     const today = new Date()
     const currentMonth = currentDate.getMonth()
