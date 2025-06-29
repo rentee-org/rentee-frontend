@@ -1,8 +1,7 @@
 import { useCallback } from "react";
 import {
   authService,
-  postsService,
-  usersService,
+  postsService
 } from "../services/api-service";
 import { useAuthStore } from "../store/auth-store";
 import { useAppStore } from "../store/app-store";

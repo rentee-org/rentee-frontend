@@ -1,5 +1,3 @@
-// import { Check } from "lucide-react";
-import React from "react";
 import Data from "../components/constants/Data";
 import User from "../components/constants/Index";
 import ProductGrid from "../components/Categories/ProductGrid";
