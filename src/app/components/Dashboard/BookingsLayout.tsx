@@ -50,7 +50,6 @@
     }
 
     export default function BookingCalendar() {
-    const today = new Date();
     const [selectedBooking, setSelectedBooking] = useState<BookingSlot | null>(null)
     const [dialogOpen, setDialogOpen] = useState(false);
     const [currentMonth, setCurrentMonth] = useState(today.getMonth());
@@ -69,6 +68,7 @@
         ...Array.from({ length: daysInMonth }, (_, i) => i + 1)
     ];
 
+
     const getColorClasses = (color: string) => {
         switch (color) {
         case "teal":
@@ -86,23 +86,6 @@
         setSelectedBooking(booking)
         setDialogOpen(true);
     }
-    const handlePrevMonth = () => {
-        if (currentMonth === 0) {
-            setCurrentMonth(11);
-            setCurrentYear(currentYear - 1);
-        } else {
-            setCurrentMonth(currentMonth - 1);
-        }
-    };
-
-    const handleNextMonth = () => {
-        if (currentMonth === 11) {
-            setCurrentMonth(0);
-            setCurrentYear(currentYear + 1);
-        } else {
-            setCurrentMonth(currentMonth + 1);
-        }
-    };
 
     return (
         <div className="p-4 max-w-7xl mx-auto">
@@ -113,7 +96,6 @@
 
             {/* Month Navigation */}
             <div className="flex items-center justify-between mb-4">
-
                 <div className="flex items-center gap-2">
                     <Button variant="outline" size="icon" className="h-8 w-8 border-none" onClick={handlePrevMonth}>
                         <ChevronLeft className="h-4 w-4" />

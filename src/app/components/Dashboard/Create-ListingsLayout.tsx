@@ -7,14 +7,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Textarea } from "@/app/components/ui/textarea";
 import { Checkbox } from "@/app/components/ui/checkbox";
 import { Switch } from "@/app/components/ui/switch"
-
 import { Upload } from "lucide-react"
 import CalendarUI from "@ui/calendar-ui"
-import PreviewModal from "@components/Dashboard/PreviewModal"
 
 
 export default function CreateListing() {
-    const [showPreview, setShowPreview] = useState(false);
+    // const [showPreview, setShowPreview] = useState(false);
     const [conditionOptions, setConditionOptions] = useState({
     new: false,
     used: false,
@@ -234,7 +232,6 @@ export default function CreateListing() {
                             {/* Set Price */}
                             <div className="space-y-2">
                                 <Label className="text-sm font-medium text-gray-700">Set Price</Label>
-
                                 {/* Day Price */}
                                 <div className="flex items-center w-full">
                                     <div className="relative w-1/2 md:w-1/4">
@@ -408,8 +405,7 @@ export default function CreateListing() {
 
                             {/* Form Buttons */}
                             <div className="flex justify-end space-x-3 pt-6 border-t border-gray-200">
-                                <Button className="px-6" onClick={() => setShowPreview(true)}>
-
+                                <Button className="px-6">
                                 Preview
                                 </Button>
                                 <Button type="submit"className="bg-purple-600 hover:bg-purple-700 text-white px-6">
@@ -421,11 +417,6 @@ export default function CreateListing() {
                     </div>
                 </div>
             </div>
-        <PreviewModal 
-        isOpen={showPreview} 
-        onClose={
-            () => setShowPreview(false)
-        } />
         </div>
 )
 }

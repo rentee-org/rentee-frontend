@@ -3,7 +3,6 @@ import { Eye, EyeOff, Check } from "lucide-react"
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "@assets/Rentee Final Logo 1.png";
 
-
 export interface AuthRequest {
     firstname?: string;
     lastname?: string;
@@ -41,7 +40,6 @@ export interface AuthResponse {
         email.trim() !== "" &&
         password.trim() !== "" &&
         confirmPassword.trim() !== "";
-
     const [error, setError] = useState<string | null>(null)
     const [success, setSuccess] = useState<string | null>(null)
 
@@ -249,6 +247,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                         </div>
                         {error && <div className="text-red-500 text-sm">{error}</div>}
                         {success && <div className="text-green-600 text-sm">{success}</div>}
+
                         <button
                             type="submit"
                             className={`w-full py-3 rounded-md font-medium mt-4
@@ -258,7 +257,6 @@ const handleSubmit = async (e: React.FormEvent) => {
                                 }
                             `}
                             disabled={!isFormFilled || isLoading}>
-
                             {isLoading ? "Signing up..." : "Sign up"}
                         </button>
                     </form> 
