@@ -1,7 +1,6 @@
-import Data from "../components/constants/Data";
+import Data from '../components/constants/data'
 import User from "../components/constants/Index";
 import ProductGrid from "../components/Categories/ProductGrid";
-
 
 const dateOptions = [
   "Recent",
@@ -109,14 +108,14 @@ const AllListing = () => {
       </div>
 
       <div className="">
-         <div className="">
-            <h3 className=" font-bold ">
-              All Listings
-            </h3>
-              <ProductGrid products={Data} users={User} />
-              <ProductGrid products={Data} users={User} />
-              <ProductGrid products={Data} users={User} />
-          </div>
+        <div className="">
+          <h3 className=" font-bold ">
+            All Listings
+          </h3>
+          <ProductGrid products={Data} users={User} />
+          <ProductGrid products={Data} users={User} />
+          <ProductGrid products={Data} users={User} />
+        </div>
       </div>
     </div>
   );

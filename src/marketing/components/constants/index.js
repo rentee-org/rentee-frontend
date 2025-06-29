@@ -1,11 +1,10 @@
-import user from "@assets/images/Rentee-user.png"
-
+import userImg from "@assets/images/Rentee-user.png"
 
  const UserProfile = [
     {
         id: 1,
         name: "onyekachi",
-        img: user,
+        img: userImg,
     },
     // {
     //     id: 2,

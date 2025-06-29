@@ -2,7 +2,6 @@ import Frame1 from "@assets/All-Product/Frame1.png";
 import Frame2 from "@assets/All-Product/Frame2.png";
 import Frame3 from "@assets/All-Product/Frame3.png"; 
 
-
 const ProductItem = [
   {
     id: 1,
@@ -105,7 +104,5 @@ const ProductItem = [
 
 
 ];
-
-
 
 export default ProductItem;
