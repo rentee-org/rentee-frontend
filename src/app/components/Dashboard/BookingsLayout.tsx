@@ -36,6 +36,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@components/ui/avatar"
     export default function BookingCalendar() {
     const today = new Date()
     const [selectedBooking, setSelectedBooking] = useState<BookingSlot | null>(null)
+
     const [dialogOpen, setDialogOpen] = useState(false)
     const [currentMonth, setCurrentMonth] = useState(today.getMonth())
     const [currentYear, setCurrentYear] = useState(today.getFullYear())
@@ -93,6 +94,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@components/ui/avatar"
         <div className="flex items-center justify-between mb-6">
             <h1 className="text-2xl font-semibold">Bookings</h1>
         </div>
+
 
         {/* Month Navigation */}
         <div className="flex items-center justify-between mb-4">
