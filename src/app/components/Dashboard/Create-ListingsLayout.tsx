@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Textarea } from "@/app/components/ui/textarea";
 import { Checkbox } from "@/app/components/ui/checkbox";
 import { Switch } from "@/app/components/ui/switch"
-import { ChevronLeft, ChevronRight, Upload } from "lucide-react"
+import { Upload } from "lucide-react"
 import CalendarUI from "@ui/calendar-ui"
 
 
@@ -53,18 +53,11 @@ export default function CreateListing() {
         priceMonth.trim()
     );
 
-    // const availabilityOptions = 
-    // [
-    //     { label: "Today", value: "today" },
-    //     { label: "Yesterday", value: "yesterday" },
-    //     { label: "Last week", value: "last-week" },
-    //     { label: "Last 7 days", value: "last-7-days" },
-    //     { label: "This month", value: "this-month" },
-    //     { label: "Last 30 days", value: "last-30-days" },
-    //     { label: "Custom range", value: "custom-range" },
-    // ]
-    // const [selectedAvailability, setSelectedAvailability] = useState("custom-range")
     const [depositAmount, setDepositAmount] = useState("");
+    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+
+
+
     return (
         <div className="min-h-screen bg-gray-50 p-6">
             <div className="mb-4 text-left px-4">
@@ -100,8 +93,12 @@ export default function CreateListing() {
                             </div>
 
                             <div className="flex items-center space-x-2">
-                                <RadioGroupItem value="availability" id="availability" />
-                                <Label htmlFor="availability" className="text-sm font-normal text-gray-700">
+                                <RadioGroupItem 
+                                value="availability" 
+                                id="availability"
+                                className={selectedDate ? "border-purple-500 bg-purple-500 data-[state=checked]:bg-purple-500 data-[state=checked]:text-white" : ""}/>
+                                <Label htmlFor="availability"
+                                className="text-sm font-normal text-gray-700">
                                 Availability
                                 </Label>
                             </div>
@@ -235,67 +232,86 @@ export default function CreateListing() {
                             {/* Set Price */}
                             <div className="space-y-2">
                                 <Label className="text-sm font-medium text-gray-700">Set Price</Label>
+                                {/* Day Price */}
                                 <div className="flex items-center w-full">
                                     <div className="relative w-1/2 md:w-1/4">
-                                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm pointer-events-none">₦</span>
-                                        <Input
+                                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm pointer-events-none">₦</span>
+                                    <Input
                                         type="number"
                                         inputMode="numeric"
                                         placeholder="20,000"
                                         className="pl-7 rounded-md w-full"
                                         value={priceDay}
-                                        onChange={e => setPriceDay(e.target.value)}
-                                        />
+                                        onChange={e => {
+                                        const value = e.target.value;
+                                        setPriceDay(value);
+                                        // Only update if value is a valid number
+                                        const num = parseFloat(value.replace(/,/g, ""));
+                                        if (!isNaN(num)) {
+                                            setPriceWeek((num * 7).toString());
+                                            setPriceMonth((num * 7 * 4).toString());
+                                        } else {
+                                            setPriceWeek("");
+                                            setPriceMonth("");
+                                        }
+                                        }}
+                                    />
                                     </div>
                                     <span className="inline-block bg-white px-2 py-2 text-sm text-gray-500">
-                                        /day
+                                    /day
                                     </span>
                                 </div>
 
+                                {/* Week Price */}
                                 <div className="flex items-center w-full">
                                     <div className="relative w-1/2 md:w-1/4">
-                                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm pointer-events-none">₦</span>
-                                        <Input
+                                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm pointer-events-none">₦</span>
+                                    <Input
                                         type="number"
                                         inputMode="numeric"
                                         placeholder="140,000"
-                                        className="pl-7 rounded-md w-full bg-gray-400"
+                                        className="pl-7 rounded-md w-full bg-gray-100"
                                         value={priceWeek}
-                                        onChange={e => setPriceWeek(e.target.value)}
-                                        />
+                                        readOnly
+                                    />
                                     </div>
                                     <span className="inline-block bg-white px-2 py-2 text-sm text-gray-500">
-                                        /week
+                                    /week
                                     </span>
                                 </div>
 
+                                {/* Month Price */}
                                 <div className="flex items-center w-full">
                                     <div className="relative w-1/2 md:w-1/4">
-                                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm pointer-events-none">₦</span>
-                                        <Input
+                                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm pointer-events-none">₦</span>
+                                    <Input
                                         type="number"
                                         inputMode="numeric"
                                         placeholder="140,000"
-                                        className="pl-7 rounded-md w-full bg-gray-400"
+                                        className="pl-7 rounded-md w-full bg-gray-100"
                                         value={priceMonth}
-                                        onChange={e => setPriceMonth(e.target.value)}
-                                        />
+                                        readOnly
+                                    />
                                     </div>
                                     <span className="inline-block bg-white px-2 py-2 text-sm text-gray-500">
-                                        /month
+                                    /month
                                     </span>
                                 </div>
 
-                                <p className="text-sm text-gray-600 mt-1">Here’s your recommended weekly and monthly price!
-                                    <br /> you can choose to edit it.</p>
+                                <p className="text-sm text-gray-600 mt-1">
+                                    Here’s your recommended weekly and monthly price!
+                                    <br /> you can choose to edit it.
+                                </p>
                                 <div className="mt-4">
-                                <Button className="bg-purple-600 hover:bg-purple-700 text-white">Recommended Price</Button>
+                                    <Button className="bg-purple-600 hover:bg-purple-700 text-white">Recommended Price</Button>
                                 </div>
                             </div>
 
                             {/* Availability */}
                             <h3 className="text-sm font-medium text-black-700">Availability</h3>
-                                <CalendarUI />
+                                <CalendarUI value={null} onChange={function (date: Date): void {
+                                throw new Error("Function not implemented.")
+                            } } />
 
                             {/* Security Deposit */}
                             <div className="space-y-2 pt-4 border-t border-gray-200">
@@ -392,7 +408,9 @@ export default function CreateListing() {
                                 <Button className="px-6">
                                 Preview
                                 </Button>
-                                <Button className="bg-purple-600 hover:bg-purple-700 text-white px-6">Submit Listing</Button>
+                                <Button type="submit"className="bg-purple-600 hover:bg-purple-700 text-white px-6">
+                                    Submit Listing
+                                </Button>
                             </div>
 
                         </div>

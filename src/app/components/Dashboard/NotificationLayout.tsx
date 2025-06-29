@@ -80,33 +80,33 @@ export default function NotificationPage() {
         <div className="max-w-6xl mx-auto">
             {/* Header */}
             <div className="flex items-center justify-between mb-6">
-            <div>
-                <h1 className="text-2xl font-semibold text-gray-900">Notification</h1>
-                <p className="text-sm text-gray-500 mt-1">
-                Stay updated on business, products and data when new orders come in.
-                </p>
-            </div>
-            <div className="flex gap-2">
-                {notifications.length > 0 && (
-                <>
-                    <Button variant="outline" onClick={clearNotifications} className="text-sm">
-                    Clear all
+                <div>
+                    <h1 className="text-2xl font-semibold text-gray-900">Notification</h1>
+                    <p className="text-sm text-gray-500 mt-1">
+                    Stay updated on business, products and data when new orders come in.
+                    </p>
+                </div>
+                <div className="flex gap-2">
+                    {notifications.length > 0 && (
+                    <>
+                        <Button variant="outline" onClick={clearNotifications} className="text-sm">
+                        Clear all
+                        </Button>
+                        <Button
+                        onClick={markAllAsRead}
+                        className="bg-purple-600 hover:bg-purple-700 text-white text-sm"
+                        disabled={unreadCount === 0}
+                        >
+                        Mark as read
+                        </Button>
+                    </>
+                    )}
+                    {notifications.length === 0 && (
+                    <Button onClick={addSampleNotifications} className="bg-purple-600 hover:bg-purple-700 text-white text-sm">
+                        Add Sample Notifications
                     </Button>
-                    <Button
-                    onClick={markAllAsRead}
-                    className="bg-purple-600 hover:bg-purple-700 text-white text-sm"
-                    disabled={unreadCount === 0}
-                    >
-                    Mark as read
-                    </Button>
-                </>
-                )}
-                {notifications.length === 0 && (
-                <Button onClick={addSampleNotifications} className="bg-purple-600 hover:bg-purple-700 text-white text-sm">
-                    Add Sample Notifications
-                </Button>
-                )}
-            </div>
+                    )}
+                </div>
             </div>
 
             {/* Search and Filter */}
