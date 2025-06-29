@@ -1,7 +1,6 @@
-// import { Check } from "lucide-react";
-import Data from "../components/constants/Data";
-import User from "../components/constants/Index";
-import ProductGrid from "../components/Categories/ProductGrid";
+import Data from "../../marketing/components/constants/Data";
+import User from "../../marketing/components/constants/Index";
+import ProductGrid from "../../marketing/components/Categories/ProductGrid";
 
 
 const dateOptions = [
