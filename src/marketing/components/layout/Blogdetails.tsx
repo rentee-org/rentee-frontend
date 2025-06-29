@@ -1,14 +1,16 @@
-import React from 'react'
 import { BiArrowBack } from "react-icons/bi";
 import update1 from "../../../assets/images/update1.png";
 import productImg from "../../../assets/images/productImg.png";
 import Navbar from '../../components/layout/Navbar';
 import Footer from '../../components/layout/Footer';
+import type { SetStateAction } from "react";
 
 const Blogdetails = () => {
   return (
     <div>
-        <Navbar />
+        <Navbar setShowSignUp={function (value: SetStateAction<boolean>): void {
+              throw new Error("Function not implemented.");
+          } } />
         <article className="max-w-7xl mx-auto px-4 py-8">
             <div className="flex flex-col mx-auto mt-20 ">
                 <div className="mx-auto md:mx-0 text-center">
