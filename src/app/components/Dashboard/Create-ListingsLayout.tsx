@@ -58,6 +58,7 @@ export default function CreateListing() {
 
 
 
+
     return (
         <div className="min-h-screen bg-gray-50 p-6">
             <div className="mb-4 text-left px-4">
