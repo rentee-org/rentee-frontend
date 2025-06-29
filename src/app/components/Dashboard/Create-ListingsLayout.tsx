@@ -59,7 +59,11 @@ export default function CreateListing({ onAddProduct }: CreateListingProps) {
 
     const [depositAmount, setDepositAmount] = useState("");
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-
+    const [isCalendarVisible, setIsCalendarVisible] = useState(true);
+    const [selectedDateRange, setSelectedDateRange] = useState<{ startDate: Date | null; endDate: Date | null }>({ startDate: null, endDate: null });
+    const handleDoneClick = () => {
+        setIsCalendarVisible(false);
+    };
 
 
     return (
@@ -133,7 +137,7 @@ export default function CreateListing({ onAddProduct }: CreateListingProps) {
                     {/* Right content area */}
                     <div className="flex-1 bg-white rounded-2xl border border-gray-200 p-6">
                         <div className="space-y-6">
-                            {/* Item Name */}
+                            {/* Itemb Name */}
                             <div className="space-y-2">
                                 <Label htmlFor="itemName" className="text-sm font-medium text-gray-700">
                                 Item Name
@@ -313,9 +317,24 @@ export default function CreateListing({ onAddProduct }: CreateListingProps) {
 
                             {/* Availability */}
                             <h3 className="text-sm font-medium text-black-700">Availability</h3>
-                                <CalendarUI value={null} onChange={function (_date: Date): void {
-                                throw new Error("Function not implemented.")
-                            } } />
+                                <CalendarUI
+                                    value={selectedDate}
+                                    onChange={(date) => setSelectedDate(date)}
+                                    onDateRangeSelect={(startDate, endDate) => {
+                                        setSelectedDate(startDate);
+                                        setSelectedDate(endDate);
+                                    }}
+                                    handleDoneClick={handleDoneClick}
+                                />
+                                    {!isCalendarVisible && (
+                                        <div>
+                                            <span>
+                                            {selectedDateRange.startDate?.toLocaleString("default", { month: "long", day: "numeric", year: "numeric" })} -{" "}
+                                            {selectedDateRange.endDate?.toLocaleString("default", { month: "long", day: "numeric", year: "numeric" })}
+                                            </span>
+                                            <button onClick={() => setIsCalendarVisible(true)}>Edit</button>
+                                        </div>
+                                        )}
 
                             {/* Security Deposit */}
                             <div className="space-y-2 pt-4 border-t border-gray-200">
