@@ -8,7 +8,7 @@ import type { SetStateAction } from "react";
 const Blogdetails = () => {
   return (
     <div>
-        <Navbar setShowSignUp={function (value: SetStateAction<boolean>): void {
+        <Navbar setShowSignUp={function (_value: SetStateAction<boolean>): void {
               throw new Error("Function not implemented.");
           } } />
         <article className="max-w-7xl mx-auto px-4 py-8">

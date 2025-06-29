@@ -11,7 +11,7 @@ const Blog = () => {
 
   return (
     <div>
-      <Navbar setShowSignUp={function (value: react.SetStateAction<boolean>): void {
+      <Navbar setShowSignUp={function (_value: react.SetStateAction<boolean>): void {
         throw new Error("Function not implemented.");
       } } />
       <article>
