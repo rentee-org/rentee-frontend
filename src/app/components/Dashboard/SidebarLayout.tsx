@@ -63,8 +63,18 @@ const SidebarLayout: React.FC = () => {
                                 active={location.pathname === '/orders'}  
                                 collapsed={collapsed} 
                                 to={'/orders'} />
-                            <SidebarItem icon={<Calendar size={iconSize} />} label="Bookings" collapsed={collapsed} to={'/bookings'} />
-                            <SidebarItem icon={<Bell size={iconSize} />} label="Notification" collapsed={collapsed} to={'/notification'} />
+                            <SidebarItem 
+                            icon={<Calendar size={iconSize} />} 
+                            label="Bookings" 
+                            active={location.pathname === '/bookings'} 
+                            collapsed={collapsed} 
+                            to={'/bookings'} />
+                            <SidebarItem 
+                            icon={<Bell size={iconSize} />} 
+                            label="Notification"
+                            active={location.pathname === '/notification'} 
+                            collapsed={collapsed} 
+                            to={'/notification'} />
                         </div>
                     </div>
                 </div>
@@ -73,8 +83,18 @@ const SidebarLayout: React.FC = () => {
                 <div className="mb-6 px-4">
                     {!collapsed && <p className="text-xs text-gray-500 uppercase mb-4">Others</p>}
                     <div className="space-y-2">
-                        <SidebarItem icon={<Settings size={iconSize} />} label="Settings" collapsed={collapsed} to={''} />
-                        <SidebarItem icon={<HelpCircle size={iconSize} />} label="Help Center" collapsed={collapsed} to={''} />
+                        <SidebarItem 
+                        icon={<Settings size={iconSize} />} 
+                        label="Settings" 
+                        active={location.pathname === '/settings'}
+                        collapsed={collapsed} 
+                        to={'/settings'} />
+                        <SidebarItem 
+                        icon={<HelpCircle size={iconSize} />}
+                        label="Help Center" 
+                        collapsed={collapsed} 
+                        active={location.pathname === ''}
+                        to={''} />
                     </div>
                 </div>
             </div>
@@ -95,13 +115,14 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ icon, label, active, collapse
     return (
         <Link
             to={to}
-            className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium cursor-pointer transition-colors
+            className={`group flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium cursor-pointer transition-colors
                 ${active ? 'bg-purple-100 text-purple-700 border border-purple-300' : 'text-gray-400 hover:text-black'}
                 ${collapsed ? 'justify-center' : ''}`}
         >
-             {/* Icon will grow, but background stays the same */}
-            <span className="flex items-center">{icon}</span>
-            {!collapsed && <span>{label}</span>}  {/* When collapsed, only the icon is shown; when expanded, both icon and label are shown */}
+            <span className="flex items-center group-hover:text-purple-700 transition-colors">{icon}</span>
+            {!collapsed && (
+                <span className="group-hover:text-purple-700 transition-colors">{label}</span>
+            )}
         </Link>
     );
 };

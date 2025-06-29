@@ -33,7 +33,7 @@ export const DashboardLayout: React.FC = () => {
 
                     {/* CTA Button */}
                     <button className="mt-4 bg-[#5400E6] text-white px-6 py-3 rounded-md text-sm font-medium cursor-pointer"
-                            onClick={() => navigate("/dashboard/create-listings")}>
+                            onClick={() => navigate("/create-listings")}>
                         Create Listing
                     </button>
                 </div>

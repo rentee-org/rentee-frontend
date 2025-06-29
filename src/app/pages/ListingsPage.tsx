@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import Header from "../components/Dashboard/header";
 import SidebarPage from "../../app/pages/Sidebar";
 import Listings  from "@components/Dashboard/Listings"
-import CreateListing from "@components/Dashboard/Create-ListingsLayout";
 
 const ListingsPage: React.FC = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
-    const [products, setProducts] = useState<any[]>([]);
-    const handleAddProduct = (product: any) => setProducts((prev: any) => [product, ...prev]);
 
     return (
         <div className="min-h-screen w-full bg-white">
@@ -29,8 +26,7 @@ const ListingsPage: React.FC = () => {
                     </div>
                     {/* Dashboard Content */}
                     <div className="flex-1 overflow-y-auto">
-                        <CreateListing onAddProduct={handleAddProduct} />
-                        <Listings products={products} />
+                        <Listings products={[]} />
                     </div>
                 </div>
             </div>
@@ -60,8 +56,7 @@ const ListingsPage: React.FC = () => {
             {/* Main content area for mobile */}
             <div className="lg:hidden flex flex-col min-h-screen]">
                 <div className="flex-1 overflow-y-auto p-4 md:p-6 bg-gray-50">
-                    <CreateListing onAddProduct={handleAddProduct} />
-                    <Listings products={products} />
+                    <Listings products={[]} />
                 </div>
             </div>
         </div>
