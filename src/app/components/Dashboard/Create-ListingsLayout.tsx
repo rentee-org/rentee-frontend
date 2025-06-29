@@ -10,7 +10,6 @@ import { Switch } from "@/app/components/ui/switch"
 import { Upload } from "lucide-react"
 import CalendarUI from "@ui/calendar-ui"
 
-
 export default function CreateListing() {
     // const [showPreview, setShowPreview] = useState(false);
     const [conditionOptions, setConditionOptions] = useState({
@@ -54,10 +53,7 @@ export default function CreateListing() {
     );
 
     const [depositAmount, setDepositAmount] = useState("");
-    const [selectedDate, _setSelectedDate] = useState<Date | null>(null);
-
-
-
+    const [selectedDate, _setSelectedDate!] = useState<Date | null>(null);
 
     return (
         <div className="min-h-screen bg-gray-50 p-6">

@@ -1,6 +1,6 @@
 // services/api-service.ts
 import { useAuthStore } from '../store/auth-store';
-import { ApiClient } from '../lib/api-client';
+import { ApiClient } from '../common/lib/api-client';
 import type { AuthTokens, Post, User } from '../types/api-request';
 
 // Create API client instance

@@ -1,4 +1,4 @@
-import type { ApiResponse } from "../types/api-request";
+import type { ApiResponse } from "../../types/api-request";
 
 export class ApiClient {
   private baseURL: string;

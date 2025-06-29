@@ -1,5 +1,5 @@
 import { useAuth, usePosts } from "@/hooks/use-api";
-import { useAppStore } from "../../store/app-store";
+import { useAppStore } from "../../store/useAppStore";
 import { useAuthStore } from "../../store/auth-store";
 
 // Example usage in a component

@@ -1,13 +1,7 @@
-import type { User } from '@/types/api-request';
+import type { Post, User } from '@/types';
 import { create } from 'zustand';
 
-interface Post {
-  id: string;
-  title: string;
-  content: string;
-  userId: string;
-}
-
+// Zustand store for managing application state related to posts and users
 interface AppState {
   posts: Post[];
   users: User[];

@@ -1,6 +1,8 @@
-import Data from '../components/constants/data'
 import User from "../components/constants/Index";
 import ProductGrid from "../components/Categories/ProductGrid";
+
+// TODO: Replace this with your actual product items array or import
+let productItem: any[] = [];
 
 const dateOptions = [
   "Recent",
@@ -112,9 +114,9 @@ const AllListing = () => {
           <h3 className=" font-bold ">
             All Listings
           </h3>
-          <ProductGrid products={Data} users={User} />
-          <ProductGrid products={Data} users={User} />
-          <ProductGrid products={Data} users={User} />
+          <ProductGrid products={productItem} users={User} />
+          <ProductGrid products={productItem} users={User} />
+          <ProductGrid products={productItem} users={User} />
         </div>
       </div>
     </div>

@@ -1,23 +1,5 @@
 import { BiChevronRight } from "react-icons/bi";
-
 import { Link } from 'react-router-dom';
-
-
-
-export interface ProductItems {
-  img: string;
-  id: number;
-  price: string;
-  name: string;
-  description: string;
-
-}
-
-export interface UserProfile {
-  img: string;
-  id: number;
-  name: string;
-}
 
 function ProductGrid({products, users}: {products: ProductItems[]; users: UserProfile[]}) {
   return (

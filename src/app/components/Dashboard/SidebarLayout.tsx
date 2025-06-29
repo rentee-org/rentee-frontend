@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Home, NotebookPen, Calendar, Bell, Settings, HelpCircle, PanelRight } from 'lucide-react';
 import Logo from '@/assets/Rentee Final Logo 1.png';
 import { ClockArrowUp } from 'lucide-react'; 
+import type { SidebarItemProps } from '@/types';
 
 const SidebarLayout: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
@@ -81,15 +82,6 @@ const SidebarLayout: React.FC = () => {
         </div>
     );
 };
-
-// Sidebar item props: icon, label text, active state, and collapsed status
-interface SidebarItemProps {
-    icon: React.ReactNode;
-    label: string;
-    to: string; 
-    active?: boolean;
-    collapsed: boolean;
-}
 
 const SidebarItem: React.FC<SidebarItemProps> = ({ icon, label, active, collapsed, to }) => {
     return (

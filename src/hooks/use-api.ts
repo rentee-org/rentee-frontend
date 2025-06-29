@@ -4,7 +4,7 @@ import {
   postsService
 } from "../services/api-service";
 import { useAuthStore } from "../store/auth-store";
-import { useAppStore } from "../store/app-store";
+import { useAppStore } from "../store/useAppStore";
 
 export const useAuth = () => {
   const { setAuth, clearAuth, setLoading, setError } = useAuthStore();
