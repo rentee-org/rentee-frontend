@@ -38,9 +38,9 @@ function App() {
         <Route path='/bookings' element={<Bookings />} />
         <Route path='/orders' element={<Order />} />
         <Route path='/notification' element={<NotificationPage />} />
-        <Route path='/all-listings' element={<AllListings />} />
         <Route path='/settings' element={<Settings />} />
-        {/* Add more routes as needed */}
+
+
       </Routes>
     </Router>
   ); 

@@ -306,6 +306,7 @@ export default function CreateListing() {
                                     <Button className="bg-purple-600 hover:bg-purple-700 text-white">Recommended Price</Button>
                                 </div>
                             </div>
+
                             {/* Availability */}
                             <h3 className="text-sm font-medium text-black-700">Availability</h3>
                                 <CalendarUI value={null} onChange={function (date: Date): void {
