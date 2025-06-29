@@ -2,39 +2,22 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@components/ui/card"
 import { Search } from "lucide-react"
-import cameraImg from "@/assets/camera.png"
 import { Link } from "react-router-dom"
 
-export default function Component() {
-    const products = [
-        {
-        id: 1,
-        image: cameraImg ,
-        price: "NGN 30,000",
-        period: "/day",
-        title: "Sony 35mm f1.4 g master fe lens - 35 mm",
-        description:
-            "Rent this f1.4 g Master FE lens with stunning sharpness, wide angle lens with stunning sharpness...",
-        },
-        {
-        id: 2,
-        image: cameraImg ,
-        price: "NGN 30,000",
-        period: "/day",
-        title: "Sony 35mm f1.4 g master fe lens - 35 mm",
-        description:
-            "Rent this f1.4 g Master FE lens with stunning sharpness, wide angle lens with stunning sharpness...",
-        },
-        {
-        id: 3,
-        image: cameraImg ,
-        price: "NGN 30,000",
-        period: "/day",
-        title: "Sony 35mm f1.4 g master fe lens - 35 mm",
-        description:
-            "Rent this f1.4 g Master FE lens with stunning sharpness, wide angle lens with stunning sharpness...",
-        },
-    ]
+type Product = {
+    id: number;
+    image: string;
+    price: string;
+    period: string;
+    title: string;
+    description: string;
+};
+
+interface ListingsProps {
+    products: Product[];
+}
+
+export default function Listings({ products }: ListingsProps) {
 
     return (
         <div className="min-h-screen bg-gray-50 p-6">

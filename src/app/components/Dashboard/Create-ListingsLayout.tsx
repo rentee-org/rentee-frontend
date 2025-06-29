@@ -10,8 +10,12 @@ import { Switch } from "@/app/components/ui/switch"
 import { Upload } from "lucide-react"
 import CalendarUI from "@ui/calendar-ui"
 
+interface CreateListingProps {
+    onAddProduct: (product: any) => void;
+}
 
-export default function CreateListing() {
+
+export default function CreateListing({ onAddProduct }: CreateListingProps) {
     // const [showPreview, setShowPreview] = useState(false);
     const [conditionOptions, setConditionOptions] = useState({
     new: false,
@@ -309,7 +313,7 @@ export default function CreateListing() {
 
                             {/* Availability */}
                             <h3 className="text-sm font-medium text-black-700">Availability</h3>
-                                <CalendarUI value={null} onChange={function (date: Date): void {
+                                <CalendarUI value={null} onChange={function (_date: Date): void {
                                 throw new Error("Function not implemented.")
                             } } />
 
