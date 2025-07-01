@@ -305,5 +305,5 @@ export interface PreviewModalProps {
     depositAmount: string;
 }
 export interface CreateListingProps {
-    onAddProduct: (product: any) => void; // Replace 'any' with a more specific type if available
+    onAddProduct: (product: ProductItem) => void; // Replace 'any' with a more specific type if available
 }
