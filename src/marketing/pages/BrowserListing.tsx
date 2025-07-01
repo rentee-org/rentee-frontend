@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import User from "../components/constants/Index";
 import ProductGrid from "../components/Categories/ProductGrid";
+// import ProductData from "../components/constants/ProductData"; // Make sure this file exports ProductItems[]
 
 
 function BrowserListing() {
@@ -22,9 +23,9 @@ function BrowserListing() {
       </div>
 
       {/* Render the grid Thrice */}
-      <ProductGrid products={Data} users={User} />
-      <ProductGrid products={Data} users={User} />
-      <ProductGrid products={Data} users={User} />
+      {/* <ProductGrid products={ProductData} users={User} />
+      <ProductGrid products={ProductData} users={User} />
+      <ProductGrid products={ProductData} users={User} /> */}
     </div>
   );
 }

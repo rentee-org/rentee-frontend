@@ -307,3 +307,8 @@ export interface PreviewModalProps {
 export interface CreateListingProps {
     onAddProduct: (product: any) => void; // Replace 'any' with a more specific type if available
 }
+
+export interface AccordionData {
+  question: string;
+  answer: string;
+}

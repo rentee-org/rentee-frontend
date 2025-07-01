@@ -1,6 +1,22 @@
 import { BiChevronRight } from "react-icons/bi";
 import { Link } from 'react-router-dom';
 
+// Define ProductItems type if not already imported
+type ProductItems = {
+  id: string | number;
+  img: string;
+  price: string | number;
+  name: string;
+  description: string;
+};
+
+// Define UserProfile type
+type UserProfile = {
+  id: string | number;
+  img: string;
+  name: string;
+};
+
 function ProductGrid({products, users}: {products: ProductItems[]; users: UserProfile[]}) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-4 md:px-6 py-8 mx-auto max-w-7xl gap-5">

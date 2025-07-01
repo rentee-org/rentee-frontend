@@ -2,12 +2,7 @@
 import  { useState, useRef, useEffect } from "react";
 import { BiPlus, BiMinus } from "react-icons/bi";
 import AccordionData from "../components/constants/AccordionData";
-
-
-interface AccordionData {
-  question: string;
-  answer: string;
-}
+import type { AccordionData as AccordionDataType } from "../../types"; // Adjust the path as needed
 
 
 function Faq() {
@@ -44,7 +39,7 @@ function Faq() {
 
           <div className="flex flex-col gap-4 mt-10">
             <div>
-              {AccordionData.map((item: AccordionData, index: number) => (
+              {AccordionData.map((item: AccordionDataType, index: number) => (
                 <div key={index} className="flex flex-col gap-4">
                   <div
                     className="flex justify-between items-center  p-4  border-b-2 border-gray-300"
