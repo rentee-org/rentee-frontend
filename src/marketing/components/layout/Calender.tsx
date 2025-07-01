@@ -59,7 +59,7 @@ const Calendar = () => {
       } else {
         setReturnDate(date);
         const range: Date[] = [];
-        let temp = new Date(pickupDate);
+        const temp = new Date(pickupDate);
         while (temp <= date) {
           range.push(new Date(temp));
           temp.setDate(temp.getDate() + 1);

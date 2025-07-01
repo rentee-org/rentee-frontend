@@ -1,8 +1,9 @@
 import User from "../components/constants/Index";
 import ProductGrid from "../components/Categories/ProductGrid";
+import type { ProductItem } from '@/types/index';
 
 // TODO: Replace this with your actual product items array or import
-let productItem: any[] = [];
+const productItem: ProductItem[] = [];
 
 const dateOptions = [
   "Recent",

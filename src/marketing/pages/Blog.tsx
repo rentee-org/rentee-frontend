@@ -1,4 +1,3 @@
-import react from "react"
 import { Link } from "react-router-dom";
 import blog1 from "../../assets/blog1.png";
 import blog2 from "../../assets/blog2.png";
@@ -7,13 +6,12 @@ import Navbar from "@/marketing/components/layout/Navbar";
 import Footer from "@/marketing/components/layout/Footer";
 
 
+
 const Blog = () => {
 
   return (
     <div>
-      <Navbar setShowSignUp={function (_value: react.SetStateAction<boolean>): void {
-        throw new Error("Function not implemented.");
-      } } />
+      <Navbar setShowSignUp={() => {}} />
       <article>
         <div className="max-w-7xl mx-auto px-4 py-8 mt-14">
           <div className="mb-8">

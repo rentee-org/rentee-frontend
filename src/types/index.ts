@@ -8,6 +8,7 @@ export interface ProductItem {
   description: string;
   price: number;
   imageUrl: string;
+  priceLabel?: string;
 }
 
 export interface ProductItemWithQuantity extends ProductItem {

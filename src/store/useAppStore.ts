@@ -19,7 +19,7 @@ interface AppState {
   clearError: () => void;
 }
 
-export const useAppStore = create<AppState>((set, _get) => ({
+export const useAppStore = create<AppState>((set) => ({
   posts: [],
   users: [],
   isLoading: false,
