@@ -3,7 +3,7 @@ import {
   authService,
   postsService
 } from "../services/api-service";
-import { useAuthStore } from "../store/auth-store";
+import { useAuthStore } from "../store/useAuthStore";
 import { useAppStore } from "../store/useAppStore";
 
 export const useAuth = () => {

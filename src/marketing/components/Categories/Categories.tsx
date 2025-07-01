@@ -13,7 +13,7 @@ import { BiChevronRight } from "react-icons/bi";
 import Calender from "../layout/Calender";
 import Navbar from "../layout/Navbar";
 import Footer from "../layout/Footer";
-import type { SetStateAction } from "react";
+// import type { SetStateAction } from "react";
 
 const Categories = () => {
   return (

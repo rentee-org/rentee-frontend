@@ -3,67 +3,67 @@ import type { ApiResponse } from "./api-request";
 // This file contains TypeScript interfaces for the product items used in the application.
 // Each product item has an image, id, price, name, and description.
 export interface ProductItem {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  imageUrl: string;
-  priceLabel?: string;
+    id: number;
+    name: string;
+    description: string;
+    price: number;
+    imageUrl: string;
+    priceLabel?: string;
 }
 
 export interface ProductItemWithQuantity extends ProductItem {
-  quantity: number;
+    quantity: number;
 }
 
 export interface Cart {
-  items: CartItem[];
-  totalPrice: string;
+    items: CartItem[];
+    totalPrice: string;
 }
 
 export interface CartItem extends ProductItem {
-  quantity: number;
+    quantity: number;
 }
 
 export interface User {
-  id: number;
-  firstname: string;
-  lastname: string;
-  username: string;
-  fullName: string; // Derived from firstname and lastname
-  email: string;
-  address: string;
-  phoneNumber: string;
-  role: string; // e.g., 'user', 'admin'
-  isActive: boolean; // Indicates if the user account is active
-  isVerified: boolean; // Indicates if the user has verified their email
-  // Optional fields for user profile
-  initials?: string; // Optional initials for display
-  avatarUrl?: string; // Optional avatar URL
-  avatarColor?: string; // Optional avatar color for display
-  // Timestamps for user account creation and updates
-  createdAt: string; // ISO date string
-  updatedAt: string; // ISO date string
-  // Additional fields can be added as needed
-  
+    id: number;
+    firstname: string;
+    lastname: string;
+    username: string;
+    fullName: string; // Derived from firstname and lastname
+    email: string;
+    address: string;
+    phoneNumber: string;
+    role: string; // e.g., 'user', 'admin'
+    isActive: boolean; // Indicates if the user account is active
+    isVerified: boolean; // Indicates if the user has verified their email
+    // Optional fields for user profile
+    initials?: string; // Optional initials for display
+    avatarUrl?: string; // Optional avatar URL
+    avatarColor?: string; // Optional avatar color for display
+    // Timestamps for user account creation and updates
+    createdAt: string; // ISO date string
+    updatedAt: string; // ISO date string
+    // Additional fields can be added as needed
+    
 }
 
 export interface AuthStore {
-  isAuthenticated: boolean;
-  user: { id: string; email: string } | null;
-  login: (user: AuthStore['user']) => void;
-  logout: () => void;
+    isAuthenticated: boolean;
+    user: { id: string; email: string } | null;
+    login: (user: AuthStore['user']) => void;
+    logout: () => void;
 }
 
 export interface AuthTokens {
-  accessToken: string;
-  refreshToken: string;
+    accessToken: string;
+    refreshToken: string;
 }
 
 export interface Post {
-  id: string;
-  title: string;
-  content: string;
-  userId: string;
+    id: string;
+    title: string;
+    content: string;
+    userId: string;
 }
 
 // User authentication request and response types
@@ -287,4 +287,23 @@ export interface SidebarItemProps {
     to: string; 
     active?: boolean;
     collapsed: boolean;
+}
+export interface PreviewModalProps {
+    isOpen: boolean;
+    onClose: () => void;
+    itemName: string;
+    category: string;
+    location: string;
+    description: string;
+    priceDay: string;
+    priceWeek: string;
+    priceMonth: string;
+    images: File[];
+    condition: { new: boolean; used: boolean };
+    availability: { start: Date | null; end: Date | null };
+    securityDeposit: boolean;
+    depositAmount: string;
+}
+export interface CreateListingProps {
+    onAddProduct: (product: any) => void; // Replace 'any' with a more specific type if available
 }
