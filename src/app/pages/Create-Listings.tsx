@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "../components/Dashboard/header";
 import SidebarPage from "./Sidebar";
 import CreateListingsLayout from "../components/Dashboard/Create-ListingsLayout";
+import type { ProductItem } from "@/types";
 
 const Listings: React.FC = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -26,7 +27,10 @@ const Listings: React.FC = () => {
                     </div>
                     {/* Dashboard Content */}
                     <div className="flex-1 overflow-y-auto">
-                        <CreateListingsLayout /> 
+                        <CreateListingsLayout onAddProduct={(product: ProductItem) => {
+                            // Implement your logic here, e.g., send product to API or update state
+                            console.log("Product added:", product);
+                        }} /> 
                     </div>
                 </div>
             </div>
@@ -56,7 +60,10 @@ const Listings: React.FC = () => {
             {/* Main content area for mobile */}
             <div className="lg:hidden flex flex-col min-h-screen]">
                 <div className="flex-1 overflow-y-auto p-4 md:p-6 bg-gray-50">
-                    <CreateListingsLayout /> 
+                    <CreateListingsLayout onAddProduct={(product: ProductItem) => {
+                        // Implement your logic here, e.g., send product to API or update state
+                        console.log("Product added:", product);
+                    }} /> 
                 </div>
             </div>
         </div>

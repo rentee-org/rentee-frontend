@@ -73,12 +73,7 @@ export default function SignUpForm() {
         try {
             // Use the httpHelper to make the API request
             const response = await ApiClient.post<AuthResponse>(`${API_BASE_URL}/api/auth/register`, payload);
-            if (resp.success) {
-                setSuccess("Registration successful! You can now log in.");
-                setTimeout(() => navigate("/login"), 1500); // Redirect after 1.5 seconds
-            } else {
-                setError(resp.message || "Registration failed.");
-            }
+            // Remove this block, as 'resp' is not defined and the correct response handling is below
 
             const data: AuthResponse = await response.json();
             if (response.ok && data.success) {
@@ -87,7 +82,7 @@ export default function SignUpForm() {
             } else {
                 setError(data.message || "Registration failed.");
             }
-        } catch (err) {
+        } catch (_) {
             setError("An error occurred. Please try again.");
         } finally {
             setIsLoading(false);

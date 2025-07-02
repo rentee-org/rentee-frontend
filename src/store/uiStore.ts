@@ -16,38 +16,38 @@ export const createUiSlice: StateCreator<UiStore> = (set) => ({
   // Initialize with an empty array or fetch from an API
   // Example product items
   productItems: [
-    // {
-    //   id: 1,
-    //   price: 30000,
-    //   name: "Sony 35mm f1.4 g master fe lens - 35 mm",
-    //   description:
-    //     "Sony 35mm f/1.4 G Master FE Lens Premium wide-angle lens with stunning sharpness...",
-    //   imageUrl: Frame1,
-    // },
-    // {
-    //   id: 2,
-    //   price: 30000,
-    //   name: "Sony 35mm f1.4 g master fe lens - 35 mm",
-    //   description:
-    //     "Sony 35mm f/1.4 G Master FE Lens Premium wide-angle lens with stunning sharpness...",
-    //   imageUrl: Frame2,
-    // },
-    // {
-    //   id: 3,
-    //   price: 30000,
-    //   name: "Sony 35mm f1.4 g master fe lens - 35 mm",
-    //   description:
-    //     "Sony 35mm f/1.4 G Master FE Lens Premium wide-angle lens with stunning sharpness...",
-    //   imageUrl: Frame3,
-    // },
-    // {
-    //   id: 4,
-    //   price: 30000,
-    //   name: "Sony 35mm f1.4 g master fe lens - 35 mm",
-    //   description:
-    //     "Sony 35mm f/1.4 G Master FE Lens Premium wide-angle lens with stunning sharpness...",
-    //   imageUrl: Frame1,
-    // }
+    {
+      id: 1,
+      price: 30000,
+      name: "Sony 35mm f1.4 g master fe lens - 35 mm",
+      description:
+        "Sony 35mm f/1.4 G Master FE Lens Premium wide-angle lens with stunning sharpness...",
+      imageUrl: Frame1,
+    },
+    {
+      id: 2,
+      price: 30000,
+      name: "Sony 35mm f1.4 g master fe lens - 35 mm",
+      description:
+        "Sony 35mm f/1.4 G Master FE Lens Premium wide-angle lens with stunning sharpness...",
+      imageUrl: Frame2,
+    },
+    {
+      id: 3,
+      price: 30000,
+      name: "Sony 35mm f1.4 g master fe lens - 35 mm",
+      description:
+        "Sony 35mm f/1.4 G Master FE Lens Premium wide-angle lens with stunning sharpness...",
+      imageUrl: Frame3,
+    },
+    {
+      id: 4,
+      price: 30000,
+      name: "Sony 35mm f1.4 g master fe lens - 35 mm",
+      description:
+        "Sony 35mm f/1.4 G Master FE Lens Premium wide-angle lens with stunning sharpness...",
+      imageUrl: Frame1,
+    }
   ]  
   // fetchProductItems: async () => {
   //   try {

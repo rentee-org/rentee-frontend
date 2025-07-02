@@ -72,9 +72,9 @@ export class ApiClient {
     return this.request<T>(endpoint, { method: "GET" }, requiresAuth);
   }
 
-  async post<T>(
+  async post<T, TBody = unknown>(
     endpoint: string,
-    data?: any,
+    data?: TBody,
     requiresAuth = false
   ): Promise<ApiResponse<T>> {
     return this.request<T>(
@@ -87,9 +87,9 @@ export class ApiClient {
     );
   }
 
-  async put<T>(
+  async put<T, TBody = unknown>(
     endpoint: string,
-    data?: any,
+    data?: TBody,
     requiresAuth = false
   ): Promise<ApiResponse<T>> {
     return this.request<T>(

@@ -12,34 +12,34 @@ type ProductItemType = {
 
 // TODO: Replace this with your actual product items array or import
 const productItem: ProductItemType[] = [
-  // {
-  //   id: "1",
-  //   name: "Product 1",
-  //   price: 100,
-  //   img: "/images/product1.jpg",
-  //   description: "Description for Product 1",
-  // },
-  // {
-  //   id: "2",
-  //   name: "Product 2",
-  //   price: 200,
-  //   img: "/images/product2.jpg",
-  //   description: "Description for Product 2",
-  // },
-  // {
-  //   id: "3",
-  //   name: "Product 3",
-  //   price: 300,
-  //   img: "/images/product3.jpg",
-  //   description: "Description for Product 3",
-  // },
-  // {
-  //   id: "3",
-  //   name: "Product 3",
-  //   price: 300,
-  //   img: "/images/product3.jpg",
-  //   description: "Description for Product 3",
-  // }
+  {
+    id: "1",
+    name: "Product 1",
+    price: 100,
+    img: "/images/product1.jpg",
+    description: "Description for Product 1",
+  },
+  {
+    id: "2",
+    name: "Product 2",
+    price: 200,
+    img: "/images/product2.jpg",
+    description: "Description for Product 2",
+  },
+  {
+    id: "3",
+    name: "Product 3",
+    price: 300,
+    img: "/images/product3.jpg",
+    description: "Description for Product 3",
+  },
+  {
+    id: "3",
+    name: "Product 3",
+    price: 300,
+    img: "/images/product3.jpg",
+    description: "Description for Product 3",
+  }
 ];
 
 const dateOptions = [
@@ -153,8 +153,8 @@ const AllListing = () => {
             All Listings
           </h3>
           <ProductGrid products={productItem} users={User} />
-          <ProductGrid products={productItem} users={User} />
-          <ProductGrid products={productItem} users={User} />
+          {/* <ProductGrid products={productItem} users={User} />
+          <ProductGrid products={productItem} users={User} /> */}
         </div>
       </div>
     </div>
