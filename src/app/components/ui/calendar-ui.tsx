@@ -114,17 +114,19 @@ import { cn } from "@lib/utils"
         const today = new Date()
 
         switch (preset) {
-        case "today":
+        case "today": {
             setSelectedStartDate(today)
             setSelectedEndDate(today)
             break
-        case "yesterday":
+        }
+        case "yesterday": {
             const yesterday = new Date(today)
             yesterday.setDate(today.getDate() - 1)
             setSelectedStartDate(yesterday)
             setSelectedEndDate(yesterday)
             break
-        case "last-week":
+        }
+        case "last-week": {
             const lastWeekEnd = new Date(today)
             lastWeekEnd.setDate(today.getDate() - 1)
             const lastWeekStart = new Date(lastWeekEnd)
@@ -132,23 +134,27 @@ import { cn } from "@lib/utils"
             setSelectedStartDate(lastWeekStart)
             setSelectedEndDate(lastWeekEnd)
             break
-        case "last-7-days":
+        }
+        case "last-7-days": {
             const last7DaysStart = new Date(today)
             last7DaysStart.setDate(today.getDate() - 7)
             setSelectedStartDate(last7DaysStart)
             setSelectedEndDate(today)
             break
-        case "this-month":
+        }
+        case "this-month": {
             const monthStart = new Date(today.getFullYear(), today.getMonth(), 1)
             setSelectedStartDate(monthStart)
             setSelectedEndDate(today)
             break
-        case "last-30-days":
+        }
+        case "last-30-days": {
             const last30DaysStart = new Date(today)
             last30DaysStart.setDate(today.getDate() - 30)
             setSelectedStartDate(last30DaysStart)
             setSelectedEndDate(today)
             break
+        }
         }
     }
 
