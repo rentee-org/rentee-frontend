@@ -6,7 +6,7 @@ import { Switch } from "@components/ui/switch"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@components/ui/select"
 import { Avatar, AvatarFallback, AvatarImage } from "@components/ui/avatar"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@components/ui/card"
-import { Separator } from "@/components/ui/separator"
+import { Separator } from "@components/ui/separator"
 import { Upload, Trash2, Shield, Bell, User, Eye, EyeOff } from "lucide-react"
 
 type TabType = "general" | "notification" | "security"

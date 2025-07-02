@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { Button } from "@components/ui/button"
+import { Input } from "@components/ui/input"
 import { Card, CardContent } from "@components/ui/card"
 import { Search } from "lucide-react"
 import cameraImg from "@/assets/camera.png"

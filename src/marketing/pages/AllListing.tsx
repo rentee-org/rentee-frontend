@@ -1,9 +1,46 @@
 import User from "../components/constants/Index";
 import ProductGrid from "../components/Categories/ProductGrid";
-import type { ProductItem } from '@/types/index';
+// Define the correct type for your product items, or import it if available
+type ProductItemType = {
+  id: string;
+  name: string;
+  price: number;
+  img: string; // Add image URL or path
+  description: string; // Add description field
+  // ...other fields
+};
 
 // TODO: Replace this with your actual product items array or import
-const productItem: ProductItem[] = [];
+const productItem: ProductItemType[] = [
+  // {
+  //   id: "1",
+  //   name: "Product 1",
+  //   price: 100,
+  //   img: "/images/product1.jpg",
+  //   description: "Description for Product 1",
+  // },
+  // {
+  //   id: "2",
+  //   name: "Product 2",
+  //   price: 200,
+  //   img: "/images/product2.jpg",
+  //   description: "Description for Product 2",
+  // },
+  // {
+  //   id: "3",
+  //   name: "Product 3",
+  //   price: 300,
+  //   img: "/images/product3.jpg",
+  //   description: "Description for Product 3",
+  // },
+  // {
+  //   id: "3",
+  //   name: "Product 3",
+  //   price: 300,
+  //   img: "/images/product3.jpg",
+  //   description: "Description for Product 3",
+  // }
+];
 
 const dateOptions = [
   "Recent",
@@ -115,9 +152,9 @@ const AllListing = () => {
           <h3 className=" font-bold ">
             All Listings
           </h3>
-          {/* <ProductGrid products={productItem} users={User} />
           <ProductGrid products={productItem} users={User} />
-          <ProductGrid products={productItem} users={User} /> */}
+          <ProductGrid products={productItem} users={User} />
+          <ProductGrid products={productItem} users={User} />
         </div>
       </div>
     </div>
