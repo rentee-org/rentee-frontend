@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Eye, EyeOff, Check } from "lucide-react"
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "@assets/Rentee Final Logo 1.png";
-import type { AuthResponse, Register, RegisterRequest } from "@/types";
+import type { AuthResponse, RegisterRequest } from "@/types";
 import { ApiClient } from "@/common/lib/api-client";
 
 export default function SignUpForm() {
@@ -82,7 +82,7 @@ export default function SignUpForm() {
             } else {
                 setError(data.message || "Registration failed.");
             }
-        } catch (_) {
+        } catch {
             setError("An error occurred. Please try again.");
         } finally {
             setIsLoading(false);

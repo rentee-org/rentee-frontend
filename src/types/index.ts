@@ -80,8 +80,8 @@ export interface Register {
 }
 
 // User authentication request interface using a generic type from APIResponse
-export interface RegisterRequest extends ApiResponse<Register> {
-    rememberMe?: boolean; // Optional field for "Remember Me" functionality
+export interface RegisterRequest extends Register {
+    rememberMe?: boolean;
 }
 
 // User authentication response interface using a generic type from APIResponse

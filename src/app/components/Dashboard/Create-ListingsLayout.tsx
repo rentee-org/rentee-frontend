@@ -360,65 +360,6 @@ export default function CreateListing({ onAddProduct }: CreateListingProps) {
                                     <Button className="bg-purple-600 hover:bg-purple-700 text-white">Recommended Price</Button>
                                 </div>
                             </div>
-                            {/* <div className="space-y-2">
-                                <Label className="text-sm font-medium text-gray-700">Set Price</Label>
-                                <div className="flex items-center w-full">
-                                    <div className="relative w-1/2 md:w-1/4">
-                                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm pointer-events-none">₦</span>
-                                        <Input
-                                        type="number"
-                                        inputMode="numeric"
-                                        placeholder="20,000"
-                                        className="pl-7 rounded-md w-full"
-                                        value={priceDay}
-                                        onChange={e => setPriceDay(e.target.value)}
-                                        />
-                                    </div>
-                                    <span className="inline-block bg-white px-2 py-2 text-sm text-gray-500">
-                                        /day
-                                    </span>
-                                </div>
-
-                                <div className="flex items-center w-full">
-                                    <div className="relative w-1/2 md:w-1/4">
-                                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm pointer-events-none">₦</span>
-                                        <Input
-                                        type="number"
-                                        inputMode="numeric"
-                                        placeholder="140,000"
-                                        className="pl-7 rounded-md w-full bg-gray-400"
-                                        value={priceWeek}
-                                        onChange={e => setPriceWeek(e.target.value)}
-                                        />
-                                    </div>
-                                    <span className="inline-block bg-white px-2 py-2 text-sm text-gray-500">
-                                        /week
-                                    </span>
-                                </div>
-
-                                <div className="flex items-center w-full">
-                                    <div className="relative w-1/2 md:w-1/4">
-                                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm pointer-events-none">₦</span>
-                                        <Input
-                                        type="number"
-                                        inputMode="numeric"
-                                        placeholder="140,000"
-                                        className="pl-7 rounded-md w-full bg-gray-400"
-                                        value={priceMonth}
-                                        onChange={e => setPriceMonth(e.target.value)}
-                                        />
-                                    </div>
-                                    <span className="inline-block bg-white px-2 py-2 text-sm text-gray-500">
-                                        /month
-                                    </span>
-                                </div>
-
-                                <p className="text-sm text-gray-600 mt-1">Here’s your recommended weekly and monthly price!
-                                    <br /> you can choose to edit it.</p>
-                                <div className="mt-4">
-                                <Button className="bg-purple-600 hover:bg-purple-700 text-white">Recommended Price</Button>
-                                </div>
-                            </div> */}
 
                             {/* Availability */}
                             <h3 className="text-sm font-medium text-black-700">Availability</h3>
