@@ -10,7 +10,7 @@ import { Switch } from "@/app/components/ui/switch"
 import { Upload } from "lucide-react"
 import CalendarUI from "@ui/calendar-ui"
 import PreviewModal from "@components/Dashboard/PreviewModal"
-import type { CreateListingProps } from "@/types/index"
+import type { CreateListingProps, ProductItem } from "@/types/index"
 
 
 export default function CreateListing({ onAddProduct }: CreateListingProps) {
@@ -80,13 +80,14 @@ export default function CreateListing({ onAddProduct }: CreateListingProps) {
         }
 
         // Build new product object
-            const newProduct = {
-            image: selectedFiles[0] ? URL.createObjectURL(selectedFiles[0]) : "/placeholder.svg",
-            price: `NGN ${priceDay}`,
-            period: "/day",
-            title: itemName,
-            description,
-            // Add other fields as needed
+            const newProduct: ProductItem = {
+                name: itemName,
+                imageUrl: selectedFiles[0] ? URL.createObjectURL(selectedFiles[0]) : "/placeholder.svg",
+                price: Number(priceDay),
+                // period: "/day",
+                // title: itemName,
+                description,
+                id: 0
             };
             onAddProduct(newProduct);
 
@@ -370,7 +371,7 @@ export default function CreateListing({ onAddProduct }: CreateListingProps) {
                                     setSelectedDate(date);
                                     setActiveStep("availability");
                                     }}
-                                    onDone={(start: any, end: any) => {
+                                    onDone={(start: Date | null, end: Date | null) => {
                                     setShowCalendar(false);
                                     setSelectedRange({ start, end });
                                     }}

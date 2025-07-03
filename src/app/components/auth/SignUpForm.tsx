@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Eye, EyeOff, Check } from "lucide-react"
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "@assets/Rentee Final Logo 1.png";
-import type { AuthResponse, RegisterRequest } from "@/types";
+import type {   RegisterRequest } from "@/types";
 import { ApiClient } from "@/common/lib/api-client";
 
 export default function SignUpForm() {
@@ -72,17 +72,13 @@ export default function SignUpForm() {
 
         try {
             // Use the httpHelper to make the API request
-            const response = await ApiClient.post<AuthResponse>(`${API_BASE_URL}/api/auth/register`, payload);
-            // Remove this block, as 'resp' is not defined and the correct response handling is below
+              await ApiClient.post(`${API_BASE_URL}/api/auth/register`, payload);
 
-            const data: AuthResponse = await response.json();
-            if (response.ok && data.success) {
-                setSuccess("Registration successful! You can now log in.");
-                setTimeout(() => navigate("/login"), 1500) //Redirect after 1.5seconds
-            } else {
-                setError(data.message || "Registration failed.");
-            }
-        } catch {
+            // If ApiClient.post returns void, show a generic success message.
+            setSuccess("Registration successful! You can now log in.");
+            setTimeout(() => navigate("/login"), 1500); // Redirect after 1.5 seconds
+        } catch (error) {
+            console.error("Registration error:", error);
             setError("An error occurred. Please try again.");
         } finally {
             setIsLoading(false);

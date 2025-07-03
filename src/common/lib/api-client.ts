@@ -1,6 +1,11 @@
+// import type { RegisterRequest } from "@/types";
+import type { RegisterRequest } from "@/types";
 import type { ApiResponse } from "../../types/api-request";
 
 export class ApiClient {
+  static post(_arg0: string, _payload: RegisterRequest) {
+      throw new Error("Method not implemented.");
+  }
   private baseURL: string;
   private getAuthToken: () => string | null;
   private onTokenExpired: () => void;
