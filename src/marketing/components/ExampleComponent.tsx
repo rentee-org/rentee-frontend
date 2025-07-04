@@ -1,6 +1,6 @@
 import { useAuth, usePosts } from "@/hooks/use-api";
 import { useAppStore } from "../../store/useAppStore";
-import { useAuthStore } from "../../store/auth-store";
+import { useAuthStore } from "../../store/useAuthStore";
 
 // Example usage in a component
 export const ExampleComponent = () => {
@@ -26,7 +26,7 @@ export const ExampleComponent = () => {
       const result = await createPost({
         title: 'New Post',
         content: 'Post content',
-        userId: user.id,
+        userId: String(user.id),
       });
       if (result.success) {
         console.log('Post created:', result.data);

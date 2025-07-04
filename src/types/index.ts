@@ -25,6 +25,8 @@ export interface CartItem extends ProductItem {
 }
 
 export interface User {
+    avatar: any;
+    name: any;
     id: number;
     firstname: string;
     lastname: string;
@@ -116,9 +118,18 @@ export interface UserProfileUpdateResponse extends ApiResponse<UserProfile> {
 
 // Listing interface for the product listings
 export interface Listing {
+    renter: any;
     id: string;
     title: string;
     description: string;
+    dateRange: string; // Date range for the listing
+    dateOfRent: string; // Date of rent for the listing
+    returningDate: string; // Returning date for the listing
+    amount: number; // Amount for the listing
+    status: "Confirmed" | "Canceled" | "Pending" | "Ongoing";
+    paymentStatus: string
+    deliveryStatus?: string; // Optional delivery status for the listing
+    isOngoing?: boolean; // Indicates if the listing is ongoing
     price: number;
     imageUrl: string;
     userId: string; // ID of the user who created the listing
