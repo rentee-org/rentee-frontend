@@ -25,8 +25,8 @@ export interface CartItem extends ProductItem {
 }
 
 export interface User {
-    avatar: any;
-    name: any;
+    avatar: string;
+    name: string;
     id: number;
     firstname: string;
     lastname: string;
@@ -118,7 +118,7 @@ export interface UserProfileUpdateResponse extends ApiResponse<UserProfile> {
 
 // Listing interface for the product listings
 export interface Listing {
-    renter: any;
+    renter: string;
     id: string;
     title: string;
     description: string;
